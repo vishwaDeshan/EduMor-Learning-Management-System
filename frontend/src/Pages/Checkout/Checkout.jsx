@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import "./Checkout.css";
-import CreditCard from "../../Components/CreditCard/CreditCard";
+// import CreditCard from "../../Components/CreditCard/CreditCard";
 import {
   MDBBreadcrumb,
   MDBBreadcrumbItem
@@ -27,7 +27,7 @@ function Checkout() {
         <h2>Checkout</h2>
         <div className="paymentSection">
           <div className="cardsinfo">
-            <CreditCard />
+            {/* <CreditCard /> */}
           </div>
           <div className="payment-details">
             <h4>Payment Information</h4>
