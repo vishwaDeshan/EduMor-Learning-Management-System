@@ -1,0 +1,22 @@
+.notifications{
+    margin-top: 0;
+    margin-left: 10px;
+    width: 280px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(5, 222, 230, 0.16) 0px 3px 6px;
+    padding: 2px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 5px;
+
+}
+
+.notifications .message{
+    max-width: 200px;
+    max-height: 50px;
+    overflow: hidden;
+    height: auto;
+    padding-left: 0px;
+}
