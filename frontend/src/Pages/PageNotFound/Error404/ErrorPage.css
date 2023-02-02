@@ -1,0 +1,18 @@
+.error-container {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.error-container img {
+  width: 30%;
+  height: auto;
+}
+
+h1 {
+  color: #01305a;
+  font-weight: bold;
+}
+
+h2 {
+  color: #ff7c78;
+}
