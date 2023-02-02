@@ -1,10 +1,12 @@
 .footer{
-    width: 100%;
     min-height: 300px;
+    min-width: 1500px;
+    width: 100%;
     height: auto;
     background-color: #18234E;
     color: #ffff;
-    display: flex; 
+    display: flex;
+    gap: 80px;
 }
 
 .footer .footer-one{
@@ -98,5 +100,10 @@
 
 }
 
+@media screen and (max-width: px) {
 
-
+    .footer {
+     display: none;
+    }
+    
+    }

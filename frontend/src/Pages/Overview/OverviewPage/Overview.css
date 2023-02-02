@@ -2,9 +2,6 @@
     flex: 6;
     height: 100vh;
 }
-.overview{
-    background-color: #E7ECFC;
-}
 
 .containers{
     display: flex;
