@@ -1,7 +1,7 @@
 import React from 'react';
 import errorImage from '../../../Assets/ErrorImage.jpg'
 import './ErrorPage.css';
-import 'lato-font'
+
 
 const ErrorPage = () => {
   return (
