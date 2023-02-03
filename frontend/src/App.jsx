@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import 'lato-font'
+// import 'lato-font'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Overview from "./Pages/Overview/OverviewPage/Overview";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
@@ -11,6 +11,7 @@ import Payment from "./Pages/Payments/Payment";
 import MyExams from "./Pages/MyExams/MyExams";
 import ExamModule from "./Pages/ExamModule/ExamModule";
 import OverviewAdmin from "./Pages/Admin/Overview/OverviewAdmin";
+import Login from "./Pages/Login/Login";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/sampleExam" element={<ExamModule/>}/>
           <Route path="/adminOverview" element={<OverviewAdmin/>}/>
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </div>
