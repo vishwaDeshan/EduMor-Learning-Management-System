@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-// import 'lato-font'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Overview from "./Pages/Overview/OverviewPage/Overview";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
