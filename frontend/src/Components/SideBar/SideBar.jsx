@@ -7,12 +7,11 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import Logo from "../../Assets/LogoC.png";
 import "./SideBar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-
 const SideBar = () => {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="side-bar">
       <div className="top">
@@ -23,41 +22,52 @@ const SideBar = () => {
       </div>
       <div className="center">
         <ul className="nav-links">
-          <li className="active">
-            <a href="/">
+          <li >
+            <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}><a href="/" >
               <DashboardCustomizeOutlinedIcon />
-              <Link to="/"><span className="link_name">{t("Overview")}</span></Link>
+              <span className="link_name">{t("Overview")}</span>
             </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/examinations">
-              <BookOutlinedIcon />
-              <Link to="/examinations"><span className="link_name">{t("Examinations")}</span></Link>
-            </a>
+            <NavLink to="/examinations" className="">
+              <a href="/examinations">
+                <BookOutlinedIcon />
+                <span className="link_name">{t("Examinations")}</span>
+              </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/myExams">
-              <LibraryBooksOutlinedIcon />
-              <Link to="/myExams"><span className="link_name">{t("My Exams")}</span></Link>
-            </a>
+            <NavLink to="/myExams" className="">
+              <a href="/myExams">
+                <LibraryBooksOutlinedIcon />
+                <span className="link_name">{t("My Exams")}</span>
+              </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/myPayments">
-              <LocalAtmOutlinedIcon />
-              <Link to="/myPayments"><span className="link_name">{t("Payments")}</span></Link>
-            </a>
+            <NavLink to="/myPayments" className="">
+              <a href="/myPayments">
+                <LocalAtmOutlinedIcon />
+                <span className="link_name">{t("Payments")}</span>
+              </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/profile">
-              <SettingsOutlinedIcon />
-              <Link to="/profile"><span className="link_name">{t("Settings")}</span></Link>
-            </a>
+            <NavLink to="/profile" className="">
+              <a href="/profile">
+                <SettingsOutlinedIcon />
+                <span className="link_name">{t("Settings")}</span>
+              </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/logout" className="logout">
-              <ExitToAppOutlinedIcon />
-              <Link to="/logout"><span className="link_name">{t("Logout")}</span></Link>
-            </a>
+            <NavLink to="/logout" className="">
+              <a href="/logout" className="logout">
+                <ExitToAppOutlinedIcon />
+                <span className="link_name">{t("Logout")}</span>
+              </a>
+            </NavLink>
           </li>
         </ul>
       </div>
