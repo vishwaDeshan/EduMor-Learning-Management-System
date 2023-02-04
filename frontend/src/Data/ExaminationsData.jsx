@@ -26,6 +26,7 @@ const examinationData = [
     noOfQuizzes: "9 Quizzes",
     newExamTitle: "Audit's Examiners Service Examination",
     image: 'https://img.freepik.com/free-vector/pharmacists-holding-bottles-with-antibiotic-pills-vitamins-drugs-thermometer-ointment-tube-vector-illustration-drugstore-medical-store-pharmacy-pharmaceutical-business-concept_74855-10132.jpg?w=360'
+    
 
   },
   {
