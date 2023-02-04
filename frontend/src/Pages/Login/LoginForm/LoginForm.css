@@ -1,0 +1,29 @@
+.login-container{
+    width: 70%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.login-form{
+    display: flex;
+    flex-basis: 50%;
+}
+
+.login-img{
+    display: flex;
+    flex-basis: 50%;
+    background-color:  #041083;
+    border-radius: 0 10px 10px 0;
+    margin: auto;
+}
+
+.login-img img{
+    width: 50%;
+    height: auto;
+    margin: auto;
+    align-items: center;
+}
