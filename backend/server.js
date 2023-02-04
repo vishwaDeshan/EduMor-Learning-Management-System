@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //import routes
-const stunetRoutes = require("./routes/Student");
-app.use(stunetRoutes);
+const studentsRoutes = require("./routes/Student");
+app.use(studentsRoutes);
 
 const PORT = 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';
