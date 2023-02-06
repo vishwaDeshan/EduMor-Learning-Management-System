@@ -1,11 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import SideBar from '../../Components/SideBar/SideBar';
-import Navbar from '../../Components/Navbar/Navbar';
-import Footer from '../../Components/Footer/Footer';
+import SideBar from '../../../Components/SideBar/SideBar';
+import Navbar from '../../../Components/Navbar/Navbar';
+import Footer from '../../../Components/Footer/Footer';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
+import VacancySection from '../VacancySection/VacancySection';
 
-function Vacancies() {
+
+function VacanciesPage() {
     const { t } = useTranslation();
   return (
     <div style={{ diplay: 'flex', flexDirection: 'column' }}>
@@ -23,7 +25,7 @@ function Vacancies() {
           </div>
           <h5>{t("Vacancy")}</h5>
           <section >
-           
+           <VacancySection/>
           </section>
         </div>
       </div>
@@ -34,4 +36,4 @@ function Vacancies() {
   )
 }
 
-export default Vacancies
+export default VacanciesPage
