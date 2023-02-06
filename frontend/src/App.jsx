@@ -11,6 +11,7 @@ import MyExams from "./Pages/MyExams/MyExams";
 import ExamModule from "./Pages/ExamModule/ExamModule";
 import OverviewAdmin from "./Pages/Admin/Overview/OverviewAdmin";
 import Login from "./Pages/Login/Login";
+import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/sampleExam" element={<ExamModule/>}/>
           <Route path="/adminOverview" element={<OverviewAdmin/>}/>
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>

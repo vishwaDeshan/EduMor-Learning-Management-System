@@ -5,6 +5,7 @@ import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import LocalAtmOutlinedIcon from "@mui/icons-material/LocalAtmOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import WorkHistoryOutlinedIcon from '@mui/icons-material/WorkHistoryOutlined';
 import Logo from "../../Assets/LogoC.png";
 import "./SideBar.css";
 import { NavLink } from "react-router-dom";
@@ -50,6 +51,14 @@ const SideBar = () => {
               <a href="/myPayments">
                 <LocalAtmOutlinedIcon />
                 <span className="link_name">{t("Payments")}</span>
+              </a>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/vacancies" className="">
+              <a href="/vacancies">
+                <WorkHistoryOutlinedIcon />
+                <span className="link_name">{t("Vacancy")}</span>
               </a>
             </NavLink>
           </li>
