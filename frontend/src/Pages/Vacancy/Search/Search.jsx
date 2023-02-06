@@ -35,12 +35,12 @@ function Search() {
   return (
     <Box className={classes.wrapper}>
       <Select defaultValue="All" className={classes.selectBar}>
-      <MenuItem value="All">All Types</MenuItem>
+      <MenuItem value="All">All Job Types</MenuItem>
         <MenuItem value="Full time">Full time</MenuItem>
         <MenuItem value="Part time">Part time</MenuItem>        
       </Select>
       <Select defaultValue="All" className={classes.selectBar}>
-      <MenuItem value="All">All Districs</MenuItem>
+      <MenuItem value="All">All Districts</MenuItem>
       <MenuItem value="Colombo">Colombo</MenuItem>
       <MenuItem value="Gampaha">Gampaha</MenuItem>
       <MenuItem value="Kalutara">Kalutara</MenuItem>
