@@ -6,6 +6,7 @@ const vacancyData = [
         company: "Elegant Media (Pvt) Ltd",
         type: "Full Time",
         url: "https://www.dreamjobs.lk/jobs/16105/apply",
+        district:"Kandy"
     },
     {
         postedOn: new Date(),
@@ -14,6 +15,7 @@ const vacancyData = [
         company: "Ceylinco General Insurance ltd",
         type: "Part Time",
         url: "https://www.dreamjobs.lk/jobs/30166/apply",
+        district:"Colombo"
     },
     {
         postedOn: new Date(),
@@ -22,6 +24,7 @@ const vacancyData = [
         company: "A well reputed Insurance Company",
         type: "part time",
         url: "https://www.dreamjobs.lk/jobs/30155/apply",
+        district:"Kandy"
     },
     {
         postedOn: new Date(),
@@ -30,6 +33,7 @@ const vacancyData = [
         company: "Commercial Barnk",
         type: "Full Time",
         url: "https://www.dreamjobs.lk/jobs/16105/apply",
+        district:"Gampaha"
     },
     {
         postedOn: new Date(),
@@ -38,6 +42,7 @@ const vacancyData = [
         company: "Ceylinco General Insurance ltd",
         type: "Part Time",
         url: "https://www.dreamjobs.lk/jobs/30166/apply",
+        district:"Anuradhapura"
     },
     {
         postedOn: new Date(),
@@ -46,6 +51,7 @@ const vacancyData = [
         company: "A well reputed Insurance Company",
         type: "Full time",
         url: "https://www.dreamjobs.lk/jobs/30155/apply",
+        district:"Matale"
     },
     {
         postedOn: new Date(),
@@ -54,6 +60,7 @@ const vacancyData = [
         company: "Ceylinco General Insurance ltd",
         type: "Part Time",
         url: "https://www.dreamjobs.lk/jobs/30166/apply",
+        district:"Kandy"
     },
     {
         postedOn: new Date(),
@@ -62,6 +69,7 @@ const vacancyData = [
         company: "Commercial Barnk",
         type: "Full Time",
         url: "https://www.dreamjobs.lk/jobs/16105/apply",
+        district:"Vavniya"
     },
     {
         postedOn: new Date(),
@@ -70,6 +78,7 @@ const vacancyData = [
         company: "Ceylinco General Insurance ltd",
         type: "Part Time",
         url: "https://www.dreamjobs.lk/jobs/30166/apply",
+        district:"Jaffna"
     },
     {
         postedOn: new Date(),
@@ -78,6 +87,7 @@ const vacancyData = [
         company: "A well reputed Insurance Company",
         type: "Full time",
         url: "https://www.dreamjobs.lk/jobs/30155/apply",
+        district:"Ampara"
     }
 ];
 
