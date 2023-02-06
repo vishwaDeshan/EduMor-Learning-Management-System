@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 })
 
-function JobCard({ title,type, company,closingDate }) {
+function JobCard({ title,type, company,closingDate, district }) {
     const classes = useStyles()
     return (
         <Box className={classes.wrapper}>
@@ -32,8 +32,9 @@ function JobCard({ title,type, company,closingDate }) {
                     <Typography variant="subtitle1">{title}</Typography>
                     <Typography variant='subtitle2'>{company}</Typography>
                 </Grid>
-                <Grid container item xs>
+                <Grid item xs>
                     <Grid>{type}</Grid>
+                    <Grid>{district}</Grid>
                 </Grid>
                 <Grid item xs alignItems='flex-end'>
                     <Typography variant='subtitle2'>
