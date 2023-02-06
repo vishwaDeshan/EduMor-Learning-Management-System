@@ -11,12 +11,12 @@ const useStyles = makeStyles({
         borderRadius: "12px",
         padding: "5px 10px",
         backgroundColor: "#7781e1",
-        "&:hover": {
-            backgroundColor: "#7781b9",
-            boxShadow:"0px 5px 25px rgba(0,0,0,0.2)"
-        },
         "&:nth-child(odd)": {
             backgroundColor: "#7782f1",
+            boxShadow:"0px 5px 25px rgba(0,0,0,0.2)"
+        },
+        "&:hover": {
+            backgroundColor: "#7781b9",
             boxShadow:"0px 5px 25px rgba(0,0,0,0.2)"
         }
     },
