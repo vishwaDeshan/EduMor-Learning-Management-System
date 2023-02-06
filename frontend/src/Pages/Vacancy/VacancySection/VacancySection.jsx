@@ -24,8 +24,8 @@ function VacancySection() {
       <Grid container justifyContent="center" style={{ width: "100%" }}>
         <Grid item xs={10}>
           <Search />
-          {currentPosts.map(({ title, type, company, closingDate }, index) => {
-            return <JobCard key={index} title={title} company={company} closingDate={closingDate} type={type}/>
+          {currentPosts.map(({ title, type, company, closingDate, district}, index) => {
+            return <JobCard key={index} title={title} company={company} closingDate={closingDate} type={type} district={district}/>
           })}
         </Grid>
         <Pagination
