@@ -89,6 +89,7 @@ const vacancyData = [
         url: "https://www.dreamjobs.lk/jobs/30155/apply",
         district:"Ampara"
     }
+    
 ];
 
 export default vacancyData;
