@@ -22,7 +22,7 @@ const VacancySchema = new mongoose.Schema({
         required: true
     },
     closingDate: {
-        type: String,
+        type: Date,
         required: true
     }
 
