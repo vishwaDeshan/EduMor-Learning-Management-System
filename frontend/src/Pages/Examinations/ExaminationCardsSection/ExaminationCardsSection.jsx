@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ExamCard from "../../../Components/ExamCard/ExamCards"
 import "./ExaminationCardsSection.css";
 import examinationData from "../../../Data/ExaminationsData"
-import Pagination from '../Pagination/Pagination'
+import Pagination from '../../../Components/Pagination/Pagination'
 
 function ExaminationSection() {
   const [exams, setExams] = useState([]);
@@ -36,6 +36,7 @@ function ExaminationSection() {
         postsPerPage={postsPerPage}
         setCurrentPage={setcurrentPage}
         currentPage={currentPage}
+        type={1}
       />
     </div>
   );
