@@ -23,6 +23,17 @@
     "Title":"විභාගය",
     "Progress": "ප්රගතිය",
     "Started": "ආරම්භ කළේ",
-    "Vacancy": "ඇබෑර්තු"
-    
+    "Vacancy": "ඇබෑර්තු",
+    "About": "විස්තර",
+    "Full Name": "සම්පූර්ණ නම",
+    "Phone": "දුරකතන අංකය",
+    "Street": "වීදිය",
+    "City":"නගරය",
+    "State": "පළාත",
+    "Zip Code": "සිප් කේතය",
+    "Student": "ශිෂ්‍යයා",
+    "Personal Details": "පුද්ගලික තොරතුරු" ,
+    "Update": "යාවත්කාලීන කරන්න" ,
+    "Cancel": "අවලංගු කරන්න",
+    "Notifications":"දැනුම්දීම්"
 }
