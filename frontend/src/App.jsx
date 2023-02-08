@@ -12,6 +12,7 @@ import MyExams from "./Pages/MyExams/MyExams";
 import ExamModule from "./Pages/ExamModule/ExamModule";
 import OverviewAdmin from "./Pages/Admin/Overview/OverviewAdmin";
 import Login from "./Pages/Login/Login";
+import Signup from "./Pages/Signup/Signup"
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/adminOverview" element={<OverviewAdmin/>}/>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
         </Routes>
       </BrowserRouter>
     </div>
