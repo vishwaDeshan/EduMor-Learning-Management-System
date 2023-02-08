@@ -50,8 +50,11 @@
   float: left;
   list-style-type: none;
   margin-left: 80px;
-  margin-top: 35px;
+  margin-top: 30px;
   align-self: center;
+  color: #041083;
+  display: flex;
+  cursor: pointer;
 }
 
 .button{
