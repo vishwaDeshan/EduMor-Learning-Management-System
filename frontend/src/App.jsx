@@ -13,6 +13,7 @@ import ExamModule from "./Pages/ExamModule/ExamModule";
 import OverviewAdmin from "./Pages/Admin/Overview/OverviewAdmin";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup"
+import LandingPage from "./Pages/Landing Page/LandingPage"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/land" element={<LandingPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>
