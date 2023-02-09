@@ -5,12 +5,13 @@
 
 .paymentSection{
     display: flex;
+    height: auto;
     max-width: 1000px;
     background-color: #fff;
     border-radius: 10px;
     position: relative;
     box-shadow: rgba(16, 208, 215, 0.16) 5px 10px 10px;
-    margin: 5px auto;
+    margin: 5px auto 20px;
 
 }
 
@@ -18,7 +19,7 @@
     margin: -30px 260px 10px 260px;
 }
 .checkoutPage{
-    height: 100vh;
+    height: auto;
 }
 
 .payment-details{

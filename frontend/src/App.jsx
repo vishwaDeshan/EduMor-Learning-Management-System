@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-// import 'lato-font'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Overview from "./Pages/Overview/OverviewPage/Overview";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
@@ -13,7 +12,12 @@ import ExamModule from "./Pages/ExamModule/ExamModule";
 import OverviewAdmin from "./Pages/Admin/Overview/OverviewAdmin";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup"
+<<<<<<< HEAD
 import LandingPage from "./Pages/Landing Page/LandingPage"
+=======
+import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
+
+>>>>>>> 4c490b11a8b4e1fc37306b56f6e4ee2cc7e7cfcc
 
 function App() {
   return (
@@ -29,6 +33,7 @@ function App() {
           <Route path="/sampleExam" element={<ExamModule/>}/>
           <Route path="/adminOverview" element={<OverviewAdmin/>}/>
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/land" element={<LandingPage/>}/>
