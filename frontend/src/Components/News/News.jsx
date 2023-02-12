@@ -10,7 +10,7 @@ function News() {
   useEffect(() => {
     function getNews() {
       axios.get('http://localhost:8000/news').then((res) => {
-        console.log(res.data.existingNews);
+        // console.log(res.data.existingNews);
         setNews(res.data.existingNews)
       }).catch((err) => {
         alert(err.message)
