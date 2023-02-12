@@ -23,5 +23,17 @@
     "Title":"Title",
     "Progress": "Progress",
     "Started": "Started",
-    "Vacancy": "Vacancies"
+    "Vacancy": "Job Vacancies",
+    "About": "About",
+    "Full Name": "Full Name",
+    "Phone": "Phone",
+    "Street": "Street",
+    "City":"City",
+    "State": "State",
+    "Zip Code": "Zip Code",
+    "Student": "Student",
+    "Personal Details": "Personal Details",
+    "Update": "Update" ,
+    "Cancel": "Cancel",
+    "Notifications":"Notifications"
 }

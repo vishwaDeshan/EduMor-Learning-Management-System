@@ -16,6 +16,7 @@
     "material-avatar": "^0.3.5",
     "material-css": "^0.7.0",
     "mdb-react-ui-kit": "^5.1.0",
+    "mdb-ui-kit": "^6.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-credit-card-component": "^1.0.2",
