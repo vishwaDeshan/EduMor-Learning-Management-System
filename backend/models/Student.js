@@ -6,8 +6,7 @@ const StudentSchema = new mongoose.Schema({
         required: true
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
@@ -24,6 +23,25 @@ const StudentSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
         required: true
+    },
+    street: {
+        type: String,
+
+    },
+    city: {
+        type: String,
+
+    },
+    zipCode: {
+        type: String,
+
+    },
+    state: {
+        type: String,
+
+    },
+    profilePhoto: {
+        type: String
     }
 
 }, { timestamps: true });

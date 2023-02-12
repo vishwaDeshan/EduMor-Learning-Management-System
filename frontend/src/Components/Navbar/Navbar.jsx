@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { Avatar } from "@mui/material";
 import ProfilePic from "../../Assets/defaultUser.png";
 import { Link } from "react-router-dom";
@@ -34,7 +35,7 @@ const Navbar = () => {
         </div>
         <div className="items">
           <div className="item">
-            <LanguageOutlinedIcon className="icon" />
+            <LanguageOutlinedIcon className="nav-icon" />
             <select
               className="custome-select"
               value={i18n.language}
@@ -52,7 +53,7 @@ const Navbar = () => {
             className="item"
             onClick={() => setScrollableModal(!scrollableModal)}
           >
-            <NotificationsActiveOutlinedIcon className="icon" />
+            <NotificationsActiveOutlinedIcon className="nav-icon" />
             <div className="counter">1</div>
             {/* message */}
             <MDBModal
@@ -63,6 +64,8 @@ const Navbar = () => {
               <MDBModalDialog scrollable>
                 <MDBModalContent>
                   <MDBModalHeader>
+                    {t("Notifications")}
+                    <NotificationsActiveIcon className="msg-icon" />
                     <MDBBtn
                       className="btn-close"
                       color="none"
@@ -71,9 +74,7 @@ const Navbar = () => {
                   </MDBModalHeader>
                   <MDBModalBody>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Officia perspiciatis fugit et, quidem esse eaque aut sequi
-                      ipsa at. Labore, dolorum sunt! Commodi, temporibus alias.
+                      {t("You have no notifications")}
                     </p>
                   </MDBModalBody>
                 </MDBModalContent>

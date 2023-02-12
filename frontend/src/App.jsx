@@ -26,7 +26,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/myPayments" element={<Payment />} />
           <Route path="/myExams" element={<MyExams />} />
-          <Route path="/sampleExam" element={<ExamModule/>}/>
+          <Route path="/Exam" element={<ExamModule/>}/>
           <Route path="/adminOverview" element={<OverviewAdmin/>}/>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/vacancies" element={<VacanciesPage />} />

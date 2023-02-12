@@ -52,7 +52,7 @@ font{
     color: #646a85;
     cursor: pointer;
 }
-.icon{
+.nav-icon{
     font-size: 20px;
     color: #646a85;
     cursor: pointer;
@@ -90,5 +90,10 @@ select {
 
 select::-ms-expand {
     display: none;
+}
 
+.msg-icon{
+    margin: 0 10px;
+    font-size: 20px;
+    color: #646a85;
 }
