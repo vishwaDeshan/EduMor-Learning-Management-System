@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./News.css";
-import Headlines from '../../Data/News'
 import axios from 'axios'
 
 function News() {
