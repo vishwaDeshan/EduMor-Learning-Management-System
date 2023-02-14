@@ -3,10 +3,11 @@ import "../SignupForm/SignupForm.css";
 import InputBox from "../../../Components/Inputs/Input";
 import Button from "../../../Components/Buttons/Button"
 import { Link } from "react-router-dom";
+import SignupImg from "../../../Assets/sign-up-concept-illustration_114360-7875.png"
 
 function SignupForm() {
   return (
-    <div className="login-container" style={{ display: "flex" }}>
+    <div className="signup-container" style={{ display: "flex" }}>
       <div className="login-form">
         <h5>SignUp Now for EduMor</h5>
         
@@ -35,8 +36,8 @@ function SignupForm() {
         </div>
       </div>
 
-      <div className="login-img">
-        {/* <img src={loginImg} /> */}
+      <div className="signup-img">
+        <img src={SignupImg} /> 
       </div>
     </div>
 

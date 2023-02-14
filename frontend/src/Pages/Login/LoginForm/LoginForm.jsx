@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoginForm.css";
-import loginImg from "../../../Assets/imagelogin.png";
+import loginImg from "../../../Assets/imagelogin2.png";
 import { Link } from "react-router-dom";
 import Button from "../../../Components/Buttons/Button"
 

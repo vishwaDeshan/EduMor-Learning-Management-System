@@ -1,15 +1,15 @@
-.login-container{
-    width: 70%;
-    height: 820px;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 10px;
-    align-items: center;
-    margin: auto;
-    margin-top: 20px;
+.signup-container {
+  width: 70%;
+  height: 820px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
 }
-.login-form h5{
-    text-align: center;
+.login-form h5 {
+  text-align: center;
 }
 
 .heading {
@@ -67,8 +67,28 @@
   margin: auto;
 }
 
-.btnCont{
-    display: flex;
-    justify-content: center;
+.btnCont {
+  display: flex;
+  justify-content: center;
+}
 
+.signup-img {
+    width: 550px;
+    height: 820px;
+    padding: 2rem;
+    background-color: #041083;
+    border-radius: 0 10px 10px 0;
+    margin-right: -31px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.signup-img img{
+    width: 450px;
+    height: auto;
+    margin-top: 29%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
 }
