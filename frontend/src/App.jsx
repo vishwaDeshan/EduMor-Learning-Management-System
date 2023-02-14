@@ -40,7 +40,6 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage/>}/>
-
         </Routes>
       </BrowserRouter>
     </div>
