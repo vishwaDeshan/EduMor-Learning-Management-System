@@ -36,7 +36,7 @@
     outline: 0;
     border-width: 0 0 1px;
     border-color: #041083;
-    width:28rem;
+    width: 34rem;
 }
 
 .loginfeature{
@@ -72,7 +72,7 @@
 .signup h6{
     margin-top: 2px;
     cursor: pointer;
-    
+    margin-left: 0.3rem;
 }
 
 .login-img{
@@ -81,11 +81,13 @@
     background-color:  #041083;
     border-radius: 0 10px 10px 0;
     margin: auto;
+    height: 520px;
 }
 
 .login-img img{
-    width: 50%;
-    height: auto;
-    margin: auto;
-    align-items: center;
+    width: 120%;
+    height: 100%;
+    /* margin: auto; */
+    /* align-items: center; */
+    margin-left: -25px;
 }
