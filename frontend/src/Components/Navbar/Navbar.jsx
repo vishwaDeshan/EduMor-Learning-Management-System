@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <div className="Navbar">
-      <div className="wrapper">
+      <div className="wrapper-nav">
         <div className="search">
           <SearchOutlinedIcon className="search-icon" />
           <input type="text" placeholder={t("Search")} />
