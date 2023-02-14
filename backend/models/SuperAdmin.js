@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
-const StudentSchema = new mongoose.Schema({
+const SuperAdminSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true
     },
     lastName: {
-        type: String
+        type: String,
+        required: true
     },
     email: {
         type: String,
@@ -23,27 +24,8 @@ const StudentSchema = new mongoose.Schema({
     phoneNumber: {
         type: String,
         required: true
-    },
-    street: {
-        type: String,
-
-    },
-    city: {
-        type: String,
-
-    },
-    zipCode: {
-        type: String,
-
-    },
-    state: {
-        type: String,
-
-    },
-    profilePhoto: {
-        type: String
     }
 
 }, { timestamps: true });
 
-module.exports = mongoose.model('Students', StudentSchema);
+module.exports = mongoose.model('SuperAdmin', SuperAdminSchema);
