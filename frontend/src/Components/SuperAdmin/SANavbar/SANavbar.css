@@ -1,4 +1,4 @@
-.navbar{
+.navbar-sa{
     top: 0;
     display: flex;
     align-items: center;
@@ -6,12 +6,12 @@
     color: #646a85;
 }
 
-.wrapper-nav{
+.Navbar-sa .wrapper{
    
     display: flex;
     padding: 12px 20px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     
 }
 
@@ -27,26 +27,8 @@
     position: relative;
     
 }
-.search{
-    display: flex;
-    align-items: center;
-    border: 0.5px solid #f5f6f8;
-    background-color: #ffff;
-    padding: 3px 10px;
-    border-radius: 15px;
-}
-.search-icon{
-    color: #646a85;
-}
 
-.search input{
-    border:none;
-    width: 280px;
-    font-size: 16px;
-    padding-left: 5px;
-    cursor: pointer;
-    outline: none;
-}
+
 font{
     padding: 3px;
     color: #646a85;
@@ -75,25 +57,23 @@ font{
 
 }
 
-select {
-    margin-left: 5px;
-    color: #646a85;
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 5px;
-    width: 100%;
-    font-size: inherit;
-    cursor: pointer;
-    outline: none;
-}
-
-select::-ms-expand {
-    display: none;
-}
-
 .msg-icon{
     margin: 0 10px;
     font-size: 20px;
     color: #646a85;
+}
+
+.Navbar-sa button{
+    background-color:#041083 ;
+    padding: 5px 15px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+.Navbar-sa button:hover{
+    background-color: transparent;
+    padding: 5px 15px;
+    color: #041083;
+    border: 1px solid #041083;
+    border-radius: 10px;
 }
