@@ -1,0 +1,13 @@
+.billing-Container{
+    height: 525px;
+      overflow-y: scroll;
+  }
+  
+  .billing-Container::-webkit-scrollbar {
+      width: 10px;
+  }
+  
+  .billing-Container::-webkit-scrollbar-thumb {
+    background-color: #737582;
+    border-radius: 10px;
+  }

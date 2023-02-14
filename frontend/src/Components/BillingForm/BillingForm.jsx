@@ -1,9 +1,9 @@
 import React from "react";
+import './BillingForm.css'
 import {
   MDBCard,
   MDBCardBody,
   MDBCardHeader,
-  MDBCheckbox,
   MDBCol,
   MDBContainer,
   MDBInput,
@@ -15,7 +15,7 @@ import {
 
 export default function CreditCard() {
   return (
-    <MDBContainer className="py-5" >
+    <MDBContainer className="py-5 billing-Container">
       <MDBRow>
         <MDBCol md="8" className="mb-4">
           <MDBCard className="mb-4">
@@ -111,7 +111,6 @@ export default function CreditCard() {
                   />
                 </MDBCol>
               </MDBRow>
-
               <button type="button" class="btn btn-primary">Continue to checkout</button>
             </MDBCardBody>
           </MDBCard>

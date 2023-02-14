@@ -1,31 +1,31 @@
 const mongoose = require("mongoose");
 
-const VacancySchema = new mongoose.Schema({
-    title: {
+const SuperAdminSchema = new mongoose.Schema({
+    firstName: {
         type: String,
         required: true
     },
-    company: {
+    lastName: {
         type: String,
         required: true
     },
-    type: {
+    email: {
         type: String,
         required: true
     },
-    url: {
+    password: {
         type: String,
         required: true
     },
-    district: {
+    birthday: {
         type: String,
         required: true
     },
-    closingDate: {
-        type: Date,
+    phoneNumber: {
+        type: String,
         required: true
     }
 
 }, { timestamps: true });
 
-module.exports = mongoose.model('Vacancies', VacancySchema);
+module.exports = mongoose.model('SuperAdmin', SuperAdminSchema);
