@@ -1,32 +1,13 @@
 import React from 'react'
-import { Box, Grid, makeStyles } from '@material-ui/core'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material'
-
-
-const useStyles = makeStyles({
-    wrapper: {
-        color: "#fff",
-        margin:"2px",
-        cursor:"pointer",
-        borderRadius: "12px",
-        padding: "5px 10px",
-        backgroundColor: "#7781e1",
-        "&:nth-child(odd)": {
-            backgroundColor: "#7782f1",
-            boxShadow:"0px 5px 25px rgba(0,0,0,0.2)"
-        },
-        "&:hover": {
-            backgroundColor: "#7781b9",
-            boxShadow:"0px 5px 25px rgba(0,0,0,0.2)"
-        }
-    },
-
-})
+import './JobCard.css'
 
 function JobCard({ title,type, company,closingDate, district }) {
-    const classes = useStyles()
+   
     return (
-        <Box className={classes.wrapper}>
+        <Box className="wrapper">
             <Grid container style={{ borderRadius: "12px" }}>
                 <Grid item xs>
                     <Typography variant="subtitle1">{title}</Typography>
