@@ -4,6 +4,7 @@ import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
 import SideBar from '../../Components/SideBar/SideBar';
 import {MDBBreadcrumb,MDBBreadcrumbItem} from 'mdb-react-ui-kit';
+import BillingForm from '../../Components/BillingForm/BillingForm'
 
 function Payment() {
   const {t}=useTranslation();
@@ -23,7 +24,7 @@ function Payment() {
           </div>
           <h5>{t("Payments")}</h5>
           <section>
-
+          <BillingForm/>
           </section>
         </div>
       </div>

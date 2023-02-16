@@ -12,18 +12,20 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
+import { useTranslation } from "react-i18next";
 
 export default function CreditCard() {
+  const {t}=useTranslation();
   return (
     <MDBContainer className="py-5 billing-Container">
       <MDBRow>
-        <MDBCol md="8" className="mb-4">
-          <MDBCard className="mb-4">
-            <MDBCardHeader className="py-3">
-              <h5 className="mb-0">Biling details</h5>
+        <MDBCol md="8" className="mb-4 ">
+          <MDBCard className="mb-4 ">
+            <MDBCardHeader className="py-3 bg-light">
+              <h5 className="mb-0">{t('Biling details')}</h5>
             </MDBCardHeader>
             <MDBCardBody>
-              <MDBRow className="mb-4">
+              <MDBRow className="mb-4 ">
                 <MDBCol>
                   <MDBInput label="First name" id="form1" type="text" />
                 </MDBCol>
@@ -52,7 +54,7 @@ export default function CreditCard() {
               />
               <hr className="my-4" />
 
-              <h5 className="mb-4">Payment</h5>
+              <h5 className="mb-4">{t('Payment')}</h5>
 
               <MDBRadio
                 name="flexRadioDefault"
@@ -83,14 +85,6 @@ export default function CreditCard() {
                     wrapperClass="mb-4"
                   />
                 </MDBCol>
-                <MDBCol>
-                  <MDBInput
-                    label="Name on card"
-                    id="form7"
-                    type="text"
-                    wrapperClass="mb-4"
-                  />
-                </MDBCol>
               </MDBRow>
 
               <MDBRow>
@@ -111,32 +105,35 @@ export default function CreditCard() {
                   />
                 </MDBCol>
               </MDBRow>
-              <button type="button" class="btn btn-primary">Continue to checkout</button>
+              <button type="button" class="btn btn-primary">{t('Continue to checkout')}</button>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
 
         <MDBCol md="4" className="mb-4">
           <MDBCard className="mb-4">
-            <MDBCardHeader className="py-3">
-              <h5 className="mb-0">Summary</h5>
+            <MDBCardHeader className="py-3 bg-light">
+              <h5 className="mb-0">{t('Summary')}</h5>
             </MDBCardHeader>
             <MDBCardBody>
               <MDBListGroup flush>
+              <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                  <span className="package-name">{t('Premium Membership')}</span>
+                </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                  Products
+                  {t('Products')}
                   <span>$53.98</span>
                 </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                  Discount
+                  {t('Discount')}
                   <span>$(3.98)</span>
                 </MDBListGroupItem>
                 <hr className="my-2"></hr>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   <div>
-                    <strong>Total amount</strong>
+                    <strong>{t('Total amount')}</strong>
                     <strong>
-                      <p className="mb-0">(including VAT)</p>
+                      <p className="mb-0">({t('including VAT')})</p>
                     </strong>
                   </div>
                   <span>
