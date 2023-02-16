@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Overview from "./Pages/Overview/OverviewPage/Overview";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import Examinations from "./Pages/Examinations/ExaminationsPage/ExaminationsPage";
-import Checkout from "./Pages/Checkout/Checkout";
 import Profile from "./Pages/Profile/Profile";
 import Payment from "./Pages/Payments/Payment";
 import MyExams from "./Pages/MyExams/MyExams";
@@ -25,7 +24,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/examinations" element={<Examinations />} />
-          <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/myPayments" element={<Payment />} />
           <Route path="/myExams" element={<MyExams />} />
@@ -40,7 +38,6 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage/>}/>
-
         </Routes>
       </BrowserRouter>
     </div>
