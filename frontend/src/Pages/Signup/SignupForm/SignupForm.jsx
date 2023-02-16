@@ -22,15 +22,15 @@ function SignupForm() {
         </form>
 
         <div className="loginbtn">
-        <Button buttonName="Login" />
+        <Button buttonName="Submit" />
         </div>
 
         <div className="signup">
-          <div><text>Don't have an account?</text></div>
+          <div><text>Already have an account?</text></div>
           
           <div>
-            <Link to='/Signup'>
-            <h6><u>Sign-Up</u></h6>
+            <Link to='/Login'>
+            <h6><u>Login</u></h6>
             </Link>
           </div>
         </div>

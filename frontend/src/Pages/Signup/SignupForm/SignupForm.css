@@ -5,9 +5,10 @@
   background-color: #fff;
   border-radius: 10px;
   align-items: center;
-  margin: auto;
+  margin: 25px auto;
   margin-top: 20px;
 }
+
 .login-form h5 {
   text-align: center;
 }
