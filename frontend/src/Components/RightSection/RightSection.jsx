@@ -1,13 +1,13 @@
 import React from 'react'
 import MiniCalendar from '../MiniCalander/MiniCalander'
 import './RightSection.css'
-import Slideshow from '../Slideshow/Slideshow'
+import Ads from '../Ads/Ads'
 
 function RightSection() {
   return (
     <div className="rightSection" style={{ display: 'flex', flexDirection: 'column' }}>
       <div className="vaccancy">
-        <Slideshow/>
+        <Ads/>
       </div>
       <div className="calander" >
         <MiniCalendar />

@@ -23,8 +23,15 @@ const VacancySchema = new mongoose.Schema({
     },
     closingDate: {
         type: Date,
-        required: true
+        required: true,
+        get: function(date) {
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        }
     }
+    // closingDate: {
+    //     type: Date,
+    //     required: true
+    // }
 
 }, { timestamps: true });
 
