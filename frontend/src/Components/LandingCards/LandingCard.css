@@ -1,0 +1,26 @@
+.card{
+    background-color: #fff;
+    width: 180px;
+    height: 230px;
+    display: flex;
+    box-shadow: 0 4px 2px -2px lightblue;
+    margin-left: 20px;
+}
+
+.card h5{
+    margin-top: 40px;
+    color: #041083;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.card text{
+    font-size: 12px;
+    margin-left: 10px;
+    color: gray;
+}
+
+.card img{
+    width: 100%;
+    height: auto;
+}
