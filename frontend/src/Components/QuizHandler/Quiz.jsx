@@ -23,6 +23,17 @@ function Quiz() {
     }
   }, [timeRemaining, quizStarted]);
 
+  useEffect(() => {
+    const storedAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
+    if (storedAnswers) {
+      setAnswers(storedAnswers);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('quizAnswers', JSON.stringify(answers));
+  }, [answers]);
+
   const startQuiz = () => {
     setTimeRemaining(questions.length * 60);
     setQuizStarted(true);
