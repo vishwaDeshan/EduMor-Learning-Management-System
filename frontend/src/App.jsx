@@ -15,6 +15,7 @@ import LandingPage from "./Pages/Landing Page/LandingPage"
 import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
 import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
 import Quiz from "./Components/QuizHandler/Quiz";
+import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 
 
 
@@ -33,7 +34,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/superAdminDashboard" element={<SADashboard/>}/>
-          <Route path="/adminRequests" element={<SADashboard/>}/>
+          <Route path="/adminRequests" element={<AdminRequests/>}/>
           <Route path="/" element={<Overview />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
