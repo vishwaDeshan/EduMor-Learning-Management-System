@@ -4,6 +4,7 @@ import SideBar from '../../Components/SideBar/SideBar';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
+import EditIcon from '@mui/icons-material/Edit';
 import defaultUser from '../../Assets/defaultUser.png'
 import './Profile.css'
 import axios from 'axios'
@@ -49,6 +50,27 @@ export default function Profile() {
     })
   }
 
+  const handleEditPhoto = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        const newProfilePicture = reader.result;
+
+        const userProfilePicture = document.querySelector(".user-avatar img");
+        userProfilePicture.src = newProfilePicture;
+      });
+
+      reader.readAsDataURL(file);
+    });
+
+    input.click();
+  }
+
   return (
     <div style={{ diplay: 'flex', flexDirection: 'column' }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
@@ -74,6 +96,9 @@ export default function Profile() {
                         <div class="user-profile">
                           <div class="user-avatar" style={{ borderRadius: "10px" }}>
                             <img src={defaultUser} alt="User Profile Picture" />
+                            <button className="edit-button" onClick={handleEditPhoto}>
+                              <EditIcon />
+                            </button>
                           </div>
                           <h5 class="user-name">Anna Sophia</h5>
                           <h6 class="user-email">annasophia@gmail.com</h6>
