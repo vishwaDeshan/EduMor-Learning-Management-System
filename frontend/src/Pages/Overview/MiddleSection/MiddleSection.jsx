@@ -1,24 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NewExamCard from '../../../Components/ExamCard/ExamCards'
 import RecentAccesExamTable from '../RecentAccessExamTable/RecentAccesExamTable'
 import News from '../../../Components/News/News'
 import './MiddleSection.css'
-import newExamData from '../../../Data/NewExamData'
 import { useTranslation } from 'react-i18next'
+import axios from 'axios'
 
 function MiddleSection() {
     const { t } = useTranslation();
+    const [exams, setExams] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:8000/examinations')
+          .then(response => {
+            const sortedExams = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            const recentExams = sortedExams.slice(0, 3);
+            setExams(recentExams);
+          })
+          .catch(error => {
+            alert(error.message);
+          });
+      }, []);
+
     return (
         <div className="middleSection">
             <div className="title new">
                 <h7>{t('New Examination Modules')}</h7>
             </div>
             <div className="newExams" style={{ display: 'flex' }}>
-                {/* <NewExamCard className="card" type="card1"/>
-                <NewExamCard className="card" type="card2"/>
-                <NewExamCard className="card" type="card3"/> */}
-                {newExamData.map(({ noOfQuizzes, newExamTitle, image }, index) => {
-                    return <NewExamCard key={index} noOfQuizzes={noOfQuizzes} newExamTitle={newExamTitle} examImage={image} />
+                {exams.map((exams, index) => {
+                    return <NewExamCard key={exams.index} newExamTitle={exams.examName} examImage={exams.photo} />
                 })}
             </div>
 
