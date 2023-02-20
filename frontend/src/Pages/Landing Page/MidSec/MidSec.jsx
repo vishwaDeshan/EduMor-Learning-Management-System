@@ -1,8 +1,12 @@
 import React from "react";
 import "./MidSec.css";
-import Examcard from "../../../Components/ExamCard/ExamCards";
-import LandingCard from "../../../Components/LandingCards/LandingCard";
 import cardImg1 from "../../../Assets/CardImg1.jpg"
+import cardImg2 from "../../../Assets/CardImg2.jpg"
+import cardImg3 from "../../../Assets/CardImg3.jpg"
+import LandingCardMain from "../../../Components/LandingCards/LandingCardMain";
+import CardWithButton from "../../../Components/LandingCards/CardWithButton";
+import InputBox from "../../../Components/Inputs/Input";
+
 
 export default function MidSec() {
   return (
@@ -16,19 +20,19 @@ export default function MidSec() {
           animi earum et quis quaerat!
         </h6>
         <div className="firstCard">
-          <LandingCard
+          <LandingCardMain
             firstTitle="Choosing any Examination"
             secondText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quasi
           excepturi maxime repudiandae facere, provident, eligendi soluta
           expedita"
           />
-          <LandingCard
+          <LandingCardMain
             firstTitle="Attempting Quizzes"
             secondText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quasi
           excepturi maxime repudiandae facere, provident, eligendi soluta
           expedita"
           />
-          <LandingCard
+          <LandingCardMain
             firstTitle="Downloading Past Papers"
             secondText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quasi
           excepturi maxime repudiandae facere, provident, eligendi soluta
@@ -37,21 +41,30 @@ export default function MidSec() {
         </div>
 
         <div>
-          <text className="secondsectionhead">Examinations________</text>
-        
-
+          <h5 className="secondsectionhead">Examinations________</h5>
         <div className="secondCard">
-          <LandingCard 
-            img="cardImg1"
-            />
-          <LandingCard
-            img="cardImg1"
-            />
-          <LandingCard
-            img="cardImg1"
-            />
+          <CardWithButton 
+            secondaryimg ={cardImg1}
+            secondarycardtitle="Sri Lanka Foreign Service Examination"
+          />
+          <CardWithButton 
+            secondaryimg ={cardImg2}
+            secondarycardtitle="Sri Lanka Planning Service Examination"
+          />
+          <CardWithButton 
+            secondaryimg ={cardImg3}
+            secondarycardtitle="Sri Lanka Management Assistant's Service Examination"
+          />
         </div>
         </div>
+
+        {/* <div>
+          <h5 className="secondsectionhead">Contact Us_______</h5>
+          <form>
+            
+          </form>
+        </div> */}
+        
       </div>
     </div>
   );
