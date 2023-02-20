@@ -32,12 +32,24 @@
     display: flex;
     gap: 200px;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .secondsectionhead{
     color: #041083;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 50px;
     font-size: 21px;
+    margin-left: -1px;
+}
+
+.secondCard{
+    display: flex;
+    gap: 150px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.secondCard cardImg1{
+    height: 100px;
 }
