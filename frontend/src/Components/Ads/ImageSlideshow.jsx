@@ -12,7 +12,7 @@ const ImageSlideshow = ({ images }) => {
   }, [currentIndex, images]);
 
   return (
-    <img src={images[currentIndex]} alt="slideshow" style={{ width: '275px', height: '275px', borderRadius:"10px", display:"block",margin:"5px auto",  boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)'  }} />
+    <img src={images[currentIndex]} alt="Advertisements" style={{ width: '275px', height: '275px', borderRadius:"10px", display:"block",margin:"5px auto",  boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.3)'  }} />
   );
 };
 
