@@ -9,7 +9,7 @@ const Ads = () => {
   useEffect(() => {
     function getAds() {
       axios.get('http://localhost:8000/advertisements').then((res) => {
-        // console.log(res.data.existingAds);
+        console.log(res.data.existingAds);
         setAds(res.data.existingAds)
       }).catch((err) => {
         alert(err.message)
@@ -17,14 +17,12 @@ const Ads = () => {
     }
     getAds();
   }, [])
-
-
-  function Ads() {
-    return (
-      <div className="ads">
-        <img src={Ads1} alt="Ads" srcset="" />
-      </div>
-    )
-  }
-}
+  return (
+    <div>
+      <a href={ads.map(ad => ad.link)} target="_blank" rel="noopener noreferrer">
+        <ImageSlideshow images={ads.map(ad => ad.image)} />
+      </a>
+    </div>
+  );
+};
 export default Ads
