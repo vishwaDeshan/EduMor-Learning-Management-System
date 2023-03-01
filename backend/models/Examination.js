@@ -27,6 +27,16 @@ const examinationSchema = new mongoose.Schema({
       required: true
     }
   }],
+  pastPapers: [{
+    pastPaperName: {
+      type: String,
+      required: true
+    },
+    pastPaperUrl: {
+      type: String,
+      required: true
+    }
+  }],
   levels: [{
     levelName: {
       type: String,
@@ -36,6 +46,10 @@ const examinationSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Quiz'
     }]
+  }],
+  students: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Student'
   }]
 });
 

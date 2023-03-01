@@ -6,8 +6,8 @@ import ExaminationSection from "../ExaminationCardsSection/ExaminationCardsSecti
 import Footer from '../../../Components/Footer/Footer'
 import RightSection from "../../../Components/RightSection/RightSection";
 import {
-  MDBBreadcrumb,
-  MDBBreadcrumbItem
+MDBBreadcrumb,
+MDBBreadcrumbItem
 } from 'mdb-react-ui-kit';
 import { useTranslation } from "react-i18next";
 
