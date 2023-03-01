@@ -14,7 +14,7 @@ import Signup from "./Pages/Signup/Signup"
 import LandingPage from "./Pages/Landing Page/LandingPage"
 import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
 import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
-import Quiz from "./Components/QuizHandler/Quiz";
+import Quiz from "./Components/QuizHandler/Quiz/Quiz";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 
 
@@ -28,17 +28,17 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/myPayments" element={<Payment />} />
           <Route path="/myExams" element={<MyExams />} />
-          <Route path="/Exam" element={<ExamModule/>}/>
-          <Route path="/adminOverview" element={<OverviewAdmin/>}/>
+          <Route exact path="/examinations/:_id" element={<ExamModule />} />
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/superAdminDashboard" element={<SADashboard/>}/>
-          <Route path="/adminRequests" element={<AdminRequests/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/superAdminDashboard" element={<SADashboard />} />
+          <Route path="/adminRequests" element={<AdminRequests />} />
           <Route path="/" element={<Overview />} />
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/level/quiz/:id" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/land" element={<LandingPage/>}/>
+          <Route path="/land" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
     </div>

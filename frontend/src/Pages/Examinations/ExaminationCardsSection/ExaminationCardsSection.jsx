@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ExamCard from "../../../Components/ExamCard/ExamCards"
+import ExamCard from "../../../Components/ExamCard/ExamCards";
 import "./ExaminationCardsSection.css";
-import Pagination from '../../../Components/Pagination/Pagination'
+import Pagination from "../../../Components/Pagination/Pagination";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ExaminationSection() {
   const [exams, setExams] = useState([]);
@@ -12,14 +13,14 @@ function ExaminationSection() {
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = exams.slice(firstPostIndex, lastPostIndex);
 
-  const pageCount = Math.ceil(currentPosts.length / postsPerPage);
+  const pageCount = Math.ceil(exams.length / postsPerPage);
   const changePage = ({ selected }) => {
     setcurrentPage(selected);
   };
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/examinations')
+      .get("http://localhost:8000/examinations")
       .then((res) => {
         setExams(res.data);
       })
@@ -31,14 +32,11 @@ function ExaminationSection() {
   return (
     <div className="examination-section">
       <div className="examination-cards">
-        {currentPosts.map((exams, index) => {
+        {currentPosts.map((exam, index) => {
           return (
-            <ExamCard
-              key={exams.index}
-              // noOfQuizzes="10 Quizzes"
-              newExamTitle={exams.examName}
-              examImage={exams.photo}
-            />
+            <Link key={exam._id} to={`/examinations/${exam._id}`}>
+              <ExamCard newExamTitle={exam.examName} examImage={exam.photo} />
+            </Link>
           );
         })}
       </div>

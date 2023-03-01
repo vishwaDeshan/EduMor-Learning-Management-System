@@ -25,6 +25,7 @@ function VacanciesPage() {
           </div>
           <h5>{t("Vacancy")}</h5>
           <section >
+            
            <VacancySection/>
           </section>
         </div>

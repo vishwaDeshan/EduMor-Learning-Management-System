@@ -4,19 +4,19 @@ const Quiz = require('../models/quiz');
 
 // Create a new quiz on a specific level
 router.post('/level/:id/quiz/save', async (req, res) => {
-    const quiz = new Quiz({
-      quizName: req.body.quizName,
-      questions: req.body.questions,
-      level: req.params.id
-    });
-  
-    try {
-      const newQuiz = await quiz.save();
-      res.status(201).json(newQuiz);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
+  const quiz = new Quiz({
+    quizName: req.body.quizName,
+    questions: req.body.questions,
+    level: req.params.id
   });
+
+  try {
+    const newQuiz = await quiz.save();
+    res.status(201).json(newQuiz);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 // Get all quizzes for a given level ID
 router.get('/level/:id', async (req, res) => {
@@ -29,7 +29,7 @@ router.get('/level/:id', async (req, res) => {
 });
 
 // Get a specific quiz by ID
-router.get('/:id', async (req, res) => {
+router.get('/level/quiz/:id', async (req, res) => {
   try {
     const quiz = await Quiz.findById(req.params.id);
     if (!quiz) {
@@ -42,7 +42,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a quiz by ID
-router.patch('/:id', async (req, res) => {
+router.patch('/level/quiz/:id', async (req, res) => {
   try {
     const quiz = await Quiz.findById(req.params.id);
     if (!quiz) {

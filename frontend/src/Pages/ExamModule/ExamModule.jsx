@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -6,11 +6,63 @@ import SideBar from "../../Components/SideBar/SideBar";
 import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import "./ExamModule.css";
 import AccordionExam from "../../Components/Accordion/Accordion";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
-function ExamModule() {
+function ExamModule(props) {
   const { t } = useTranslation();
+  const [exam, setExam] = useState({});
+  const [quizzes, setQuizzes] = useState([]);
+  const { _id } = useParams();
+  
+
+  useEffect(() => {
+    if (_id) {
+      axios
+        .get(`http://localhost:8000/examinations/${_id}`)
+        .then((res) => {
+          setExam(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+  }, [_id]);
+
+  useEffect(() => {
+    if (exam.examination) {
+      const levelIds = exam.examination.levels.map((level) => level._id);
+      const promises = levelIds.map((levelId) =>
+        axios.get(`http://localhost:8000/level/${levelId}`)
+      );
+      Promise.all(promises)
+        .then((responses) => {
+          const quizzesByLevel = responses.map((response) => response.data);
+          setQuizzes(quizzesByLevel);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }
+  }, [exam.examination]);
+
+  const renderAccordionExams = () => {
+    return exam.examination?.levels.map((level, index) => {
+      const quizNames = quizzes[index]?.map((quiz) => quiz.quizName);
+      const quizIds = quizzes[index]?.map((quiz) => quiz._id);
+      return (
+        <AccordionExam key={index} quizId={quizIds} levelName={level.levelName} quizName={quizNames?.map((name, i) => (
+          <Link to={`/level/quiz/${quizIds[i]}`} key={i}>
+              <div key={i}>
+            {i+1}{"."} {name}
+            </div>
+            </Link>
+        ))} />
+      );
+    });
+  };
   return (
-    <div style={{ diplay: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
@@ -23,40 +75,23 @@ function ExamModule() {
               <MDBBreadcrumbItem>
                 <a href="/myExams">{t("My Exams")}</a>
               </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem active>{t("Sri Lanka Scientific Service Examination Grade III")}</MDBBreadcrumbItem>
+              <MDBBreadcrumbItem active>{exam.examination?.examName}</MDBBreadcrumbItem>
             </MDBBreadcrumb>
           </div>
           <section className="exam-details">
-            <h6 className="exam-name">Sri Lanka Scientific Service Examination Grade III</h6>
-            <img
-              src="https://img.freepik.com/free-vector/businessman-consulting-watch_74855-2350.jpg?w=2000"
-              alt="sampleImage"
-            />
-            <p className="exam-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Inventore sed earum eos, porro officia a fuga saepe animi quis,
-              pariatur tenetur provident ab harum facere distinctio corporis
-              voluptates sunt optio officiis alias mollitia? Unde, iste placeat
-              beatae ad quam obcaecati enim eligendi eaque facere maiores
-              laboriosam, consequatur sequi amet dolorum hic, explicabo
-              excepturi corporis fuga dolorem incidunt! Praesentium atque earum
-              unde odit mollitia nemo quod autem animi accusantium provident,
-              deserunt eos molestias numquam, nobis iure aut delectus quas
-              fugiat beatae veritatis nam nisi, quibusdam voluptate. Quo,
-              adipisci sunt? Eaque quos accusantium beatae eius assumenda qui
-              delectus itaque voluptate nisi.
-            </p>
+            <h6 className="exam-name">{exam.examination?.examName}</h6>
+            <img src={exam.examination?.photo} alt={exam.examName} />
+            <p className="exam-description">{exam.examination?.description}</p>
             <ul>
-              <li>10 quizzes</li>
-              <li>8 Lectures</li>
-              <li>6 Past Papers</li>
+              <li>{exam.examination?.levels.length} Past Papers</li>
+              <li>{exam.examination?.lectureVideos.length} Lectures Videos</li>
             </ul>
-            <AccordionExam/>
+            {renderAccordionExams()}
           </section>
         </div>
       </div>
-      <div className="footer" style={{ diplay: "flex" }}>
-        <Footer/>
+      <div className="footer" style={{ display: "flex" }}>
+        <Footer />
       </div>
     </div>
   );
