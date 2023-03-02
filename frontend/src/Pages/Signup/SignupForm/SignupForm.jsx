@@ -5,124 +5,192 @@ import Button from "../../../Components/Buttons/Button";
 import { Link } from "react-router-dom";
 import SignupImg from "../../../Assets/sign-up-concept-illustration_114360-7875.png";
 
+
 function SignupForm() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [errors, setErrors] = useState({});
+    
+    const [fname, setFirstname] = useState('');
+    const [lname, setLastname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [phonenumber, setPhoneNumber] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [fnameError, setFnameError] = useState('');
+    const [lnameError, setLnameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [confirmpasswordError, setConfirmPasswordError] = useState('');
+    const [phonenumberError, setPhoneNumberError] = useState('');
+  
+    const handleEmailChange = (event) => {
+      setEmail(event.target.value);
+    };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const errors = validate();
-    if (Object.keys(errors).length === 0) {
-      console.log("Valid form");
-      // Do something with the form data
+    const handleFirstName = (event) => {
+      setFirstname(event.target.value);
+    };
+    
+    const handleLastName = (event) => {
+      setLastname(event.target.value);
+    };
+
+    // const handlePhoneNumberChange = (event) => {
+    //   setPhoneNumber(event.target.value);
+
+    // };  
+    const handlePhoneNumberChange = (event) => {
+      setPhoneNumber(event.target.value);
+    
+    };
+    
+  
+
+    const handlePasswordChange = (event) => {
+      setPassword(event.target.value);
+    };  
+
+    const handleConfirmPasswordChange = (event) => {
+      setConfirmPassword(event.target.value);
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+
+      if (!fname) {
+        setFnameError("The First Name cannot be empty");}
+    
+       else if (/\d/.test(fname)) {
+        setFnameError('Name should not contain numbers');}
+      else {
+        setFnameError("");
+      }
+
+      if (!lname) {
+        setLnameError("The Last Name cannot be empty");}
+    
+       else if (/\d/.test(lname)) {
+        setLnameError('Name should not contain numbers');}
+      else {
+        setLnameError("");
+      }
+      if (phonenumber.length !== 10) {
+        setPhoneNumberError('Phone number is not valid');
+      } else {
+        setPhoneNumberError('');
+      }
+
+      // if (!/^[0-9\b]+$/.test(phonenumber)) {
+      //   setPhoneNumberError('Phone number must contain only digits');
+      //  if (inputValue.length !== 10) {
+      //   setPhoneNumberError('Phone number must be exactly 10 digits long');
+      // if (phonenumber.length !==10) {
+      //   setPhoneNumberError('Phone number must be exactly 10 digits long');
+      // } else {
+      //   setPhoneNumberError("");
+      // }
+    
+      if (!email) {
+        setEmailError("The email cannot be empty");
+      } else if (!email.includes("@")) {
+        setEmailError("Email should contain @ sign");
+      } else {
+        setEmailError("");
+      }
+
+    if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters long');
+    } else if (!password.match(/[a-z]/g)) {
+      setPasswordError('Password must contain at least one lowercase letter');
+    } else if (!password.match(/[A-Z]/g)) {
+      setPasswordError('Password must contain at least one uppercase letter');
+    } else if (!password.match(/[0-9]/g)) {
+      setPasswordError('Password must contain at least one number');
     } else {
-      console.log("Invalid form", errors);
-      setErrors(errors);
+      setPasswordError('Password is valid');
     }
-  };
 
-  const validate = () => {
-    const errors = {};
-    if (!firstName.trim()) {
-      errors.firstName = "First name is required";
-    }
-    if (!lastName.trim()) {
-      errors.lastName = "Last name is required";
-    }
-    if (!birthdate) {
-      errors.birthdate = "Birthdate is required";
-    }
-    if (!email.trim()) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      errors.email = "Email is invalid";
-    }
-    if (!password) {
-      errors.password = "Password is required";
-    } else if (password.length < 8) {
-      errors.password = "Password must be at least 8 characters";
-    }
     if (!confirmPassword) {
-      errors.confirmPassword = "Confirm password is required";
-    } else if (password !== confirmPassword) {
-      errors.confirmPassword = "Passwords do not match";
+      setConfirmPasswordError("This field cannot be empty");}
+    else if (password !== confirmPassword) {
+      setConfirmPasswordError('Password does not match');
+    } else {
+      setConfirmPasswordError('Password matches ✓');
     }
-    if (!phoneNumber.trim()) {
-      errors.phoneNumber = "Phone number is required";
-    } else if (!/^[0-9]{10}$/.test(phoneNumber)) {
-      errors.phoneNumber = "Phone number is invalid";
-    }
-    return errors;
   };
+  
 
+  
   return (
     <div className="signup-container" style={{ display: "flex" }}>
       <div className="login-form">
         <h5>SignUp Now for EduMor</h5>
         <form onSubmit={handleSubmit}>
-          <InputBox
+
+        <InputBox
             title="First Name"
-            type="text"
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
-            error={errors.firstName}
+            name="fname"
+            type="fname"
+            value={fname}
+            onChange={handleFirstName}
+           
+        
           />
-          <InputBox
+           {fnameError && <div style={{color:'red'}}>{fnameError}</div>}
+           <InputBox
             title="Last Name"
-            type="text"
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
-            error={errors.lastName}
+            name="lname"
+            type="lname"
+            value={lname}
+            onChange={handleLastName}
+        
           />
+          {lnameError && <div style={{color:'red'}}>{lnameError}</div>}
+
           <InputBox
-            title="BirthDate"
-            type="date"
-            value={birthdate}
-            onChange={(event) => setBirthdate(event.target.value)}
-            error={errors.birthdate}
+            title="Phone Number"
+            name="phonenumber"
+            type="tel"
+            value={phonenumber}
+            onChange={handlePhoneNumberChange}
           />
+          {phonenumberError && <div style={{color:'red'}}>{phonenumberError}</div>}
+
           <InputBox
             title="Email"
+            name="email"
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            error={errors.email}
+            onChange={handleEmailChange}
+        
           />
+           {emailError && <div style={{color:'red'}}>{emailError}</div>}
+
           <InputBox
             title="Password"
+            name="password"
             type="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            error={errors.password}
+            onChange={handlePasswordChange}
           />
-          <InputBox 
-          title="Confirm Password" 
-          type="password" 
-          value={confirmPassword}
-          onChange={(event) => setConfirmPassword(event.target.value)}
-          error={errors.confirmPassword}
+          {passwordError && <div style={{color:'red'}}>{passwordError}</div>}
+
+          <InputBox
+            title="Confirm Password"
+            name="confirmpassword"
+            type="password"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
           />
-          <InputBox 
-          title="Phone Number" 
-          type="tel" 
-          value={phoneNumber}
-          onChange={(event) => setPhoneNumber(event.target.value)}
-          error={errors.phoneNumber}
-          />
+           {confirmpasswordError && <div style={{color:'red'}}>{confirmpasswordError}</div>}
+
+           
+
           <div className="loginbtn">
-          {/* <Button type="submit" text="Sign Up" /> */}
-          </div>
+          <Button buttonName="Submit" type="submit" />
+         
+        </div>
         </form>
 
-        <div className="loginbtn">
-          <Button buttonName="Submit" onClick={handleSubmit} />
-        </div>
+        
 
         <div className="signup">
           <div>
