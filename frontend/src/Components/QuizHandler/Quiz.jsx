@@ -5,20 +5,39 @@ import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timeRemaining, setTimeRemaining] = useState(questions.length * 60);
+  const [timeRemaining, setTimeRemaining] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(''));
+  const [quizStarted, setQuizStarted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (timeRemaining > 0) {
-        setTimeRemaining(time => time - 1);
-      } else {
-        submitAnswers();
-      }
-    }, 1000);
+    if (quizStarted) {
+      const timer = setTimeout(() => {
+        if (timeRemaining > 0) {
+          setTimeRemaining(time => time - 1);
+        } else {
+          submitAnswers();
+        }
+      }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [timeRemaining]);
+      return () => clearTimeout(timer);
+    }
+  }, [timeRemaining, quizStarted]);
+
+  useEffect(() => {
+    const storedAnswers = JSON.parse(localStorage.getItem('quizAnswers'));
+    if (storedAnswers) {
+      setAnswers(storedAnswers);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('quizAnswers', JSON.stringify(answers));
+  }, [answers]);
+
+  const startQuiz = () => {
+    setTimeRemaining(questions.length * 60);
+    setQuizStarted(true);
+  };
 
   const submitAnswer = () => {
     setCurrentQuestion(question => question + 1);
@@ -49,6 +68,7 @@ function Quiz() {
     return <Results answers={answers} />;
   }
 
+  //quiz Answering section
   return (
     <div>
     <div className="read-crumb-quiz">
@@ -60,10 +80,11 @@ function Quiz() {
           <MDBBreadcrumbItem active>Quiz</MDBBreadcrumbItem>
         </MDBBreadcrumb>
       </div>
+      {quizStarted ? (
     <div className="quiz-container">
       <div className="quiz-question" id={currentQuestion}>
         <h1>Question {currentQuestion + 1}</h1>
-        <h2>{currentQuestionData.question}</h2>
+        <h5>{currentQuestionData.question}</h5>
         <form>
           {currentQuestionData.answers.map((answer, index) => (
             <div key={index}>
@@ -89,10 +110,24 @@ function Quiz() {
         <p className='time-remaining'>Time remaining: {formatTime(timeRemaining)}</p>
       </div>
     </div>
+      ):(
+        <div className='quiz-instructions'>
+          <h1>Quiz Instructions</h1>
+          <h5>Instructions</h5>
+          <ol>
+            <li>Read each question carefully and select the most suitable answer</li>
+            <li>You have {questions.length} multiple choice questions to answer</li>
+            <li>The questions appear sequentially. Once you proceed, you will no longer have access to the previous questions.</li>
+            <li>When time is over, given answers will be auto-submitted</li>
+            </ol>
+          <button onClick={startQuiz}>Start Quiz</button>
+        </div>
+      )}
     </div>
   );
 }
 
+//Quiz results
 function Results({ answers }) {
   const numCorrect = answers.filter((answer, index) => answer === questions[index].correctAnswer).length;
   const percentage = ((numCorrect / questions.length) * 100).toFixed(2);
