@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ImageSlideshow from './ImageSlideshow';
 import './Ads.css'
-import Ads1 from '../../Assets/Ads1.png'
 import axios from 'axios';
 
 const Ads = () => {
