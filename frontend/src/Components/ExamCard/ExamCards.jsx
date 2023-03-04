@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import defaultImage from "../../Assets/image3.png";
+import defaultImage from "../../Assets/defaultExamImage.png";
 
 
 export default function ExamCard({noOfQuizzes,newExamTitle,examImage}) {
