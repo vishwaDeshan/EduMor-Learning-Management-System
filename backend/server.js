@@ -8,21 +8,20 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //import routes
-const studentsRoutes = require("./routes/Student");
 const vacanciesRoutes = require("./routes/Vacancy");
 const advertisementsRoutes = require("./routes/Advertisement");
 const superadminRoutes = require("./routes/SuperAdmin");
-const NewsRoutes=require("./routes/News");
-const ExaminationRoutes=require("./routes/Examination");
-const QuizRoutes=require("./routes/Quiz");
-app.use(studentsRoutes);
+const NewsRoutes = require("./routes/News");
+const ExaminationRoutes = require("./routes/Examination");
+const QuizRoutes = require("./routes/Quiz");
 app.use(vacanciesRoutes);
 app.use(advertisementsRoutes);
 app.use(superadminRoutes);
 app.use(NewsRoutes);
 app.use(ExaminationRoutes);
 app.use(QuizRoutes);
-
+app.use("/auth", require("./routes/Auth"));
+app.use("/email", require("./routes/email"));
 
 const PORT = 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';

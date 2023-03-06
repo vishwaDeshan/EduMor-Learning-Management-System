@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Examination = require('../models/examination');
-const Student = require('../models/Student');
+const Student = require('../models/User');
 
 // Create a new examination
 router.post('/examination/save', async (req, res) => {
@@ -34,15 +34,15 @@ router.get('/examinations', async (req, res) => {
 // Get specific examination using ID
 router.get('/examinations/:id', (req, res) => {
   Examination.findById(req.params.id).exec((err, examination) => {
-      if (err) {
-          return res.status(400).json({
-              error: err
-          });
-      }
-      return res.status(200).json({
-          success: true,
-          examination: examination
+    if (err) {
+      return res.status(400).json({
+        error: err
       });
+    }
+    return res.status(200).json({
+      success: true,
+      examination: examination
+    });
   });
 });
 
@@ -96,56 +96,5 @@ async function getExamination(req, res, next) {
   res.examination = examination;
   next();
 }
-
-// Route for enrolling a student in an examination
-router.post('/:id/enroll', async (req, res) => {
-  const { id } = req.params;
-  const { studentId } = req.body;
-
-  try {
-    // Find the examination by ID
-    const examination = await Examination.findById(id);
-
-    // Find the student by ID
-    const student = await Student.findById(studentId);
-
-    // Add the enrolled student to the examination
-    examination.students.push(student);
-
-    // Save the updated examination
-    await examination.save();
-
-    res.status(200).send({ success: true });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send({ error: 'An error occurred while enrolling the student.' });
-  }
-});
-
-// POST /examinations/:id/lecture-videos
-router.post('/:id/lecture-videos', async (req, res) => {
-  const { videoName, videoUrl } = req.body;
-  const { id } = req.params;
-  
-  try {
-    const examination = await Examination.findById(id);
-    if (!examination) {
-      return res.status(404).send('Examination not found');
-    }
-    
-    const newLectureVideo = {
-      videoName,
-      videoUrl
-    };
-    
-    examination.lectureVideos.push(newLectureVideo);
-    await examination.save();
-    
-    res.send(examination);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
-  }
-});
 
 module.exports = router;
