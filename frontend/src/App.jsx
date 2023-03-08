@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Overview from "./Pages/Overview/OverviewPage/Overview";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
@@ -16,10 +16,16 @@ import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
 import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
 import Quiz from "./Components/QuizHandler/Quiz/Quiz";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
+import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
+import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 
 
 
 function App() {
+  const[isLoggedIn, setIsLoggedIn]=useState(false);
+  const[user, setUser]=useState();
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -35,10 +41,13 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/superAdminDashboard" element={<SADashboard />} />
           <Route path="/adminRequests" element={<AdminRequests />} />
-          <Route path="/" element={<Overview />} />
+          <Route path="/" element={<Overview isLoggedIn={isLoggedIn} user={user}/>} />
           <Route path="/level/quiz/:id" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/verifyEmail" element={<VerifyEmail />} />
         </Routes>
       </BrowserRouter>
     </div>

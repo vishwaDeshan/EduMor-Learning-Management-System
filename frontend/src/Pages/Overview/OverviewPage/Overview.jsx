@@ -7,7 +7,7 @@ import RightSection from "../../../Components/RightSection/RightSection";
 import Footer from "../../../Components/Footer/Footer";
 import { useTranslation } from "react-i18next";
 
-function Overview() {
+function Overview({isLoggedIn,user}) {
   const {t}=useTranslation();
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
@@ -15,7 +15,7 @@ function Overview() {
       <div className="overview" style={{ display: "flex" }}>
         <Sidebar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn} user={user}/>
           <h5>{t('Overview')}</h5>
           <div className="overviewSections" style={{ display: "flex" }}>
             <MiddleSection />
