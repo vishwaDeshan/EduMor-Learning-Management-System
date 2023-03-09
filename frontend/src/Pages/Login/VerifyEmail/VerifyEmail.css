@@ -7,3 +7,11 @@
     margin: auto;
     margin-top: 50px;
 }
+.verifySucess, .verifyWait{
+    margin: 20px auto;
+    text-align: center;
+}
+.verifySucess img, .verifyWait img{
+width: 150px;
+height: auto;
+}

@@ -23,7 +23,7 @@ app.use(QuizRoutes);
 app.use("/auth", require("./routes/Auth"));
 app.use("/email", require("./routes/email"));
 
-const PORT = 8000;
+const port =process.env.PORT || 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(DB_URL, {
@@ -38,6 +38,6 @@ mongoose.connect(DB_URL)
     })
     .catch((err) => console.log('DB connection eroor', err));
 
-app.listen(PORT, () => {
-    console.log(`Server started port on ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server started port on ${port}`);
 });

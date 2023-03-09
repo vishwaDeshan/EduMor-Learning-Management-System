@@ -36,7 +36,7 @@ const registerController = async (req, res) => {
             const token = tokenGenerator({ email: newUser.email });
 
             //send email
-            const link = "http://" + req.hostname + ":8000/email/verify?token=" + token;
+            const link = "http://" + req.hostname + ":3000/verifyEmail?token=" + token;
 
             const sendMail = await sendVerificationEmail(newUser.email, link);
             if (sendMail) {
