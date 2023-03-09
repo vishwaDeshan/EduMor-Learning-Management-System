@@ -18,7 +18,7 @@ import {
   MDBModalBody,
 } from "mdb-react-ui-kit";
 
-const Navbar = ({isLoggedIn, user}) => {
+const Navbar = ({user}) => {
   const [scrollableModal, setScrollableModal] = useState(false);
   const { t, i18n } = useTranslation();
   const handleChangeLng = (lng) => {

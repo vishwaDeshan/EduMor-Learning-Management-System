@@ -71,7 +71,7 @@ const loginController = async (req, res) => {
     }
 
     //generate token with user info
-    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id });
+    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName:oldUser.firstName, lastName:oldUser.lastName, verified:oldUser.verified});
 
     //sending response
     res.status(200).json({ sucess: true, token, msg: "You're logged in successfully" })

@@ -9,7 +9,7 @@ import defaultUser from '../../Assets/defaultUser.png'
 import './Profile.css'
 import axios from 'axios'
 
-export default function Profile() {
+export default function Profile({user}) {
   const { t } = useTranslation();
 
   const [firstName, setName] = useState("");
@@ -21,34 +21,6 @@ export default function Profile() {
   const [zipCode, setZip] = useState("");
   const [birthday, setBirthday] = useState("");
 
-
-  function sendData() {
-    const Student = {
-      firstName,
-      email,
-      phoneNumber,
-      street,
-      city,
-      state,
-      zipCode,
-      birthday
-    }
-    console.log(Student);
-
-    axios.put("http://localhost:8000/student/update/63e519875cfb0147e96bd72c", Student).then(() => {
-      alert("Changes Saved Succesfully");
-      setName("");
-      setEmail("");
-      setPhoneNumber("");
-      setStreet("");
-      setCity("");
-      setState("");
-      setZip("");
-      setBirthday("");
-    }).catch((err) => {
-      alert(err)
-    })
-  }
 
   const handleEditPhoto = () => {
     const input = document.createElement("input");
@@ -76,7 +48,7 @@ export default function Profile() {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar user={user}/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -100,8 +72,8 @@ export default function Profile() {
                               <EditIcon />
                             </button>
                           </div>
-                          <h5 class="user-name">Anna Sophia</h5>
-                          <h6 class="user-email">annasophia@gmail.com</h6>
+                          <h5 class="user-name">{user.firstName} {user.lastName}</h5>
+                          <h6 class="user-email">{user.email}</h6>
                         </div>
                         <div class="about">
                           <h5>{t("About")}</h5>
@@ -192,7 +164,7 @@ export default function Profile() {
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" className="profile-buttons">
                           <div class="text-right">
                             <button type="button" id="submit" name="submit" class="btn btn-secondary">{t("Cancel")}</button>
-                            <button type="button" id="submit" name="submit" class="btn btn-primary" onClick={sendData}>{t("Update")}</button>
+                            <button type="button" id="submit" name="submit" class="btn btn-primary" >{t("Update")}</button>
                           </div>
                         </div>
                       </div>

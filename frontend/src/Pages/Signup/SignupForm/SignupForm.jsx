@@ -37,13 +37,15 @@ function SignupForm() {
           window.alert(response.data.msg);
         }
       }
+      alert("Check Your email for the verification link");
+      window.location.reload();
     }
   };
 
   return (
     <div className="signup-container" style={{ display: "flex" }}>
       <div className="login-form">
-        <h5>SignUp Now for EduMor</h5>
+        <h2>Sign Up Now for EduMor</h2>
         <form onSubmit={handleSubmit}>
 
           <InputBox
@@ -164,12 +166,10 @@ function SignupForm() {
           />
           {confirmpasswordError !== 'none' && <div style={{ color: 'red' }}>{confirmpasswordError}</div>}
           <div className="loginbtn">
-            <Button buttonName="Submit" type="submit" />
+            <Button buttonName="Sign Up" type="submit" />
 
           </div>
         </form>
-
-
 
         <div className="signup">
           <div>
