@@ -1,4 +1,4 @@
-const { Password } = require("@mui/icons-material");
+// const { Password } = require("@mui/icons-material");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const tokenGenerator = require("../Config/createToken");
