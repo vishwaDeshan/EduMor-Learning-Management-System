@@ -39,3 +39,17 @@ code {
   box-shadow: 0 0 0 .2rem #041083
 }
 
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c6f84;
+  outline: none;
+  padding: 7px 45px;
+  border-radius: 15px;
+}
+
+.btn-secondary:hover {
+  color: #6c6f84;
+  background-color: transparent;
+  border: 2px solid #6c6f84;
+}

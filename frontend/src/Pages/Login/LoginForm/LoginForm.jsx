@@ -22,8 +22,8 @@ function LoginForm(setUser, setIsLoggedIn) {
     };
 
     axios.post('http://localhost:8000/auth/login', data).then((response) => {
-      window.alert(response.data.msg);
       const token = response.data.token;
+      window.location.replace("/");
 
       localStorage.setItem("AUTH_TOKEN", JSON.stringify(token));
 

@@ -9,7 +9,7 @@ import defaultUser from '../../Assets/defaultUser.png'
 import './Profile.css'
 import axios from 'axios'
 
-export default function Profile({user}) {
+export default function Profile({ user, logoutUser }) {
   const { t } = useTranslation();
 
   const [firstName, setName] = useState("");
@@ -48,7 +48,7 @@ export default function Profile({user}) {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar user={user}/>
+          <Navbar user={user} />
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -171,9 +171,15 @@ export default function Profile({user}) {
                     </div>
                   </div>
                 </div>
+                <div class="text">
+                    <button type="button" name="submit" class="btn btn-primary logout-btn" onClick={()=>{
+                      logoutUser();
+                    }}>{t("Logout")}</button>
+                  </div>
               </div>
             </div>
           </section>
+
         </div>
       </div>
       <div className="footer" style={{ diplay: 'flex' }}>
