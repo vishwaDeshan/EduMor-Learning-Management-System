@@ -102,7 +102,7 @@ const forgotpasswordController = async (req, res) => {
     const token = tokenGenerator({ email: oldUser.email });
 
     //send email
-    const link = "http://" + req.hostname + ":8000/auth/verifyToken?token=" + token;
+    const link = "http://" + req.hostname + ":3000/resetPassword?token=" + token;
 
     const sendMail = await sendForgotPasswordEmail(oldUser.email, link);
     if (sendMail) {
