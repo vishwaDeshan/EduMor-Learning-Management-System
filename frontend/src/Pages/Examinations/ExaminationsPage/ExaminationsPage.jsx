@@ -12,7 +12,7 @@ MDBBreadcrumbItem
 import { useTranslation } from "react-i18next";
 
 
-function Examinations() {
+function Examinations({isLoggedIn}) {
   const { t } = useTranslation();
 
   return (
@@ -20,7 +20,7 @@ function Examinations() {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <Sidebar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn}/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>

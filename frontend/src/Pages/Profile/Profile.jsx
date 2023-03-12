@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SideBar from '../../Components/SideBar/SideBar';
 import Navbar from '../../Components/Navbar/Navbar';
@@ -6,10 +6,10 @@ import Footer from '../../Components/Footer/Footer';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import EditIcon from '@mui/icons-material/Edit';
 import defaultUser from '../../Assets/defaultUser.png'
+import UserNotFound from '../../Assets/UserNotFound.jpg'
 import './Profile.css'
-import axios from 'axios'
 
-export default function Profile({ user, logoutUser }) {
+export default function Profile({ isLoggedIn, user, logoutUser }) {
   const { t } = useTranslation();
 
   const [firstName, setName] = useState("");
@@ -21,6 +21,27 @@ export default function Profile({ user, logoutUser }) {
   const [zipCode, setZip] = useState("");
   const [birthday, setBirthday] = useState("");
 
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (!isLoggedIn) {
+      timeoutId = setTimeout(() => {
+        setShouldRedirect(true);
+      }, 500);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (shouldRedirect) {
+      window.location.replace("/login");
+    }
+  }, [shouldRedirect]);
 
   const handleEditPhoto = () => {
     const input = document.createElement("input");
@@ -48,7 +69,7 @@ export default function Profile({ user, logoutUser }) {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar user={user} />
+          <Navbar user={user} isLoggedIn={isLoggedIn} />
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -58,7 +79,7 @@ export default function Profile({ user, logoutUser }) {
             </MDBBreadcrumb>
           </div>
           <h5>{t("Profile")}</h5>
-          <section >
+          {isLoggedIn ? <section >
             <div class="profile-container">
               <div class="row gutters">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 ">
@@ -172,14 +193,13 @@ export default function Profile({ user, logoutUser }) {
                   </div>
                 </div>
                 <div class="text">
-                    <button type="button" name="submit" class="btn btn-primary logout-btn" onClick={()=>{
-                      logoutUser();
-                    }}>{t("Logout")}</button>
-                  </div>
+                  <button type="button" name="submit" class="btn btn-primary logout-btn" onClick={() => {
+                    logoutUser();
+                  }}>{t("Logout")}</button>
+                </div>
               </div>
             </div>
-          </section>
-
+          </section> : <section className='userNotFound-img'><img src={UserNotFound} alt="User Not Found" /><h1>User is not found!!</h1></section>}
         </div>
       </div>
       <div className="footer" style={{ diplay: 'flex' }}>
