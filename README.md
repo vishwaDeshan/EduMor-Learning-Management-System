@@ -12,6 +12,7 @@ to manage (create, read, update, delete) quizzes and lecture videos and provide 
 avenue for educational advertisements. The target audience for this LMS is people 
 who are preparing for competitive exams in Sri Lanka.
 
-![Landing Page](https://user-images.githubusercontent.com/91510606/210495469-979bb3b0-1aec-49cd-90e7-2e25add8b2d0.png)
 
-![Overview](https://user-images.githubusercontent.com/91510606/210495483-606715dd-fa30-4aba-9890-e268168e3a8e.png)
+![Screenshot (59)](https://user-images.githubusercontent.com/91510606/222884440-869621b7-ce43-4799-9176-341cf9c85b1c.png)
+
+![Landing Page](https://user-images.githubusercontent.com/91510606/210495469-979bb3b0-1aec-49cd-90e7-2e25add8b2d0.png)

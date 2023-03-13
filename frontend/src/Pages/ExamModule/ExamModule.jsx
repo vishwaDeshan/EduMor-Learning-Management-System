@@ -9,7 +9,7 @@ import AccordionExam from "../../Components/Accordion/Accordion";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-function ExamModule(props) {
+function ExamModule({isLoggedIn, user}) {
   const { t } = useTranslation();
   const [exam, setExam] = useState({});
   const [quizzes, setQuizzes] = useState([]);
@@ -66,7 +66,7 @@ function ExamModule(props) {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn} user={user}/>
           <div className="read-crumb">
             <MDBBreadcrumb>
               <MDBBreadcrumbItem>
