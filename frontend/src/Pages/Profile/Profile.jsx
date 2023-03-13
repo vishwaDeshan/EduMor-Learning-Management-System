@@ -113,16 +113,16 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
-                            <label for="fullName">{t("Full Name")}</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter full name" onChange={(e) => {
+                            <label for="fisrtName">{t("First Name")}</label>
+                            <input type="text" class="form-control" id="fisrtName" placeholder={user.firstName} onChange={(e) => {
                               setName(e.target.value);
                             }} />
                           </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
-                            <label for="eMail">{t("Email")}</label>
-                            <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" onChange={(e) => {
+                            <label for="lastName">{t("Last Name")}</label>
+                            <input type="text" class="form-control" id="lastName" placeholder={user.lastName} onChange={(e) => {
                               setEmail(e.target.value);
                             }} />
                           </div>
@@ -130,7 +130,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="phone">{t("Phone")}</label>
-                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" onChange={(e) => {
+                            <input type="text" class="form-control" id="phone" placeholder={user.phonenumber} onChange={(e) => {
                               setPhoneNumber(e.target.value);
                             }} />
                           </div>

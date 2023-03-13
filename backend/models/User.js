@@ -27,9 +27,27 @@ const UserSchema = new mongoose.Schema({
     },
     phonenumber: {
         type: String,
+        default:""
     },
     profilePhoto: {
-        type: String
+        type: String,
+        default:""
+    },
+    street: {
+        type: String,
+        default:""
+    },
+    city: {
+        type: String,
+        default:""
+    },
+    province: {
+        type: String,
+        default:""
+    },
+    zipCode: {
+        type: String,
+        default:""
     }
 
 }, { timestamps: true });
