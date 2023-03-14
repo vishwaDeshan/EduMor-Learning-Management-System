@@ -1,8 +1,9 @@
 .examination-section{
     width: 100%;
     max-width: 1000px;
+    height: 550px;
     background-color: #fff;
-    margin: 20px 25px 10px 25px;
+    margin: 5px 25px 5px 25px;
     border-radius: 10px;
     position: relative;
 }

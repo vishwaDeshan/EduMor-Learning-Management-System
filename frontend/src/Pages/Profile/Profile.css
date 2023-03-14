@@ -70,7 +70,63 @@
 .profile-buttons button{
     margin: 0px 5px 0px;
 }
+
+.user-avatar {
+    position: relative;
+  }
+  
+  .user-avatar img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .edit-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+  }
+  
+  
+  .user-avatar:hover .edit-button {
+    opacity: 1;
+  }
 /* 
 .profile-div{
     border-radius: 10px;
 } */
+
+.logout-btn{
+    margin-top: 10px;
+    background-color: transparent;
+    border: 2px solid #2e323c;
+    color: #2e323c;
+}
+
+.logout-btn:hover{
+    background-color: #2e323c;
+    color: #fff;
+}
+.userNotFound-img img{
+    height: 400px;
+    width: auto;
+    margin:10px 25%;
+    border-radius: 10px;
+}
+.userNotFound-img{
+    background-color: #fff;
+    width: 60%;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 100px auto;
+}
+
+.userNotFound-img h1{
+    text-align: center;
+}

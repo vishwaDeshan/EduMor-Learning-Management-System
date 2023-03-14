@@ -70,14 +70,14 @@ const SideBar = () => {
               </a>
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/logout" className="">
               <a href="/logout" className="logout">
                 <ExitToAppOutlinedIcon />
                 <span className="link_name">{t("Logout")}</span>
               </a>
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

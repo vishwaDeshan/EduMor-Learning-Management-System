@@ -1,0 +1,55 @@
+const mongoose = require("mongoose");
+
+const UserSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    emailVerificationToken: {
+        type: String,
+        default: "",
+    },
+    verified: {
+        type: Boolean,
+        default: false
+    },
+    phonenumber: {
+        type: String,
+        default:""
+    },
+    profilePhoto: {
+        type: String,
+        default:""
+    },
+    street: {
+        type: String,
+        default:""
+    },
+    city: {
+        type: String,
+        default:""
+    },
+    province: {
+        type: String,
+        default:""
+    },
+    zipCode: {
+        type: String,
+        default:""
+    }
+
+}, { timestamps: true });
+
+module.exports = mongoose.model('Users', UserSchema);

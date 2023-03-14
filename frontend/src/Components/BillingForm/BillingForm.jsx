@@ -1,36 +1,26 @@
 import React from "react";
 import './BillingForm.css'
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardHeader,
-  MDBCol,
-  MDBContainer,
-  MDBInput,
-  MDBRow,
-  MDBRadio,
-  MDBListGroup,
-  MDBListGroupItem,
+import {MDBCard,MDBCardBody,MDBCardHeader,MDBCol,MDBContainer,MDBInput,MDBRow,MDBRadio,MDBListGroup,MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { useTranslation } from "react-i18next";
 
 export default function CreditCard() {
   const {t}=useTranslation();
   return (
-    <MDBContainer className="py-5 billing-Container">
-      <MDBRow>
-        <MDBCol md="8" className="mb-4 ">
-          <MDBCard className="mb-4 ">
-            <MDBCardHeader className="py-3 bg-light">
+    <MDBContainer className="py-6 billing-Container" style={{marginTop:"10px"}} >
+      <MDBRow >
+        <MDBCol md="8" className="mb-4 " >
+          <MDBCard className="mb-4 " style={{ borderRadius: '10px', padding:'10px 5px' }} >
+            <MDBCardHeader className="py-3 bg-light" style={{ borderRadius: '10px', backgroundColor: 'lightblue',margin:'5px' }} >
               <h5 className="mb-0">{t('Biling details')}</h5>
             </MDBCardHeader>
             <MDBCardBody>
               <MDBRow className="mb-4 ">
                 <MDBCol>
-                  <MDBInput label="First name" id="form1" type="text" />
+                  <MDBInput label="First name" id="form1" type="text" style={{ borderRadius: "10px"}} />
                 </MDBCol>
                 <MDBCol>
-                  <MDBInput label="Last name" id="form2" type="text" />
+                  <MDBInput label="Last name" id="form2" type="text" style={{ borderRadius: "10px"}} />
                 </MDBCol>
               </MDBRow>
 
@@ -39,18 +29,21 @@ export default function CreditCard() {
                 label="Address"
                 id="form3"
                 type="text"
+                style={{ borderRadius: "10px"}}
               />
               <MDBInput
                 wrapperClass="mb-4"
                 label="Email"
                 id="form4"
                 type="email"
+                style={{ borderRadius: "10px"}}
               />
               <MDBInput
                 wrapperClass="mb-4"
                 label="Phone"
                 id="form5"
                 type="number"
+                style={{ borderRadius: "10px"}}
               />
               <hr className="my-4" />
 
@@ -83,6 +76,7 @@ export default function CreditCard() {
                     id="form6"
                     type="text"
                     wrapperClass="mb-4"
+                    style={{ borderRadius: "10px"}}
                   />
                 </MDBCol>
               </MDBRow>
@@ -94,6 +88,7 @@ export default function CreditCard() {
                     id="form8"
                     type="text"
                     wrapperClass="mb-4"
+                    style={{ borderRadius: "10px"}}
                   />
                 </MDBCol>
                 <MDBCol md="3">
@@ -102,17 +97,18 @@ export default function CreditCard() {
                     id="form8"
                     type="text"
                     wrapperClass="mb-4"
+                    style={{ borderRadius: "10px"}}
                   />
                 </MDBCol>
               </MDBRow>
-              <button type="button" class="btn btn-primary">{t('Continue to checkout')}</button>
+              <button type="button" class="btn btn-primary" style={{ borderRadius: "10px"}}>{t('Continue to checkout')}</button>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
 
         <MDBCol md="4" className="mb-4">
-          <MDBCard className="mb-4">
-            <MDBCardHeader className="py-3 bg-light">
+          <MDBCard className="mb-4" style={{ borderRadius: '10px', padding:'10px 5px' }}>
+            <MDBCardHeader className="py-3 bg-light" style={{ borderRadius: '10px', padding:'10px 5px' }}>
               <h5 className="mb-0">{t('Summary')}</h5>
             </MDBCardHeader>
             <MDBCardBody>
@@ -122,7 +118,7 @@ export default function CreditCard() {
                 </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   {t('Products')}
-                  <span>$53.98</span>
+                  <span>$8.98</span>
                 </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   {t('Discount')}
@@ -137,7 +133,7 @@ export default function CreditCard() {
                     </strong>
                   </div>
                   <span>
-                    <strong>$50.00</strong>
+                    <strong>$5.00</strong>
                   </span>
                 </MDBListGroupItem>
               </MDBListGroup>

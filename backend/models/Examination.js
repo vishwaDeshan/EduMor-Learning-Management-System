@@ -27,6 +27,16 @@ const examinationSchema = new mongoose.Schema({
       required: true
     }
   }],
+  pastPapers: [{
+    pastPaperName: {
+      type: String,
+      required: true
+    },
+    pastPaperUrl: {
+      type: String,
+      required: true
+    }
+  }],
   levels: [{
     levelName: {
       type: String,
