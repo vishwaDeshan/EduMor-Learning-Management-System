@@ -21,6 +21,7 @@ import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
+import Test from "./Pages/Test/TestUploads";
 
 
 
@@ -74,6 +75,7 @@ function App() {
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>
     </div>

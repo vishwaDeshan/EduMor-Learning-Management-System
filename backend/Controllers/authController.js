@@ -4,7 +4,7 @@ const tokenGenerator = require("../Config/createToken");
 const { sendVerificationEmail, sendForgotPasswordEmail } = require("../Config/sentEmail")
 
 const registerController = async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password,phonenumber } = req.body;
 
     //checks the email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,6 +27,7 @@ const registerController = async (req, res) => {
                 firstName,
                 lastName,
                 email,
+                phonenumber,
                 password: hashedPassword
             });
             await newUser.save();
@@ -69,8 +70,13 @@ const loginController = async (req, res) => {
         return res.status(400).json({ sucess: false, msg: "Inavaid email or password" });
     }
 
+    // Check if the user is verified
+    if (!oldUser.verified) {
+        return res.status(400).json({ success: false, msg: "Your account has not been verified yet. Please check your email for verifying your account." });
+    }
+
     //generate token with user info
-    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName:oldUser.firstName, lastName:oldUser.lastName, verified:oldUser.verified});
+    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName:oldUser.firstName, lastName:oldUser.lastName, verified:oldUser.verified, phonenumber:oldUser.phonenumber});
 
     //sending response
     res.status(200).json({ sucess: true, token, msg: "You're logged in successfully" })
