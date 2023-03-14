@@ -10,14 +10,14 @@ import ProgressBarComponent from "../../Components/ProgessBarComponent/ProgressB
 import './MyExams.css'
 
 
-function MyExams() {
+function MyExams({isLoggedIn,user}) {
   const { t } = useTranslation();
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn} user={user} />
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
