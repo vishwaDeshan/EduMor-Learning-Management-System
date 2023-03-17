@@ -3,15 +3,15 @@ const router = express.Router();
 const VacanciesController = require('../controllers/VacanciesController');
 
 // Save vacancies details
-router.post('/vacancies/save', VacanciesController.saveVacancy);
+router.post('/save', VacanciesController.saveVacancy);
 
 // Get all vacancies details
-router.get('/vacancies', VacanciesController.getVacancies);
+router.get('/', VacanciesController.getVacancies);
 
 // Update vacancies details
-router.put('/vacancy/update/:id', VacanciesController.updateVacancy);
+router.put('/update/:id', VacanciesController.updateVacancy);
 
 // Delete vacancies details
-router.delete('/vacancy/delete/:id', VacanciesController.deleteVacancy);
+router.delete('/delete/:id', VacanciesController.deleteVacancy);
 
 module.exports = router;

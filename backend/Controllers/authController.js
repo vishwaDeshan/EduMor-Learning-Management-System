@@ -4,7 +4,7 @@ const tokenGenerator = require("../Config/createToken");
 const { sendVerificationEmail, sendForgotPasswordEmail } = require("../Config/sentEmail")
 
 const registerController = async (req, res) => {
-    const { firstName, lastName, email, password,phonenumber } = req.body;
+    const { firstName, lastName, email, password, phonenumber } = req.body;
 
     //checks the email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -76,7 +76,7 @@ const loginController = async (req, res) => {
     }
 
     //generate token with user info
-    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName:oldUser.firstName, lastName:oldUser.lastName, verified:oldUser.verified, phonenumber:oldUser.phonenumber});
+    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber });
 
     //sending response
     res.status(200).json({ sucess: true, token, msg: "You're logged in successfully" })
@@ -153,6 +153,40 @@ const resetPasswordController = async (req, res) => {
         })
     });
 
-}
+};
 
-module.exports = { registerController, loginController, forgotpasswordController, resetPasswordController }
+
+// Update a user
+const updateUserController = async (req, res) => {
+    const { firstName, lastName, phoneNumber, birthday, profilePhoto, street, city, province, zipcode } = req.body;
+    const userId = req.params.id;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {
+                $set: { firstName, lastName, phoneNumber, birthday, profilePhoto, street, city, province, zipcode }
+            },
+            { new: true }
+        );
+
+        res.status(200).json({ success: true, user: updatedUser });
+    } catch (error) {
+        res.status(500).json({ success: false, msg: "Error updating user", error });
+    }
+};
+
+// Get a user by id
+const getUserController = async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById(userId);
+
+        res.status(200).json({ success: true, user });
+    } catch (error) {
+        res.status(500).json({ success: false, msg: "Error getting user", error });
+    }
+};
+
+module.exports = { registerController, loginController, forgotpasswordController, resetPasswordController, updateUserController, getUserController }

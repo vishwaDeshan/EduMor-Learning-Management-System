@@ -8,18 +8,19 @@ import EditIcon from '@mui/icons-material/Edit';
 import defaultUser from '../../Assets/defaultUser.png'
 import UserNotFound from '../../Assets/UserNotFound.jpg'
 import './Profile.css'
+import axios from "axios"
 
 export default function Profile({ isLoggedIn, user, logoutUser }) {
   const { t } = useTranslation();
 
-  const [firstName, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipCode, setZip] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phonenumber, setPhoneNumber] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [province, setProvince] = useState('');
+  const [zipCode, setZip] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
 
@@ -39,30 +40,35 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
 
   useEffect(() => {
     if (shouldRedirect) {
-      window.location.replace("/login");
+      window.location.replace('/login');
     }
   }, [shouldRedirect]);
 
-  const handleEditPhoto = () => {
-    const input = document.createElement("input");
-    input.type = "file";
+  const handleUpdate = (e) => {
+    e.preventDefault();
 
-    input.addEventListener("change", () => {
-      const file = input.files[0];
-      const reader = new FileReader();
+    const updateObj = {};
+    if (firstName !== '') updateObj.firstName = firstName;
+    if (lastName !== '') updateObj.lastName = lastName;
+    if (phonenumber !== '') updateObj.phoneNumber = phonenumber;
+    if (birthday !== '') updateObj.birthday = birthday;
+    if (street !== '') updateObj.street = street;
+    if (city !== '') updateObj.city = city;
+    if (province !== '') updateObj.province = province;
+    if (zipCode !== '') updateObj.zipCode = zipCode;
 
-      reader.addEventListener("load", () => {
-        const newProfilePicture = reader.result;
-
-        const userProfilePicture = document.querySelector(".user-avatar img");
-        userProfilePicture.src = newProfilePicture;
+    axios
+      .patch(`http://localhost:8000/auth/${user._id}`, updateObj)
+      .then((res) => {
+        console.log(res.data);
+        alert('Updated successfully');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Error updating user');
       });
+  };
 
-      reader.readAsDataURL(file);
-    });
-
-    input.click();
-  }
 
   return (
     <div style={{ diplay: 'flex', flexDirection: 'column' }}>
@@ -86,19 +92,12 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                   <div class="card h-100" style={{ borderRadius: "10px" }}>
                     <div class="card-body">
                       <div class="account-settings">
-                        <div class="user-profile">
+                        <div class="user-profile" style={{marginTop:"80px"}}>
                           <div class="user-avatar" style={{ borderRadius: "10px" }}>
                             <img src={defaultUser} alt="User Profile Picture" />
-                            <button className="edit-button" onClick={handleEditPhoto}>
-                              <EditIcon />
-                            </button>
                           </div>
                           <h5 class="user-name">{user.firstName} {user.lastName}</h5>
                           <h6 class="user-email">{user.email}</h6>
-                        </div>
-                        <div class="about">
-                          <h5>{t("About")}</h5>
-                          <p>{t("Student")}</p>
                         </div>
                       </div>
                     </div>
@@ -114,23 +113,23 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="fisrtName">{t("First Name")}</label>
-                            <input type="text" class="form-control" id="fisrtName" placeholder={user.firstName} onChange={(e) => {
-                              setName(e.target.value);
+                            <input type="text" class="form-control" id="fisrtName" placeholder={"Enter the last name"} onChange={(e) => {
+                              setFirstName(e.target.value);
                             }} />
                           </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="lastName">{t("Last Name")}</label>
-                            <input type="text" class="form-control" id="lastName" placeholder={user.lastName} onChange={(e) => {
-                              setEmail(e.target.value);
+                            <input type="text" class="form-control" id="lastName" placeholder={"Enter the last name"} onChange={(e) => {
+                              setLastName(e.target.value);
                             }} />
                           </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="phone">{t("Phone")}</label>
-                            <input type="text" class="form-control" id="phone" placeholder={user.phonenumber} onChange={(e) => {
+                            <input type="text" class="form-control" id="phone" placeholder={"Enter the phone number"} onChange={(e) => {
                               setPhoneNumber(e.target.value);
                             }} />
                           </div>
@@ -138,7 +137,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="birthday">{t("birthday")}</label>
-                            <input type="date" class="form-control" id="birthday" placeholder="Enter birthday" onChange={(e) => {
+                            <input type="date" class="form-control" id="birthday" placeholder={"Enter the birthday"} onChange={(e) => {
                               setBirthday(e.target.value);
                             }} />
                           </div>
@@ -151,7 +150,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="Street">{t("Street")}</label>
-                            <input type="name" class="form-control" id="Street" placeholder="Enter Street" onChange={(e) => {
+                            <input type="name" class="form-control" id="Street" placeholder={"Enter the street"} onChange={(e) => {
                               setStreet(e.target.value);
                             }} />
                           </div>
@@ -159,7 +158,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="ciTy">{t("City")}</label>
-                            <input type="name" class="form-control" id="ciTy" placeholder="Enter City" onChange={(e) => {
+                            <input type="name" class="form-control" id="ciTy" placeholder={"Enter the city"} onChange={(e) => {
                               setCity(e.target.value);
                             }} />
                           </div>
@@ -167,15 +166,15 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="sTate">{t("State")}</label>
-                            <input type="text" class="form-control" id="sTate" placeholder="Enter State" onChange={(e) => {
-                              setState(e.target.value);
+                            <input type="text" class="form-control" id="sTate" placeholder={"Enter the province"} onChange={(e) => {
+                              setProvince(e.target.value);
                             }} />
                           </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="zIp">{t("Zip Code")}</label>
-                            <input type="text" class="form-control" id="zIp" placeholder="Zip Code" onChange={(e) => {
+                            <input type="text" class="form-control" id="zIp" placeholder={"Enter the zip code"} onChange={(e) => {
                               setZip(e.target.value);
                             }} />
                           </div>
@@ -184,8 +183,8 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                       <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" className="profile-buttons">
                           <div class="text-right">
-                            <button type="button" id="submit" name="submit" class="btn btn-secondary">{t("Cancel")}</button>
-                            <button type="button" id="submit" name="submit" class="btn btn-primary" >{t("Update")}</button>
+                            <button type="button" id="submit" name="submit" class="btn btn-secondary" onClick={() => window.location.reload()}>{t("Cancel")}</button>
+                            <button type="submit" id="submit" name="submit" class="btn btn-primary" onClick={handleUpdate} >{t("Update")}</button>
                           </div>
                         </div>
                       </div>
