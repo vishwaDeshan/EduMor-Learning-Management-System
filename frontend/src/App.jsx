@@ -22,6 +22,7 @@ import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
+import VideosPage from "./Pages/VideosPage/VideosPage";
 
 
 
@@ -42,7 +43,7 @@ function App() {
       if (decodedToken.exp * 1000 < Date.now()) {
         setUser(null);
         setIsLoggedIn(false);
-        window.location.replace("/login");
+        // window.location.replace("/login");
       } else {
         setUser(decodedToken);
         setIsLoggedIn(true);
@@ -69,12 +70,13 @@ function App() {
           <Route path="/superAdminDashboard" element={<SADashboard />} />
           <Route path="/adminRequests" element={<AdminRequests />} />
           <Route path="/" element={<Overview isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/level/quiz/:id" element={<Quiz />} />
+          <Route path="/level/quiz/:id" element={<Quiz isLoggedIn={isLoggedIn} user={user}/>} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
+          <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>

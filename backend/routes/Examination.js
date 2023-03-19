@@ -3,13 +3,13 @@ const router = express.Router();
 const examinationController = require('../Controllers/examinationController');
 
 // Create a new examination
-router.post('/examination/save', examinationController.createExamination);
+router.post('/save', examinationController.createExamination);
 
 // Get all examinations
-router.get('/examinations', examinationController.getAllExaminations);
+router.get('/', examinationController.getAllExaminations);
 
 // Get specific examination using ID
-router.get('/examinations/:id', examinationController.getExaminationById);
+router.get('/:id', examinationController.getExaminationById);
 
 // Update an examination by ID
 router.put('/:id', examinationController.updateExaminationById);

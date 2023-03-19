@@ -3,7 +3,7 @@ import '../Quiz/Quiz.css';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import axios from 'axios';
 
-function Results({ answers, qid }) {
+function Results({ answers, qid,user}) {
   const [quizAnswer, setQuizAnswer] = useState({});
   const numCorrect = answers.filter((answer, index) => answer === quizAnswer[index]?.correctAnswer).length;
   const percentage = ((numCorrect / Object.keys(quizAnswer).length) * 100).toFixed(2);

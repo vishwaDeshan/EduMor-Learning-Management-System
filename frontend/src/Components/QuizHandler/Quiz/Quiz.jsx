@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Results from '../Results/Results';
 
-function Quiz(props) {
+function Quiz({isLoggedIn,user}) {
   const [quiz, setQuiz] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
@@ -85,7 +85,7 @@ function Quiz(props) {
   const currentQuestionData = quiz[currentQuestion];
 
   if (currentQuestion === quiz.length) {
-    return <Results answers={answers} qid={id} />;
+    return <Results answers={answers} qid={id} user={user}/>;
   }
 
   //quiz Answering section

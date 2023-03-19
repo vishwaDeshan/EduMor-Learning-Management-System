@@ -13,8 +13,9 @@ app.use("/auth", require("./routes/Auth"));
 app.use("/email", require("./routes/Email"));
 app.use("/news", require("./routes/News"));
 app.use("/advertisements", require("./routes/Advertisement"));
-app.use("/", require("./routes/Vacancy"));
-app.use("/", require("./routes/Examination"));
+app.use("/vacancies", require("./routes/Vacancy"));
+app.use("/examinations", require("./routes/Examination"));
+app.use("/enrollment", require("./routes/Enrollment"));
 app.use("/", require("./routes/Quiz"));
 
 app.post('/upload', upload.single('file'), (req, res) => {
