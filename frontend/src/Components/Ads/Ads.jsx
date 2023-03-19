@@ -8,7 +8,6 @@ const Ads = () => {
   useEffect(() => {
     function getAds() {
       axios.get('http://localhost:8000/advertisements').then((res) => {
-        // console.log(res.data.existingAds);
         setAds(res.data.existingAds)
       }).catch((err) => {
         alert(err.message)

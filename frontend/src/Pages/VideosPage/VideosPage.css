@@ -1,0 +1,33 @@
+.video-section{
+    max-width: 96%;
+    margin: 5px auto;
+    background-color: #fff;
+    height: 550px;
+    border-radius: 15px;
+    padding: 5px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 992px) {
+    .video-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media (min-width: 576px) {
+    .col-md-4 {
+      flex-basis: calc(33.33% - 20px);
+      margin: 10px 5px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .col-md-4 {
+      flex-basis: calc(100% - 20px);
+      margin: 20px 10px;
+    }
+  }
+  

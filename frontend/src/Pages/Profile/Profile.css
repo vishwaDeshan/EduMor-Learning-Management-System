@@ -79,28 +79,6 @@
     width: 150px;
     height: 150px;
   }
-  
-  .edit-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 5px;
-    transition: opacity 0.2s ease-in-out;
-    opacity: 0;
-  }
-  
-  
-  .user-avatar:hover .edit-button {
-    opacity: 1;
-  }
-/* 
-.profile-div{
-    border-radius: 10px;
-} */
 
 .logout-btn{
     margin-top: 10px;
@@ -130,3 +108,12 @@
 .userNotFound-img h1{
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+    
+    .profile-container {
+      max-height: 520px;
+      overflow-y: scroll;
+      overflow-x:hidden;
+    }
+  }

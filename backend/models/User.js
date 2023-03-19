@@ -29,9 +29,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default:""
     },
-    profilePhoto: {
-        type: String,
-        default:""
+    birthday: {
+        type: Date,
+        default: null
     },
     street: {
         type: String,
