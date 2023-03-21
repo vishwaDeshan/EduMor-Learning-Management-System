@@ -1,0 +1,18 @@
+.navbar{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+   margin-left: 70rem;
+  }
+  .navbaritem {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 2rem;
+    position: relative;
+}
+.navadmin{
+    display: flex;
+    gap: 0.6rem;
+}
