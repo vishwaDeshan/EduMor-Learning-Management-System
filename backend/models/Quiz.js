@@ -10,11 +10,11 @@ const quizSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    options: [{
+    answers: [{
       type: String,
       required: true
     }],
-    answer: {
+    correctAnswer: {
       type: String,
       required: true
     }

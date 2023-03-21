@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import ImageSlideshow from './ImageSlideshow';
 import './Ads.css'
-import Ads1 from '../../Assets/Ads1.png'
+import axios from 'axios';
 
-function Ads() {
+const Ads = () => {
+  const [ads, setAds] = useState([]);
+  useEffect(() => {
+    function getAds() {
+      axios.get('http://localhost:8000/advertisements').then((res) => {
+        setAds(res.data.existingAds)
+      }).catch((err) => {
+        alert(err.message)
+      })
+    }
+    getAds();
+  }, [])
   return (
-    <div className="ads">
-      <img src={Ads1} alt="Ads" srcset=""/>
+    <div>
+      <a href={ads.map(ad => ad.link)} target="_blank" rel="noopener noreferrer">
+        <ImageSlideshow images={ads.map(ad => ad.image)} />
+      </a>
     </div>
-  )
-}
-
+  );
+};
 export default Ads

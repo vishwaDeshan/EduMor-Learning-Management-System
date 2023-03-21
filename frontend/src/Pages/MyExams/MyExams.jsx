@@ -3,21 +3,20 @@ import { useTranslation } from "react-i18next";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import SideBar from "../../Components/SideBar/SideBar";
-import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
-import {MDBBreadcrumb,MDBBreadcrumbItem} from 'mdb-react-ui-kit';
+import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from "mdb-react-ui-kit";
+import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import myExams from "../../Data/MyExams";
-import ProgressBarComponent from "../../Components/ProgessBarComponent/ProgressBarComponent";
 import './MyExams.css'
 
 
-function MyExams() {
+function MyExams({ isLoggedIn, user }) {
   const { t } = useTranslation();
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn} user={user} />
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -32,13 +31,13 @@ function MyExams() {
               <MDBTableHead>
                 <tr style={{ color: "#646a85" }}>
                   <th scope="col">{t("Title")}</th>
-                  <th scope="col">{t("Progress")}</th>
+                  <th scope="col">{t("Level")}</th>
                   <th scope="col">{t("Started")}</th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
                 {myExams.map(
-                  ({ examTitle, image, date, progress }, index) => {
+                  ({ examTitle, image, date, level }, index) => {
                     return (
                       <tr>
                         <td>
@@ -60,7 +59,9 @@ function MyExams() {
                           </div>
                         </td>
                         <td>
-                          <ProgressBarComponent percentage={progress} />
+                          <MDBBadge color={level === 'Beginner' ? 'success' : level === 'Intermediate' ? 'primary' : 'warning'} pill>
+                            {level}
+                          </MDBBadge>
                         </td>
 
                         <td>

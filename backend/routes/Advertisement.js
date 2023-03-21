@@ -1,68 +1,18 @@
 const express = require("express");
-const Advertisements = require('../models/Advertisement');
+const advertisementsController = require("../controllers/advertisementsController");
 
 const router = express.Router();
 
-// save ads details
-router.post('/advertisements/save', (req, res) => {
-    let newAdvertisement = new Advertisements(req.body);
-    newAdvertisement.save((err => {
-        if (err) {
-            return res.status(400).json({
-                error: err
-            });
-        }
-        return res.status(200).json({
-            success: "Advertisement save Succesfully"
-        });
-    }));
-});
+//post an advertisement
+router.post("/save", advertisementsController.saveAdvertisement);
 
-//Get ads details
-router.get('/advertisements', (req, res) => {
-    Advertisements.find().exec((err, advertisements) => {
-        if (err) {
-            return res.status(400).json({
-                error: err
-            });
-        }
-        return res.status(200).json({
-            success: true,
-            existingAds: advertisements
-        });
-    });
-});
+//get all advertisemets
+router.get("/", advertisementsController.getAdvertisements);
 
-//update ads details
-router.put('/advertisement/update/:id', (req, res) => {
-    Advertisements.findByIdAndUpdate(
-        req.params.id, {
-        $set: req.body
-    },
-        (err, post) => {
-            if (err) {
-                return res.status(400).json({ error: err });
-            }
-            return res.status(200).json({
-                success: "Updated Succesfully"
-            });
-        }
+//get a specific advertisement
+router.put("/update/:id", advertisementsController.updateAdvertisement);
 
-    );
-});
-
-//Delete ads details
-router.delete('/advertisement/delete/:id', (req, res) => {
-    Advertisements.findByIdAndRemove(req.params.id).exec((err, deletedDetails) => {
-        if (err) {
-            return res.status(400).json({
-                message: "Deleted unsuccesfull", err
-            });
-        }
-        return res.json({
-            message: "Delete succesfull", deletedDetails
-        });
-    });
-});
+//delete a specific advertisement
+router.delete("/delete/:id", advertisementsController.deleteAdvertisement);
 
 module.exports = router;

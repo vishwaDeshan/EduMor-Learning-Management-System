@@ -1,24 +1,23 @@
 import React from 'react';
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import ProgressBarComponent from '../../../Components/ProgessBarComponent/ProgressBarComponent'
+import { MDBTable, MDBTableHead, MDBTableBody, MDBBadge } from 'mdb-react-ui-kit';
 import RecentExam from '../../../Data/RecentExams'
 import { useTranslation } from 'react-i18next';
 
 
 export default function App() {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   return (
     <MDBTable align='middle'>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
           <th scope='col' >{t("Title")}</th>
-          <th scope='col'>{t("Progress")}</th>
+          <th scope='col'>{t("Status")}</th>
           <th scope='col'>{t("Started")}</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody >
 
-        {RecentExam.map(({ examTitle, image, date, progress }, index) => {
+        {RecentExam.map(({ examTitle, image, Started, level }, index) => {
           return (
             <tr>
               <td>
@@ -34,13 +33,14 @@ export default function App() {
                   </div>
                 </div>
               </td>
-              <td>
-                <ProgressBarComponent percentage={progress} />
+              <td style={{margin:"auto"}}>
+                <MDBBadge color={level === 'Beginner' ? 'success' : level === 'Intermediate' ? 'primary' : 'warning'} pill>
+                  {level}
+                </MDBBadge>
               </td>
-
               <td>
                 <p rounded size='sm'>
-                  {date}
+                  {Started}
                 </p>
               </td>
             </tr>

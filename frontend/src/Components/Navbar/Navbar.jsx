@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
@@ -18,13 +18,35 @@ import {
   MDBModalBody,
 } from "mdb-react-ui-kit";
 
-const Navbar = () => {
+const Navbar = ({isLoggedIn,user}) => {
   const [scrollableModal, setScrollableModal] = useState(false);
   const { t, i18n } = useTranslation();
   const handleChangeLng = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem("lng", lng);
   };
+
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (!isLoggedIn) {
+      timeoutId = setTimeout(() => {
+        setShouldRedirect(true);
+      }, 100);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (shouldRedirect) {
+      window.location.replace("/login");
+    }
+  }, [shouldRedirect]);
 
   return (
     <div className="Navbar">
@@ -86,10 +108,9 @@ const Navbar = () => {
               <Avatar
                 alt="Profile"
                 src={ProfilePic}
-                sx={{ width: 38, height: 38 }}
+                sx={{ width: 45, height: 45 }}
               />
             </Link>
-            <font>Anna Sophia</font>
           </div>
         </div>
       </div>
