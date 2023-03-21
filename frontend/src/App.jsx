@@ -16,13 +16,19 @@ import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
 import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
 import Quiz from "./Components/QuizHandler/Quiz";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import UserdetailsPage from "./Pages/Admin/UserDetails/UserdetailsPage/UserdetailsPage";
+import Paymentpage from "./Pages/Admin/Payments/Paymentpage/Paymentpage";
+import VideoUploadPage from "./Pages/Admin/VideoUploadSection/VideoUploadPage";
+
+import QuizePage from "./Pages/Admin/QuizeSection/QuizePage";
+import AdvertisementPage from "./Pages/Admin/Advertisement/AdvertisementPage";
 
 
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      { <BrowserRouter>
         <Routes>
           <Route path="/examinations" element={<Examinations />} />
           <Route path="/profile" element={<Profile />} />
@@ -39,8 +45,15 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage/>}/>
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
+          <Route path="/userDetails" element={<UserdetailsPage/>}/>
+          <Route path="/paymentsData" element={<Paymentpage/>}/>
+          <Route path="/videoUpload" element={<VideoUploadPage/>}/>
+          <Route path="/quizeUpload" element={<QuizePage/>}/>
+          <Route path="/adverticeUpload" element={<AdvertisementPage/>}/>
+
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> }
     </div>
   );
 }
