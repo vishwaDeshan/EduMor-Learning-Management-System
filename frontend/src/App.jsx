@@ -29,9 +29,10 @@ import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import NewsPage from "./Pages/Admin/News/NewsPage";
-
-
-
+import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
+import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
+import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
+import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
 
 
 function App() {
@@ -94,12 +95,30 @@ function App() {
           <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/test" element={<Test />} />
           <Route path="/newsUpload" element={<NewsPage/>}/>
+          <Route path="/examinations" element={<Examinations />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/myPayments" element={<Payment />} />
+          <Route path="/myExams" element={<MyExams />} />
+          <Route path="/Exam" element={<ExamModule />} />
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Overview />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/land" element={<LandingPage />} />
+          <Route path="/superAdminOverview" element={<AdminSAOverview />} />
+          <Route path="/superAdminStudentoverview" element={<StudentSAOverview />}/>
+          <Route path="/superAdminExaminationOverview" element={<superAdminExaminationOverview />}/>
+          <Route path="/superAdminSettings" element={<SuperAdminSettings />} />
+          <Route path="/superAdminDashboard" element={<SADashboard />} />
+          <Route path="/adminRequests" element={<AdminRequests />} />
         </Routes>
       </BrowserRouter> }
     </div>
   );
 }
-
 
 export default App;
 
