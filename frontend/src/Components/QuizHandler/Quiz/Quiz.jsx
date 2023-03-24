@@ -147,40 +147,5 @@ function Quiz({isLoggedIn,user}) {
   );
 }
 
-// //Quiz results
-// function Results({ answers }) {
-//   const numCorrect = answers.filter((answer, index) => answer === questions[index].correctAnswer).length;
-//   const percentage = ((numCorrect / questions.length) * 100).toFixed(2);
-
-//   return (
-//     <div>
-//       <div className="read-crumb-quiz">
-//         <MDBBreadcrumb >
-//           <MDBBreadcrumbItem>
-//             <a href='/'>Overview</a>
-//           </MDBBreadcrumbItem>
-//           <MDBBreadcrumbItem ><a href='/examinations'>Examination</a></MDBBreadcrumbItem>
-//           <MDBBreadcrumbItem active>Quiz</MDBBreadcrumbItem>
-//         </MDBBreadcrumb>
-//       </div>
-
-//     <div className='quiz-results'>
-//       <h1 className='results-heading'>Quiz Results</h1>
-//       <p className='results-summary'>You answered {numCorrect} out of {questions.length} questions correctly.</p>
-//       <p className='results-score'>Your score: <h2>{percentage}%</h2></p>
-//       <ol className='results-list'>
-//         {questions.map((question, index) => (
-//           <li key={index} className={answers[index] === question.correctAnswer ? 'correct' : 'incorrect'}>
-//             <p>Question {index + 1}: {question.question}</p>
-//             <p>Your answer: {answers[index]}</p>
-//             <p>Correct answer: {question.correctAnswer}</p>
-//           </li>
-//         ))}
-//       </ol>
-//     </div>
-//     </div>
-//   );
-// }
-
 
 export default Quiz;
