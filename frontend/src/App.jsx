@@ -16,6 +16,10 @@ import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
 import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
 import Quiz from "./Components/QuizHandler/Quiz";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
+import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
+import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverviwe/studentSAOverviwe";
+import examinationSAOverviwe from"./Pages/SuperAdmin/examinationSAOverviwe/examinationSAOverviwe";
 
 
 
@@ -33,13 +37,19 @@ function App() {
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/superadminSettings" element={<SuperAdminSettings/>}/>
           <Route path="/superAdminDashboard" element={<SADashboard/>}/>
           <Route path="/adminRequests" element={<AdminRequests/>}/>
           <Route path="/" element={<Overview />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage/>}/>
-        </Routes>
+          <Route path="/adminsaoverview" element={<AdminSAOverview/>}/>
+          <Route path="/studentsaoverviwe" element={<StudentSAOverview/>}></Route> 
+          <Route PATH="/examinationSAOverviwe" element={<examinationSAOverviwe/>}></Route>
+          
+          
+  </Routes>
       </BrowserRouter>
     </div>
   );
