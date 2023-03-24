@@ -18,8 +18,8 @@ import Quiz from "./Components/QuizHandler/Quiz";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
 import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
-import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverviwe/studentSAOverviwe";
-import examinationSAOverviwe from"./Pages/SuperAdmin/examinationSAOverviwe/examinationSAOverviwe";
+import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
+import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
 
 
 
@@ -32,29 +32,26 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/myPayments" element={<Payment />} />
           <Route path="/myExams" element={<MyExams />} />
-          <Route path="/Exam" element={<ExamModule/>}/>
-          <Route path="/adminOverview" element={<OverviewAdmin/>}/>
+          <Route path="/Exam" element={<ExamModule />} />
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/superadminSettings" element={<SuperAdminSettings/>}/>
-          <Route path="/superAdminDashboard" element={<SADashboard/>}/>
-          <Route path="/adminRequests" element={<AdminRequests/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Overview />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/land" element={<LandingPage/>}/>
-          <Route path="/adminsaoverview" element={<AdminSAOverview/>}/>
-          <Route path="/studentsaoverviwe" element={<StudentSAOverview/>}></Route> 
-          <Route PATH="/examinationSAOverviwe" element={<examinationSAOverviwe/>}></Route>
-          
-          
-  </Routes>
+          <Route path="/land" element={<LandingPage />} />
+          <Route path="/superAdminOverview" element={<AdminSAOverview />} />
+          <Route path="/superAdminStudentoverview" element={<StudentSAOverview />}/>
+          <Route path="/superAdminExaminationOverview" element={<superAdminExaminationOverview />}/>
+          <Route path="/superAdminSettings" element={<SuperAdminSettings />} />
+          <Route path="/superAdminDashboard" element={<SADashboard />} />
+          <Route path="/adminRequests" element={<AdminRequests />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
 
 export default App;
 

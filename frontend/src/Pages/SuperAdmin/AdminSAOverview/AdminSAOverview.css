@@ -1,24 +1,16 @@
-
-
-.AdminSAoverviwemain{
-
+.AdminSAoverviewmain{
     display: flex;
     flex-direction: row;
 }
 .AdminSAoverviweright{
-
     display: flex;
     flex-direction: column;
-
-
 }
 
 .cSAC{
-
-
     background-color: #fff;
     width: 90%;
-    height: 640px;
+    height: 600px;
     margin: 20px auto;
     border-radius: 15px;
     display: flex;
@@ -27,36 +19,24 @@
 }
     
 .SAadminnavbar{
-
 margin-left: 980px;
-
 }
 
 .SAArow1{
     width: 40%;
     height: 100px;
-    
-
-
-
 }
 .SAArow2{
     width: 40%;
     height: 100px;
-    
-
 }
 
 .SAArow3{
     width: 30%;
     height: 100px;
-   
-
 }
 
 .SAArow4{
     width: 20%;
     height: 100px;
-   
-
 }

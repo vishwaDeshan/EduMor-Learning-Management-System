@@ -6,51 +6,37 @@ import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
 
 export default function AdminSAOverview() {
   return (
-    <div className='AdminSAoverviwemain'>
+    <div className='AdminSAoverviewmain'>
       <div className='SAadminsidebar'>
-      <SASidebar/> </div>
-
+        <SASidebar />
+      </div>
       <div className='AdminSAoverviweright'>
-        
         <div className='SAadminnavbar'>
-        <SANavbar/></div>
-
+          <SANavbar />
+        </div>
         <div className='cSAC'>
-
-          <div className='SAArow1'>NAME</div>
-          <div className='SAArow2'>TYPE</div>
-          <div className='SAArow3'>STATUS</div>
-          <div className='SAArow4'>ACTION</div>
-
-
+          <div className='SAArow1'>Name</div>
+          <div className='SAArow2'>Type</div>
+          <div className='SAArow3'>Status</div>
+          <div className='SAArow4'>Action</div>
         </div>
-
-        
-      
-        </div>
-
-
-        
-        
-        
-        
-        
-        </div> 
-      
-        
-    
+      </div>
+    </div>
 
 
 
 
 
-    
-    
-
-  
 
 
 
-    
+
+
+
+
+
+
+
+
   )
 }

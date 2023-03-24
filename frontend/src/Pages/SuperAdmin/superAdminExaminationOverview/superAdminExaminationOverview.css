@@ -7,13 +7,9 @@
 
     display: flex;
     flex-direction: column;
-
-
 }
 
 .cSACS{
-
-
     background-color: #fff;
     width: 90%;
     height: 640px;
@@ -25,31 +21,23 @@
 }
     
 .SAadminnavbar{
-
 margin-left: 980px;
-
 }
 
 .SASrow1{
     width: 40%;
     height: 100px;
-    
-
-
-
 }
 .SASrow2{
     width: 40%;
     height: 100px;
     margin-left: 450px;
-
 }
 
 .SASrow3{
     width: 30%;
     height: 100px;
     margin-left:400px;
-
 }
 
    
