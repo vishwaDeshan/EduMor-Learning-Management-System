@@ -4,14 +4,13 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import Person3Icon from '@mui/icons-material/Person3';
 function AdminNavbar() {
   return (
-    <div className="navbar">
-      <div className="navbaritem">
+    <div className="navbarAdmin">
+      <div className="navbarAdminitem">
       <NotificationsActiveIcon/>
       <div className="navadmin">
         <div className="icon">
         <Person3Icon/>
         </div>
-      
       <h4>Admin</h4>
       </div>
       

@@ -1,11 +1,11 @@
-.navbar{
+.navbarAdmin{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
    margin-left: 70rem;
   }
-  .navbaritem {
+  .navbarAdminitem {
     display: flex;
     align-items: center;
     gap: 2rem;

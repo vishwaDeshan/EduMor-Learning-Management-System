@@ -45,16 +45,24 @@
     align-items: center;
     gap: 2rem;
     height: 1.5rem;
-    margin-left: 2rem;
+    margin-left: 20px;
     position: relative;
     transition: all 300ms ease;
     border-radius: 0.7rem;
     font-size: 18px;
   
   }
+  .x{
+   padding-left: 12px;
+  }
   
   .menuItem:hover {
     cursor: pointer;
+    color:#fff;
+    transform: scale(1.001);
+    background: rgb(0, 213, 255);
+    padding: 20px;
+   
   }
   
   .menu .menuItem:last-child {

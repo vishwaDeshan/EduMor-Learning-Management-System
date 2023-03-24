@@ -28,6 +28,8 @@ import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
+import NewsPage from "./Pages/Admin/News/NewsPage";
+
 
 
 
@@ -84,13 +86,14 @@ function App() {
           <Route path="/paymentsData" element={<Paymentpage/>}/>
           <Route path="/videoUpload" element={<VideoUploadPage/>}/>
           <Route path="/quizeUpload" element={<QuizePage/>}/>
-          <Route path="/adverticeUpload" element={<AdvertisementPage/>}/>
+          <Route path="/addUpload" element={<AdvertisementPage/>}/>
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
           <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/newsUpload" element={<NewsPage/>}/>
         </Routes>
       </BrowserRouter> }
     </div>

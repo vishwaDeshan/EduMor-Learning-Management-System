@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 function Advertisement() {
-  const [title, setTitle] = useState('');
+  const [addTitle, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [link, setLink] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8000/advertisements/save')
+    submitAdd(addTitle, link);
+
+    // Clear form inputs
+    setTitle('');
+    setLink('');
+  };
+  const submitAdd = (addTitle, link) => {
+    axios.post('advertisements/save',{addTitle,link})
   .then(response => {
-    console.log(response.data); // Log the response data if the request is successful
+    console.log(response.data);
+    alert("succesfull");
   })
   .catch(error => {
-    console.log(error); // Log any errors that occur
+    console.log(error);
+    alert("error") ;
+    
   });
   };
 
@@ -22,7 +32,7 @@ function Advertisement() {
         Title:
         <input
           type="text"
-          value={title}
+          value={addTitle}
           onChange={(event) => setTitle(event.target.value)}
           style={{ marginLeft: '10px' }}
         />
@@ -44,7 +54,7 @@ function Advertisement() {
           style={{ marginLeft: '10px' }}
         />
       </label>
-      <button type="submit" style={{ alignSelf: 'center' }}>Submit</button>
+      <button type="submit"  style={{ alignSelf: 'center' }}>Submit</button>
     </form>
   );
 }

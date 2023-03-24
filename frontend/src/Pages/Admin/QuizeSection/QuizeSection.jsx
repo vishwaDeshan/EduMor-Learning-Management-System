@@ -1,14 +1,14 @@
 
 import React, { useState } from 'react';
 import {  Modal } from 'react-bootstrap';
-//import axios from 'axios';
+import axios from 'axios';
 
 function QuizeSection() {
   const [showExamModal, setShowExamModal] = useState(false);
   const [showQuizModal, setShowQuizModal] = useState(false);
   const [examName, setExamName] = useState('');
-  const [examDescription, setExamDescription] = useState('');
-  const [fileUpload, setFileUpload] = useState('');
+  const [description, setDescription] = useState('');
+  const [photo, setPhoto] = useState('');
   const [quizName, setQuizName] = useState('');
   const [quizDescription, setQuizDescription] = useState('');
   const [quizQuestions, setQuizQuestions] = useState('');
@@ -23,20 +23,25 @@ function QuizeSection() {
   const handleShowExamModal = () => setShowExamModal(true);
   const handleShowQuizModal = () => setShowQuizModal(true);
 
-  // const handleExamSubmit = () => {
-  //   axios.post('http://localhost:8000/examinations/save', {
-  //     name: examName,
-  //     description: examDescription,
-  //     file: fileUpload,
-  //   })
-  //     .then(function (response) {
-  //       console.log(response);
-  //       handleClose();
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+  // submitExams(examName, examDescription,fileUpload);
+
+  //   // Clear form inputs
+    // setExamName('');
+    // setExamDescription('');
+    // setFileUpload('');
+
+  const submitExams = (examName,description ) => {
+    axios.post('examinations/save', { examName,description })
+      .then(response => {
+        console.log(' saved successfully');
+        alert("submited")
+      })
+      .catch(error => {
+        console.error('Error saving news: ', error);
+        alert("error");
+        console.log(examName)
+      });
+  };
 
   // const handleQuizSubmit = () => {
   //   axios.post('http://localhost:8000/save', {
@@ -77,11 +82,11 @@ function QuizeSection() {
               </div>
               <div style={{ paddingTop: '10px' }}>
                 <label htmlFor="examDescription">Exam Description:</label>
-                <input type="text" id="examDescription" name="examDescription" value={examDescription} onChange={(event) => setExamDescription(event.target.value)} />
+                <input type="text" id="examDescription" name="examDescription" value={description} onChange={(event) => setDescription(event.target.value)} />
               </div>
               <div style={{ paddingTop: '10px' }}>
                 <label htmlFor="fileUpload">File Upload:</label>
-                <input type="file" id="fileUpload" name="fileUpload" onChange={(event) => setFileUpload(event.target.files[0])} />
+                <input type="file" id="fileUpload" name="fileUpload" onChange={(event) => setPhoto(event.target.files[0])} />
               </div>
             </>
           )}
@@ -115,7 +120,7 @@ function QuizeSection() {
 Close
 </button>
 {showExamModal && (
-<button variant="primary" >
+<button variant="primary" onClick={submitExams}>
 Save Changes
 </button>
 )}
