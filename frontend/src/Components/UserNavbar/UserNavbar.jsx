@@ -1,6 +1,7 @@
 import React from "react";
 import "./UserNavbar.css";
-import Logo from "../../Assets/LogoC.png";
+import Logo from "../../Assets/Logobg.png";
+import { Link } from "react-router-dom";
 
 
 function UserNavbar() {
@@ -13,14 +14,17 @@ function UserNavbar() {
         </div>
         <div className="menu">
           <ul>
-            <li>Features</li>
-            <li>Examinations</li>
-            <li>Contact Us</li>
+            <Link to="/land">
+              <li>Features</li>
+              <li>Examinations</li>
+              <li>Contact Us</li>
+            </Link>
           </ul>
         </div>
-        <button type="button" value="signup" className="button">
+        <Link to="/signup"><button type="button" value="signup" className="button-user">
           SignUp
         </button>
+        </Link>
       </div>
     </div>
   );

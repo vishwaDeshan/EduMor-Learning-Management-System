@@ -5,7 +5,7 @@ function InputBox(props) {
     <div>
       <label className="inputbox">
             <h6 style={{fontWeight:600}}> {props.title}: </h6>
-            <input className="inputfield" type={props.type} name="username" placeholder={props.placeholder?props.placeholder:""} />
+            <input className="inputfield" type={props.type} name={props.name} placeholder={props.placeholder?props.placeholder:""} onChange={props.onChange} />
         </label>
     </div>
   )

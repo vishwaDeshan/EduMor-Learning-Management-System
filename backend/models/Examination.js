@@ -11,7 +11,7 @@ const examinationSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
-    required: true
+    //required: true
   },
   createdDate: {
     type: Date,
@@ -23,6 +23,16 @@ const examinationSchema = new mongoose.Schema({
       required: true
     },
     videoUrl: {
+      type: String,
+      required: true
+    }
+  }],
+  pastPapers: [{
+    pastPaperName: {
+      type: String,
+      required: true
+    },
+    pastPaperUrl: {
       type: String,
       required: true
     }

@@ -6,14 +6,14 @@ import SideBar from '../../Components/SideBar/SideBar';
 import {MDBBreadcrumb,MDBBreadcrumbItem} from 'mdb-react-ui-kit';
 import BillingForm from '../../Components/BillingForm/BillingForm'
 
-function Payment() {
+function Payment({isLoggedIn,user}) {
   const {t}=useTranslation();
   return (
     <div style={{ diplay: 'flex', flexDirection: 'column' }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn} user={user}/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
