@@ -21,8 +21,6 @@ import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview"
 import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
 import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
 
-
-
 function App() {
   return (
     <div className="App">
