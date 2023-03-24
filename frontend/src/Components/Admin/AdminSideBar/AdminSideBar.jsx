@@ -5,9 +5,10 @@ import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBook
 import FeaturedVideoOutlinedIcon from "@mui/icons-material/FeaturedVideoOutlined";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
 import "./AdminSideBar.css";
 import LogoC from "../../../Assets/LogoC.png";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -18,54 +19,77 @@ const Sidebar = () => {
       </div>
 
       <div className="menu">
-        <div className="menuItem">
-          <div>
-            <DashboardCustomizeOutlinedIcon />
+        <NavLink to="/adminOverview" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <DashboardCustomizeOutlinedIcon />
+            </div>
+            <span>Overview</span>
           </div>
-          <span>Overview</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <GroupOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/userDetails" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <GroupOutlinedIcon />
+            </div>
+            <span>Users</span>
           </div>
-          <span>Users</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <CollectionsBookmarkOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/quizUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <CollectionsBookmarkOutlinedIcon />
+            </div>
+            <span>Quizzes</span>
           </div>
-          <span>Quizzes</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <FeaturedVideoOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/adsUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <FeaturedVideoOutlinedIcon />
+            </div>
+            <span>Advertisements</span>
           </div>
-          <span>Advertisements</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <PaidOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/paymentsData" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <PaidOutlinedIcon />
+            </div>
+            <span>Payments</span>
           </div>
-          <span>Payments</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <DashboardCustomizeOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/videoUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <DashboardCustomizeOutlinedIcon />
+            </div>
+            <span>Lecture Videos</span>
           </div>
-          <span>Lecture Videos</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <SettingsOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/newsUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <NewspaperOutlinedIcon />
+            </div>
+            <span>News</span>
           </div>
-          <span>Settings</span>
-        </div>
-        <div className="menuItem">
-          <div>
-            <LogoutOutlinedIcon />
+        </NavLink>
+
+        <NavLink to="/adminSettings" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+          <div className="menuItem">
+            <div>
+              <SettingsOutlinedIcon />
+            </div>
+            <span>Settings</span>
           </div>
-          <span>Logout</span>
-        </div>
+        </NavLink>
       </div>
     </div>
   );
