@@ -1,4 +1,4 @@
-.navbar{
+.login-page .navbar{
   top: 0;
   display: flex;
   align-items: center;
@@ -7,21 +7,21 @@
   justify-content: space-around;
 }
 
-.logo{
+.login-page .logo{
   text-align: center;
   min-width: 78px;
   display: flex;
   align-items: center;
 }
 
-.logo-img{
+.login-page .logo-img{
   height: 32px;
   margin: 10px;
   width: auto;
   text-align: center;
 }
 
-.text{
+.login-page .text{
   font-family: lato;
   font-style: normal;
   margin-top: 5px;
@@ -36,7 +36,7 @@
   gap: 100px;
 } */
 
-.menu ul{
+.login-page .menu ul{
   text-decoration: none;
   list-style-type: none;
   display: flex;
@@ -45,7 +45,7 @@
   
 }
 
-.menu li{
+.login-page .menu li{
   text-decoration: none;
   float: left;
   list-style-type: none;
@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.button{
+.login-page .button{
   border: none;
   color: white;
   padding: 7px 28px;

@@ -32,7 +32,7 @@ const InputField = () => {
 
   return (
     <Container
-      className={`p-5 text-center ${dragging ? 'bg-light border border-primary' : ''}`}
+      className={`p-5 text-center ${dragging ? 'bg-light border border-primary' : ''} inputBox`}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}

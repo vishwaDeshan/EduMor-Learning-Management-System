@@ -83,7 +83,7 @@ function App() {
           <Route path="/userDetails" element={<UserdetailsPage/>}/>
           <Route path="/paymentsData" element={<Paymentpage/>}/>
           <Route path="/videoUpload" element={<VideoUploadPage/>}/>
-          <Route path="/quizeUpload" element={<QuizePage/>}/>
+          <Route path="/quizUpload" element={<QuizePage/>}/>
           <Route path="/adverticeUpload" element={<AdvertisementPage/>}/>
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />

@@ -1,21 +1,21 @@
-.drag-and-drop {
+.inputBox .drag-and-drop {
     border: 2px dashed gray;
     padding: 1rem;
     text-align: center;
     transition: border-color 0.3s ease-in-out;
   }
   
-  .drag-and-drop.dragging {
+  .inputBox  .drag-and-drop.dragging {
     border-color: blue;
   }
   
-  ul {
+  .inputBox  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   
-  li {
+  .inputBox  li {
     margin: 0.5rem 0;
     word-break: break-all;
   }
