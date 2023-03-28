@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import {  Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import axios from 'axios';
 
 function QuizeSection() {
@@ -26,12 +26,12 @@ function QuizeSection() {
   // submitExams(examName, examDescription,fileUpload);
 
   //   // Clear form inputs
-    // setExamName('');
-    // setExamDescription('');
-    // setFileUpload('');
+  // setExamName('');
+  // setExamDescription('');
+  // setFileUpload('');
 
-  const submitExams = (examName,description ) => {
-    axios.post('examinations/save', { examName,description })
+  const submitExams = (examName, description) => {
+    axios.post('examinations/save', { examName, description })
       .then(response => {
         console.log(' saved successfully');
         alert("submited")
@@ -62,10 +62,10 @@ function QuizeSection() {
 
   return (
     <>
-      <button variant="primary" onClick={handleShowExamModal} style={{ padding: '50px',margin:'40px 280px',fontSize:'30px',}} >
+      <button variant="primary" onClick={handleShowExamModal} style={{ padding: '50px', margin: '40px 280px', fontSize: '30px', }} >
         Create Examination
       </button>
-      <button variant="primary" onClick={handleShowQuizModal}style={{ padding: '50px',margin:'40px 280px',fontSize:'30px'}}>
+      <button variant="primary" onClick={handleShowQuizModal} style={{ padding: '50px', margin: '40px 280px', fontSize: '30px' }}>
         Create Quiz
       </button>
 
@@ -90,48 +90,48 @@ function QuizeSection() {
               </div>
             </>
           )}
-          {showQuizModal &&  (
-<>
-<div style={{ paddingTop: '10px' }}>
-<label htmlFor="quizName">Quiz Name:</label>
-<input type="text" id="quizName" name="quizName" value={quizName} onChange={(event) => setQuizName(event.target.value)} />
-</div>
-<div style={{ paddingTop: '10px' }}>
-<label htmlFor="quizDescription">Quiz Description:</label>
-<input type="text" id="quizDescription" name="quizDescription" value={quizDescription} onChange={(event) => setQuizDescription(event.target.value)} />
-</div>
-<div style={{ paddingTop: '10px' }}>
-<label htmlFor="quizQuestions">Quiz Questions:</label>
-<input type="text" id="quizQuestions" name="quizQuestions" value={quizQuestions} onChange={(event) => setQuizQuestions(event.target.value)} />
-</div>
-<div style={{ paddingTop: '10px' }}>
-<label htmlFor="correctAnswer">Correct Answer:</label>
-<input type="text" id="correctAnswer" name="correctAnswer" value={correctAnswer} onChange={(event) => setCorrectAnswer(event.target.value)} />
-</div>
-<div style={{ paddingTop: '10px' }}>
-<label htmlFor="level">Level:</label>
-<input type="checkbox" id="level" name="level" checked={level} onChange={(event) => setLevel(event.target.checked)} />
-</div>
-</>
-)}
-</Modal.Body>
-<Modal.Footer>
-<button variant="secondary" onClick={handleClose}>
-Close
-</button>
-{showExamModal && (
-<button variant="primary" onClick={submitExams}>
-Save Changes
-</button>
-)}
-{showQuizModal && (
-<button variant="primary">
-Save Changes
-</button>
-)}
-</Modal.Footer>
-</Modal>
-</>
-);
+          {showQuizModal && (
+            <>
+              <div style={{ paddingTop: '10px' }}>
+                <label htmlFor="quizName">Quiz Name:</label>
+                <input type="text" id="quizName" name="quizName" value={quizName} onChange={(event) => setQuizName(event.target.value)} />
+              </div>
+              <div style={{ paddingTop: '10px' }}>
+                <label htmlFor="quizDescription">Quiz Description:</label>
+                <input type="text" id="quizDescription" name="quizDescription" value={quizDescription} onChange={(event) => setQuizDescription(event.target.value)} />
+              </div>
+              <div style={{ paddingTop: '10px' }}>
+                <label htmlFor="quizQuestions">Quiz Questions:</label>
+                <input type="text" id="quizQuestions" name="quizQuestions" value={quizQuestions} onChange={(event) => setQuizQuestions(event.target.value)} />
+              </div>
+              <div style={{ paddingTop: '10px' }}>
+                <label htmlFor="correctAnswer">Correct Answer:</label>
+                <input type="text" id="correctAnswer" name="correctAnswer" value={correctAnswer} onChange={(event) => setCorrectAnswer(event.target.value)} />
+              </div>
+              <div style={{ paddingTop: '10px' }}>
+                <label htmlFor="level">Level:</label>
+                <input type="checkbox" id="level" name="level" checked={level} onChange={(event) => setLevel(event.target.checked)} />
+              </div>
+            </>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <button variant="secondary" onClick={handleClose}>
+            Close
+          </button>
+          {showExamModal && (
+            <button variant="primary" onClick={submitExams}>
+              Save Changes
+            </button>
+          )}
+          {showQuizModal && (
+            <button variant="primary">
+              Save Changes
+            </button>
+          )}
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
-export  default QuizeSection;
+export default QuizeSection;
