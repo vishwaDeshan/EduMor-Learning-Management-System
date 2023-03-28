@@ -35,7 +35,7 @@ const SASidebar = () => {
             </NavLink>
           </li>
           <li >
-            <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}><a>
+            <NavLink to="/superadminSettings" className={({ isActive }) => (isActive ? "active" : "")}><a>
               <SettingsOutlinedIcon />
               <span className="link_name">Settings</span>
             </a>
