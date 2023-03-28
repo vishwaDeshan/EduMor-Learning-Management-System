@@ -87,7 +87,7 @@ function CreateQuiz() {
 
 
     return (
-        <div style={{ margin: "10px 20px 5px" }}>
+        <div style={{ margin: "15px 20px 5px" }}>
             <button type="button" className="btn btn-primary" onClick={handleCreateQuizClick}>Create Quiz</button>
             <Modal show={showForm} onHide={handleCloseForm}>
                 <Modal.Header closeButton>

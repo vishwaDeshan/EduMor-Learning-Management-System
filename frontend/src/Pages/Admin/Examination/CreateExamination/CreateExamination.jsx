@@ -48,7 +48,7 @@ const CreateExamination = () => {
   };
 
   return (
-    <div style={{margin:"10px 20px 5px"}}>
+    <div style={{margin:"15px 20px 5px"}}>
       <Button variant="primary" onClick={() => setShowModal(true)}>
         Create Examination
       </Button>
