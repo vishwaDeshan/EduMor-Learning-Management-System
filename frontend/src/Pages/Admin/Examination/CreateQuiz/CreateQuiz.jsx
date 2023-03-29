@@ -9,9 +9,7 @@ import axios from 'axios';
 function CreateQuiz() {
     const [selectedExam, setSelectedExam] = useState('');
     const [selectedLevel, setSelectedLevel] = useState('');
-    const [questions, setQuestions] = useState([
-        { question: '', answers: [], correctAnswer: '' }
-    ]);
+    const [questions, setQuestions] = useState([{ question: '', answers: [], correctAnswer: '' }]);
     const [showForm, setShowForm] = useState(false);
     const [exam, setExam] = useState([]);
     const [quizName, setQuizName] = useState('');
@@ -22,7 +20,6 @@ function CreateQuiz() {
             .get("http://localhost:8000/examinations")
             .then((res) => {
                 setExam(res.data);
-                console.log("exam data: " + res.data);
             })
             .catch((err) => {
                 alert(err.message);
@@ -71,7 +68,6 @@ function CreateQuiz() {
         };
         try {
             const response = await axios.post(`http://localhost:8000/level/${selectedLevel}/quiz/save`, formData);
-            console.log(response.data);
         } catch (error) {
             console.error(error);
         }

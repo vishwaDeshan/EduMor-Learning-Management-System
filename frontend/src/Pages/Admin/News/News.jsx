@@ -96,7 +96,7 @@ function News() {
           style={{ marginLeft: '10px' }}
         />
       </label>
-      <button type="submit" style={{ alignSelf: 'center' }}>Submit</button>
+      <button type="submit" className='btn btn-primary' style={{ alignSelf: 'center' }}>Submit</button>
     </form>
   );
 }
