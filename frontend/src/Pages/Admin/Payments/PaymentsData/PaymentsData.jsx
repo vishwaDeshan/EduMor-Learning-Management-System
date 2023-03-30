@@ -9,9 +9,9 @@ export default function PaymentsData() {
     <MDBTable align='middle'>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
-          <th scope='col' >Card Type</th>
-          <th scope='col'>Card Number</th>
-          <th scope='col'>Card Holder Name</th>
+          <th scope='col'style={{color:'red',marginLeft:'190px'}} >Card Type</th>
+          <th scope='col'style={{color:'red'}}>Card Number</th>
+          <th scope='col'style={{color:'red'}}>Card Holder Name</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody >

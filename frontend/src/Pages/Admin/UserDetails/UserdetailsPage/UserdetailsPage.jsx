@@ -13,9 +13,9 @@ function UserdetailsPage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5>Overview</h5>
+          <h5 style={{color:'blue',marginBottom:'30px'}}>User Details</h5>
 
-          <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
+          <div className="overviewSections" style={{ display: "flex",color:'black', minWidth:"100%" }}>
 
             <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
               <UserData/>

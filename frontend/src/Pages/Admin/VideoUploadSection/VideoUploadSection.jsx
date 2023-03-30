@@ -32,7 +32,7 @@ const VideoUploadSection = () => {
     <div className="exam-uploader">
       <label htmlFor="exams" className="label">Choose examination:</label>
       <select id="exams" value={selectedExam} onChange={handleExamChange} className="select">
-        <option value="">--Please choose an examination--</option>
+        <option value="" style={{color:'blue'}}>--Please choose an examination--</option>
         <option value="exam1">Exam 1</option>
         <option value="exam2">Exam 2</option>
         <option value="exam3">Exam 3</option>

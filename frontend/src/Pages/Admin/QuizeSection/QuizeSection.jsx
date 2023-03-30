@@ -23,12 +23,7 @@ function QuizeSection() {
   const handleShowExamModal = () => setShowExamModal(true);
   const handleShowQuizModal = () => setShowQuizModal(true);
 
-  // submitExams(examName, examDescription,fileUpload);
-
-  //   // Clear form inputs
-    // setExamName('');
-    // setExamDescription('');
-    // setFileUpload('');
+  
 
   const submitExams = (examName,description ) => {
     axios.post('examinations/save', { examName,description })
@@ -43,22 +38,7 @@ function QuizeSection() {
       });
   };
 
-  // const handleQuizSubmit = () => {
-  //   axios.post('http://localhost:8000/save', {
-  //     name: quizName,
-  //     description: quizDescription,
-  //     questions: quizQuestions,
-  //     correctAnswer: correctAnswer,
-  //     level: level,
-  //   })
-  //     .then(function (response) {
-  //       console.log(response);
-  //       handleClose();
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+  
 
   return (
     <>

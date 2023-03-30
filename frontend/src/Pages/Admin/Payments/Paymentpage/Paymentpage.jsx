@@ -14,7 +14,7 @@ function Paymentpage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5>Payment Details</h5>
+          <h5 style={{color:'blue',fontweight:'bold',marginBottom:'2px'}}>Payment Details</h5>
 
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 

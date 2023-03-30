@@ -1,49 +1,4 @@
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// function News() {
-//   const [news, setNews] = useState('');
-//   const [link, setLink] = useState('');
 
-//   const handleSubmit = (news, link) => {
-//     axios.post('http://8000/news/save', { news, link })
-//       .then(response => {
-//         console.log('News saved successfully');
-//         alert("News submit succesfully");
-//       })
-//       .catch(error => {
-//         console.error('Error saving news: ', error);
-//         alert("errrr")
-//       });
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop:'50px'}}>
-//       <label style={{ marginBottom: '10px' }}>
-//        News:
-//         <input
-//           type="text"
-//           value={news}
-//           onChange={(event) => setNews(event.target.value)}
-//           style={{ marginLeft: '10px' }}
-//         />
-//       </label>
-     
-     
-//       <label style={{ marginBottom: '10px' }}>
-//         Link:
-//         <input
-//           type="text"
-//           value={link}
-//           onChange={(event) => setLink(event.target.value)}
-//           style={{ marginLeft: '10px' }}
-//         />
-//       </label>
-//       <button type="submit" style={{ alignSelf: 'center' }}>Submit</button>
-//     </form>
-//   );
-// }
-
-// export default News;
 
 
 import React, { useState } from 'react';
@@ -75,28 +30,28 @@ function News() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop:'50px'}}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop:'50px',marginLeft:'300px',border:'2px'}}>
       <label style={{ marginBottom: '10px' }}>
        News:
         <input
           type="text"
           value={news}
           onChange={(event) => setNews(event.target.value)}
-          style={{ marginLeft: '10px' }}
+          style={{ marginLeft: '10px',width:'300px',borderRadius:'15px' ,padding:'8px' }}
         />
       </label>
      
      
       <label style={{ marginBottom: '10px' }}>
-        Link:
+        Link :
         <input
           type="text"
           value={link}
           onChange={(event) => setLink(event.target.value)}
-          style={{ marginLeft: '10px' }}
+          style={{ marginLeft: '10px',width:'300px',borderRadius:'15px',padding:'8px',marginTop:'5px'  }}
         />
       </label>
-      <button type="submit" style={{ alignSelf: 'center' }}>Submit</button>
+      <button type="submit" style={{ alignSelf: 'center',padding:'5px',backgroundColor:'blue',color:'white' }}>Submit</button>
     </form>
   );
 }

@@ -1,23 +1,33 @@
-import React from 'react';
+import React ,{ useState }from 'react';
 import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from 'mdb-react-ui-kit';
 import AdminUserdetails from '../../../../Data/AdminUserdetails';
 import DeleteIcon from '@mui/icons-material/Delete';
 import defaultUser from "../../../../Assets/defaultUser.png"
 
+
+
 export default function UserData() {
-  
+
+  const [data, setData] = useState([]);
+
+  const handleDelete = (index) => {
+    const newData = [...data];
+    newData.splice(index, 1);
+    setData(newData);
+  };
+
   return (
     <MDBTable align='middle'>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
-          <th scope='col' >User Name</th>
-          <th scope='col'>Email</th>
-          <th scope='col'>Status</th>
-          <th scope='col'>Action</th>
+          <th scope='col' style={{color:'red',paddingLeft:'50px'}}>User Name</th>
+          <th scope='col'style={{color:'red',paddingLeft:'50px'}}>Email</th>
+          <th scope='col'style={{color:'red'}}>Status</th>
+          <th scope='col'style={{color:'red'}}>Action</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody >
-
+<hr style={{color:'blue'}}/>
         {AdminUserdetails.map(({ UserName, Useremail, UserStatus }, index) => {
           return (
             <tr>
@@ -44,9 +54,14 @@ export default function UserData() {
                 </MDBBadge>
               </td>
               <td>
-                <p rounded size='sm'>
-                  <DeleteIcon/>
-                </p>
+                
+              {data.map((item, index) => (
+  <div key={index}>
+    <span>{item.name}</span>
+    <DeleteIcon onClick={() => handleDelete(index)} />
+  </div>
+))}
+              
               </td>
             </tr>
           );
