@@ -54,7 +54,7 @@ function Advertisement() {
           style={{ marginLeft: '10px',width:'300px',borderRadius:'15px'  }}
         />
       </label>
-      <button type="submit"  style={{alignSelf:'center' ,padding:'5px',backgroundColor:'blue',color:'white' }}>Submit</button>
+      <button type="submit" className='btn btn-primary' style={{ alignSelf: 'center' }}>Submit</button>
     </form>
   );
 }

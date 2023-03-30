@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '../../../Components/Footer/Footer'
 import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
+import SAOverview from '../../../Components/SuperAdmin/SAOverview/SAOverview'
 import SASidebar from '../../../Components/SuperAdmin/SASidebar/SASidebar'
 
 function SADashboard() {
@@ -11,7 +12,7 @@ function SADashboard() {
       <div className="mainContainer">
         <SANavbar />
         <div className="overview-container" style={{ display: "flex" }}>
-          
+          <SAOverview/>
         </div>
       </div>
     </div>

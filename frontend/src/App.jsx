@@ -21,7 +21,6 @@ import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import UserdetailsPage from "./Pages/Admin/UserDetails/UserdetailsPage/UserdetailsPage";
 import Paymentpage from "./Pages/Admin/Payments/Paymentpage/Paymentpage";
 import VideoUploadPage from "./Pages/Admin/VideoUploadSection/VideoUploadPage";
-import QuizePage from "./Pages/Admin/QuizeSection/QuizePage";
 import AdvertisementPage from "./Pages/Admin/Advertisement/AdvertisementPage";
 import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
@@ -29,9 +28,11 @@ import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import NewsPage from "./Pages/Admin/News/NewsPage";
-
-
-
+import ExaminationQuizPage from "./Pages/Admin/Examination/ExaminationQuizPage";
+import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
+import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
+import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
+import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
 
 
 function App() {
@@ -85,7 +86,7 @@ function App() {
           <Route path="/userDetails" element={<UserdetailsPage/>}/>
           <Route path="/paymentsData" element={<Paymentpage/>}/>
           <Route path="/videoUpload" element={<VideoUploadPage/>}/>
-          <Route path="/quizUpload" element={<QuizePage/>}/>
+          <Route path="/quizUpload" element={<ExaminationQuizPage/>}/>
           <Route path="/adsUpload" element={<AdvertisementPage/>}/>
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
@@ -94,12 +95,30 @@ function App() {
           <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/test" element={<Test />} />
           <Route path="/newsUpload" element={<NewsPage/>}/>
+          <Route path="/examinations" element={<Examinations />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/myPayments" element={<Payment />} />
+          <Route path="/myExams" element={<MyExams />} />
+          <Route path="/Exam" element={<ExamModule />} />
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Overview />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/land" element={<LandingPage />} />
+          <Route path="/superAdminOverview" element={<AdminSAOverview />} />
+          <Route path="/superAdminStudentoverview" element={<StudentSAOverview />}/>
+          <Route path="/superAdminExaminationOverview" element={<superAdminExaminationOverview />}/>
+          <Route path="/superAdminSettings" element={<SuperAdminSettings />} />
+          <Route path="/superAdminDashboard" element={<SADashboard />} />
+          <Route path="/adminRequests" element={<AdminRequests />} />
         </Routes>
       </BrowserRouter> }
     </div>
   );
 }
-
 
 export default App;
 
