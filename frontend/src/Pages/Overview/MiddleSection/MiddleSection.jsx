@@ -13,7 +13,7 @@ function MiddleSection() {
     useEffect(() => {
         axios.get('http://localhost:8000/examinations')
             .then(response => {
-                const sortedExams = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                const sortedExams = response.data.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
                 const recentExams = sortedExams.slice(0, 3);
                 setExam(recentExams);
             })
