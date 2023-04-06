@@ -17,8 +17,8 @@ function UserNavbar() {
             <Link to="/land">
               <li>Features</li>
               <li>Examinations</li>
-              <li>Contact Us</li>
             </Link>
+              <li><Link to="/Contactus">Contact Us</Link></li>
           </ul>
         </div>
         <Link to="/signup"><button type="button" value="signup" className="button">

@@ -23,6 +23,7 @@ import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
+import Contactus from "./Pages/Contact Us/Contactus"
 
 
 
@@ -78,6 +79,7 @@ function App() {
           <Route path="/verifyEmail" element={<VerifyEmail />} />
           <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/contactus" element={<Contactus />} />
         </Routes>
       </BrowserRouter>
     </div>
