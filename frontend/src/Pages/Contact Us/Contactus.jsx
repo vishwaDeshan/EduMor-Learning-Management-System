@@ -1,12 +1,11 @@
-import React, { useRef } from 'react';
-import './Contactus.css'
-import UserNavbar from '../../Components/UserNavbar/UserNavbar'
-import Footer from '../../Components/Footer/Footer'
-import InputBox from '../../Components/Inputs/Input'
-import InputBoxContactus from '../../Components/Inputs/InputContactus'
-import Button from '../../Components/Buttons/Button'
-import emailjs from '@emailjs/browser';
-
+import React, { useRef } from "react";
+import "./Contactus.css";
+import UserNavbar from "../../Components/UserNavbar/UserNavbar";
+import Footer from "../../Components/Footer/Footer";
+import InputBox from "../../Components/Inputs/Input";
+import InputBoxContactus from "../../Components/Inputs/InputContactus";
+import Button from "../../Components/Buttons/Button";
+import emailjs from "@emailjs/browser";
 
 function Contactus() {
   const form = useRef();
@@ -14,63 +13,64 @@ function Contactus() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_b3pyliw', 'template_puf00vd', form.current, '0d4uclg9dBS04JRZV')
-      .then((result) => {
+    emailjs
+      .sendForm(
+        "service_b3pyliw",
+        "template_puf00vd",
+        form.current,
+        "0d4uclg9dBS04JRZV"
+      )
+      .then(
+        (result) => {
           console.log(result.text);
-      }, (error) => {
+        },
+        (error) => {
           console.log(error.text);
-      });
+        }
+      );
   };
 
   return (
     <div>
-        <UserNavbar/>
-    
-    <div className='header'>
-      <h2>Contact Us</h2>
-    </div>
-    <form ref={form} onSubmit={sendEmail}>
-    <div className='container'>
-    <div className='contactform1'>
-      <InputBoxContactus
+      <UserNavbar />
+
+      <div className="header">
+        <h2>Contact Us</h2>
+      </div>
+      <form ref={form} onSubmit={sendEmail}>
+        <div className="container">
+          <div className="contactform1">
+            {/* <InputBoxContactus
         title="Name"
         type="text"
-        name="user_name"
-      />
-      <InputBoxContactus
-        title="Email"
-        type="email"
-        name="user_email"
-      />
-     <label>
-            <h6 style={{fontWeight:600, color:"#041083"} }>Message: </h6>
-            <input className="Message" type="text" name="message">
-
-            </input>
+        name="username"
+      /> */}
+            <label>
+              <h6 style={{ fontWeight: 600, color: "#041083" }}>Name: </h6>
+              <input className="Message" type="text" name="name"></input>
             </label>
 
-      <div className='contactbutton'>
-      <Button 
-      buttonName="Submit"
-      value="send"
-      />
-      </div>
-</div>
-    </div>
-    </form>
+            <InputBoxContactus title="Email" type="email" name="user_email" />
+            <label>
+              <h6 style={{ fontWeight: 600, color: "#041083" }}>Message: </h6>
+              <input className="Message" type="text" name="message"></input>
+            </label>
 
-    <div className='contactconfirmation'>
-      
-    </div>
+            <div className="contactbutton">
+              <Button buttonName="Submit" value="send" />
+            </div>
+          </div>
+        </div>
+      </form>
 
+      <div className="contactconfirmation"></div>
 
-    
-    <Footer />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default Contactus
+export default Contactus;
 
 // import React, { useRef } from 'react';
 // import emailjs from '@emailjs/browser';
@@ -111,7 +111,6 @@ export default Contactus
 //       <input type="submit" value="Send" />
 //     </form>
 //     </div>
-
 
 //     <Footer />
 //     </div>

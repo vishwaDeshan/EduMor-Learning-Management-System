@@ -42,7 +42,7 @@ const registerController = async (req, res) => {
             if (sendMail) {
                 res.status(201).json({ sucess: true, msg: "Registered in successfully error in sending verification" });
             } else {
-                res.status(201).json({ sucess: true, msg: "Registered in successfully" });
+                res.status(201).json({ sucess: true, msg: "Registered successfully" });
             }
         });
     });
