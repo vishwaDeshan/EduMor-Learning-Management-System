@@ -4,7 +4,6 @@ import SideBar from '../../Components/SideBar/SideBar';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
-import EditIcon from '@mui/icons-material/Edit';
 import defaultUser from '../../Assets/defaultUser.png'
 import UserNotFound from '../../Assets/UserNotFound.jpg'
 import './Profile.css'
@@ -19,7 +18,6 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [province, setProvince] = useState('');
-  const [zipCode, setZip] = useState('');
   const [birthday, setBirthday] = useState('');
 
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -55,7 +53,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
     if (street !== '') updateObj.street = street;
     if (city !== '') updateObj.city = city;
     if (province !== '') updateObj.province = province;
-    if (zipCode !== '') updateObj.zipCode = zipCode;
+  
 
     axios
       .patch(`http://localhost:8000/auth/${user._id}`, updateObj)
@@ -113,7 +111,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="fisrtName">{t("First Name")}</label>
-                            <input type="text" class="form-control" id="fisrtName" placeholder={"Enter the last name"} onChange={(e) => {
+                            <input type="text" class="form-control" id="fisrtName" placeholder={user.firstName} onChange={(e) => {
                               setFirstName(e.target.value);
                             }} />
                           </div>
@@ -121,7 +119,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="lastName">{t("Last Name")}</label>
-                            <input type="text" class="form-control" id="lastName" placeholder={"Enter the last name"} onChange={(e) => {
+                            <input type="text" class="form-control" id="lastName" placeholder={user.lastName} onChange={(e) => {
                               setLastName(e.target.value);
                             }} />
                           </div>
@@ -129,16 +127,8 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div class="form-group">
                             <label for="phone">{t("Phone")}</label>
-                            <input type="text" class="form-control" id="phone" placeholder={"Enter the phone number"} onChange={(e) => {
+                            <input type="text" class="form-control" id="phone" placeholder={user.phonenumber} onChange={(e) => {
                               setPhoneNumber(e.target.value);
-                            }} />
-                          </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="birthday">{t("birthday")}</label>
-                            <input type="date" class="form-control" id="birthday" placeholder={"Enter the birthday"} onChange={(e) => {
-                              setBirthday(e.target.value);
                             }} />
                           </div>
                         </div>
@@ -168,14 +158,6 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                             <label for="sTate">{t("State")}</label>
                             <input type="text" class="form-control" id="sTate" placeholder={"Enter the province"} onChange={(e) => {
                               setProvince(e.target.value);
-                            }} />
-                          </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="zIp">{t("Zip Code")}</label>
-                            <input type="text" class="form-control" id="zIp" placeholder={"Enter the zip code"} onChange={(e) => {
-                              setZip(e.target.value);
                             }} />
                           </div>
                         </div>

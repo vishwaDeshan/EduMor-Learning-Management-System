@@ -44,10 +44,6 @@ const UserSchema = new mongoose.Schema({
     province: {
         type: String,
         default:""
-    },
-    zipCode: {
-        type: String,
-        default:""
     }
 
 }, { timestamps: true });

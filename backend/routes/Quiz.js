@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const QuizController = require('../controllers/QuizController');
+const QuizController = require('../Controllers/quizController');
 
 //post a quiz
 router.post('/level/:id/quiz/save', QuizController.createQuiz);

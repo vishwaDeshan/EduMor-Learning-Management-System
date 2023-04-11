@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import questions from '../../../Data/questions';
 import './Quiz.css';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import { useParams } from "react-router-dom";

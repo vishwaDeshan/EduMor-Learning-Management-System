@@ -1,5 +1,6 @@
 const Quiz = require('../models/quiz');
 
+//save the Quiz
 const createQuiz = async (req, res) => {
     const quiz = new Quiz({
         quizName: req.body.quizName,
@@ -15,6 +16,7 @@ const createQuiz = async (req, res) => {
     }
 };
 
+//get all quizzes
 const getQuizzesByLevel = async (req, res) => {
     try {
         const quizzes = await Quiz.find({ level: req.params.id });
@@ -24,6 +26,8 @@ const getQuizzesByLevel = async (req, res) => {
     }
 };
 
+
+//get  quiz by id
 const getQuizById = async (req, res) => {
     try {
         const quiz = await Quiz.findById(req.params.id);
@@ -36,6 +40,8 @@ const getQuizById = async (req, res) => {
     }
 };
 
+
+//update quiz
 const updateQuizById = async (req, res) => {
     try {
         const quiz = await Quiz.findById(req.params.id);
@@ -53,6 +59,8 @@ const updateQuizById = async (req, res) => {
     }
 };
 
+
+//delete quiz 
 const deleteQuizById = async (req, res) => {
     try {
         const quiz = await Quiz.findById(req.params.id);
