@@ -28,6 +28,8 @@ import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import NewsPage from "./Pages/Admin/News/NewsPage";
+import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
 
 
 
@@ -103,6 +105,8 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage />} />
+          <Route path="/adminRequests" element={<AdminRequests />} />
+          <Route path="/superAdminEditProfile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>}
     </div>

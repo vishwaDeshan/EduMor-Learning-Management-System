@@ -19,7 +19,6 @@
     flex-direction: row;
     height: 100%;
     width: 100%;
-    
 }
 
 .overviewbox{
@@ -40,25 +39,20 @@ margin: 10px;
     color: #ffffff;
     margin-top: 70px;
     margin-left: 70px;
-    
-    
 }
 
 .overviewIcon{
     color: #ef0c6e;
     margin-left: 100px;
     margin-top: 70px;
-
 }
 
 .colmn3{
-
     background-color: #0b0b81;
     width: 97%;
     height: 100%;
     margin: 10px;
     border-radius: 20px;
-    
 }
 
 .right-container{
@@ -69,17 +63,13 @@ display: flex;
     width: 40%;
     margin:1%;
     border-radius: 20px;
-
-
 }
 .msgBox{
-
     color: #fff;
     margin-left: 100px;
     margin-top: 300px;
 }
 .msgboxicn{
-
     color: #ef0c6e;
     margin-top:300px;
     margin-left:170px ;
