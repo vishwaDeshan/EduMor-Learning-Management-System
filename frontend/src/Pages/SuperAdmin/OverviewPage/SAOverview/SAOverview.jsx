@@ -32,7 +32,7 @@ function SAOverview() {
                 </div>
             </div>
             <div className='right-container'>
-                <div className='msgBox'>unread massages</div>
+                <div className='msgBox'>Unreaded Messages</div>
                 <div className='msgboxicn'><CardMembershipIcon /></div>
             </div>
         </div>
