@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const { upload } = require('./Utils/fileUpload');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -18,21 +17,12 @@ app.use("/examinations", require("./routes/Examination"));
 app.use("/enrollment", require("./routes/Enrollment"));
 app.use("/", require("./routes/Quiz"));
 
-app.post('/upload', upload.single('file'), (req, res) => {
-    if (!req.file) {
-      return res.status(400).json({ message: 'No file uploaded' });
-    }
-  
-    res.json({ path: req.file.path });
-  });
-
 const port = process.env.PORT || 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-
 });
 
 mongoose.connect(DB_URL)
