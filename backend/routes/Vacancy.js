@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const VacanciesController = require('../controllers/VacanciesController');
-const authMiddleware = require('../Middleware/authMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // Save vacancies details
 router.post('/save', VacanciesController.saveVacancy);
