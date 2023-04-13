@@ -11,36 +11,36 @@ function VacancySection() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(7);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:8000/vacancies')
-      .then((res) => {
-        setVacancy(res.data.existingVacancies);
-        setFilteredVacancy(res.data.existingVacancies);
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:8000/vacancies')
+  //     .then((res) => {
+  //       setVacancy(res.data.existingVacancies);
+  //       setFilteredVacancy(res.data.existingVacancies);
+  //     })
+  //     .catch((err) => {
+  //       alert(err.message);
+  //     });
+  // }, []);
 
       //with token
-    // useEffect(() => {
-    //   const token = localStorage.getItem("AUTH_TOKEN");
+    useEffect(() => {
+      const token = localStorage.getItem("AUTH_TOKEN");
       
-    //   axios
-    //     .get('http://localhost:8000/vacancies', {
-    //       headers: {
-    //         'Authorization': `Bearer ${token}`
-    //       }
-    //     })
-    //     .then((res) => {
-    //       setVacancy(res.data.existingVacancies);
-    //       setFilteredVacancy(res.data.existingVacancies);
-    //     })
-    //     .catch((err) => {
-    //       alert(err.message);
-    //     });
-    // }, []);
+      axios
+        .get('http://localhost:8000/vacancies', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then((res) => {
+          setVacancy(res.data.existingVacancies);
+          setFilteredVacancy(res.data.existingVacancies);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }, []);
 
 
   const applyFilters = (filters) => {
