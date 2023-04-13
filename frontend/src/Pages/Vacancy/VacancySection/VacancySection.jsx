@@ -23,6 +23,26 @@ function VacancySection() {
       });
   }, []);
 
+      //with token
+    // useEffect(() => {
+    //   const token = localStorage.getItem("AUTH_TOKEN");
+      
+    //   axios
+    //     .get('http://localhost:8000/vacancies', {
+    //       headers: {
+    //         'Authorization': `Bearer ${token}`
+    //       }
+    //     })
+    //     .then((res) => {
+    //       setVacancy(res.data.existingVacancies);
+    //       setFilteredVacancy(res.data.existingVacancies);
+    //     })
+    //     .catch((err) => {
+    //       alert(err.message);
+    //     });
+    // }, []);
+
+
   const applyFilters = (filters) => {
     let filtered = vacancy;
     if (filters.jobType !== 'All') {

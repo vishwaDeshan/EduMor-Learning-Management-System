@@ -58,11 +58,9 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
     axios
       .patch(`http://localhost:8000/auth/${user._id}`, updateObj)
       .then((res) => {
-        console.log(res.data);
         alert('Updated successfully');
       })
       .catch((err) => {
-        console.log(err);
         alert('Error updating user');
       });
   };
