@@ -43,7 +43,6 @@ function App() {
       if (decodedToken.exp * 1000 < Date.now()) {
         setUser(null);
         setIsLoggedIn(false);
-        // window.location.replace("/login");
       } else {
         setUser(decodedToken);
         setIsLoggedIn(true);
