@@ -15,7 +15,6 @@ function VacancySection() {
     const token = localStorage.getItem("AUTH_TOKEN");
     
     if (!token) {
-      // Token not found, handle the error
       alert("Authorization token missing");
       return;
     }
@@ -31,7 +30,6 @@ function VacancySection() {
         setFilteredVacancy(res.data.existingVacancies);
       })
       .catch((err) => {
-        // Handle the error
         console.log(err);
         alert(err.message);
       });

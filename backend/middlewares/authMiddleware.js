@@ -20,7 +20,7 @@ const authMiddleware = (req, res, next) => {
   }
   let decodedToken;
   try {
-    decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    decodedToken = jwt.decode(token, process.env.JWT_SECRET_KEY);
   } catch (err) {
     return res.status(401).json({
       success: false,
