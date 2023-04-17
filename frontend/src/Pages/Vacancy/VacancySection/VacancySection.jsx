@@ -11,36 +11,31 @@ function VacancySection() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(7);
 
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:8000/vacancies')
-  //     .then((res) => {
-  //       setVacancy(res.data.existingVacancies);
-  //       setFilteredVacancy(res.data.existingVacancies);
-  //     })
-  //     .catch((err) => {
-  //       alert(err.message);
-  //     });
-  // }, []);
-
-      //with token
-    useEffect(() => {
-      const token = localStorage.getItem("AUTH_TOKEN");
-      
-      axios
-        .get('http://localhost:8000/vacancies', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        .then((res) => {
-          setVacancy(res.data.existingVacancies);
-          setFilteredVacancy(res.data.existingVacancies);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("AUTH_TOKEN");
+    
+    if (!token) {
+      // Token not found, handle the error
+      alert("Authorization token missing");
+      return;
+    }
+    
+    axios
+      .get('http://localhost:8000/vacancies', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        setVacancy(res.data.existingVacancies);
+        setFilteredVacancy(res.data.existingVacancies);
+      })
+      .catch((err) => {
+        // Handle the error
+        console.log(err);
+        alert(err.message);
+      });
+  }, []);
 
 
   const applyFilters = (filters) => {

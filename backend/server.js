@@ -17,7 +17,7 @@ app.use("/examinations", require("./routes/Examination"));
 app.use("/enrollment", require("./routes/Enrollment"));
 app.use("/", require("./routes/Quiz"));
 
-const port = process.env.PORT || 8000;
+const port = 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(DB_URL, {

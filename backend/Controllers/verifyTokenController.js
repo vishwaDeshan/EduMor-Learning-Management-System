@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User")
+const dotenv = require('dotenv')
+dotenv.config()
 
 const verifyTokenController = async (req, res) => {
     const { token } = req.query;
@@ -11,7 +13,7 @@ const verifyTokenController = async (req, res) => {
     //decode the token
     let decodedToken;
     try {
-        decodedToken = jwt.verify(token, "$dfksdklfksd/$klfdfldf");
+        decodedToken = jwt.verify(token,  process.env.JWT_SECRET_KEY);
     } catch (err) {
         return res.status(404).json({ sucess: false, msg: "Invalid Token", error: err });
     }

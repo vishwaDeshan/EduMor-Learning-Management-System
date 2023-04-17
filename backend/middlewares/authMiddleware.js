@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -18,7 +20,7 @@ const authMiddleware = (req, res, next) => {
   }
   let decodedToken;
   try {
-    decodedToken = jwt.verify(token, "$dfksdklfksd/$klfdfldf");
+    decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
   } catch (err) {
     return res.status(401).json({
       success: false,
