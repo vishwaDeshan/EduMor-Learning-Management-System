@@ -11,16 +11,27 @@ function MiddleSection() {
     const { t } = useTranslation();
     const [exam, setExam] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8000/examinations')
-            .then(response => {
-                const sortedExams = response.data.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
-                const recentExams = sortedExams.slice(0, 3);
-                setExam(recentExams);
-            })
-            .catch(error => {
-                alert(error.message);
-            });
-    }, []);
+        const token = localStorage.getItem("AUTH_TOKEN");
+        if (!token) {
+          alert("Authorization token missing");
+          return;
+        }
+        axios.get('http://localhost:8000/examinations', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then(response => {
+          const sortedExams = response.data.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+          const recentExams = sortedExams.slice(0, 3);
+          setExam(recentExams);
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+      }, []);
+      
+    
 
     return (
         <div className="middleSection">

@@ -54,15 +54,18 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
     if (city !== '') updateObj.city = city;
     if (province !== '') updateObj.province = province;
   
-
-    axios
-      .patch(`http://localhost:8000/auth/${user._id}`, updateObj)
-      .then((res) => {
-        alert('Updated successfully');
-      })
-      .catch((err) => {
-        alert('Error updating user');
-      });
+    axios.patch(`http://localhost:8000/auth/${user._id}`, updateObj, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('AUTH_TOKEN')}`
+      }
+    })
+    .then((res) => {
+      alert('Updated successfully');
+    })
+    .catch((err) => {
+      alert('Error updating user');
+    });
+    
   };
 
 

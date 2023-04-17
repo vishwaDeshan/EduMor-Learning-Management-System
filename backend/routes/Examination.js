@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const examinationController = require('../Controllers/examinationController');
+const authMiddleware = require('../Middlewares/authMiddleware');
+
 
 // Create a new examination
 router.post('/save', examinationController.createExamination);
 
 // Get all examinations
-router.get('/', examinationController.getAllExaminations);
+router.get('/',authMiddleware, examinationController.getAllExaminations);
 
 // Get specific examination using ID
 router.get('/:id', examinationController.getExaminationById);

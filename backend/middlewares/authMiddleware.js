@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
   }
   const token = authHeader.split(' ')[1];
   if (!token) {
-    return res.status(401).json({
+    return res.status(402).json({
       success: false,
       msg: 'Authorization token missing',
       error:err
@@ -22,7 +22,7 @@ const authMiddleware = (req, res, next) => {
   try {
     decodedToken = jwt.decode(token, process.env.JWT_SECRET_KEY);
   } catch (err) {
-    return res.status(401).json({
+    return res.status(403).json({
       success: false,
       msg: 'Invalid authorization token',
       error: err
