@@ -11,7 +11,6 @@ import axios from "axios"
 
 export default function Profile({ isLoggedIn, user, logoutUser }) {
   const { t } = useTranslation();
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phonenumber, setPhoneNumber] = useState('');
