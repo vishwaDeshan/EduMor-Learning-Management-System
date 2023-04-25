@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -6,11 +6,39 @@ import SideBar from "../../Components/SideBar/SideBar";
 import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from "mdb-react-ui-kit";
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import myExams from "../../Data/MyExams";
-import './MyExams.css'
+import './MyExams.css';
+import axios from "axios";
 
 
 function MyExams({ isLoggedIn, user }) {
   const { t } = useTranslation();
+
+  //   const token = localStorage.getItem("AUTH_TOKEN");
+  //   const userId = user._id;
+
+
+  // useEffect(() => {
+    
+  //   if (!token) {
+  //     alert("Authorization token missing");
+  //     return;
+  //   }
+    
+  //   axios
+  //     .get(`http://localhost:8000/enrollment/${userId}`, {
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     })
+  //     .then((res) => {
+  //      console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       alert(err.message);
+  //     });
+  // }, []);
+
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>

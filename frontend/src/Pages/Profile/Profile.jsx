@@ -52,19 +52,19 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
     if (street !== '') updateObj.street = street;
     if (city !== '') updateObj.city = city;
     if (province !== '') updateObj.province = province;
-  
+
     axios.patch(`http://localhost:8000/auth/${user._id}`, updateObj, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('AUTH_TOKEN')}`
       }
     })
-    .then((res) => {
-      alert('Updated successfully');
-    })
-    .catch((err) => {
-      alert('Error updating user');
-    });
-    
+      .then((res) => {
+        alert('Updated successfully');
+      })
+      .catch((err) => {
+        alert('Error updating user');
+      });
+
   };
 
 
@@ -90,7 +90,7 @@ export default function Profile({ isLoggedIn, user, logoutUser }) {
                   <div class="card h-100" style={{ borderRadius: "10px" }}>
                     <div class="card-body">
                       <div class="account-settings">
-                        <div class="user-profile" style={{marginTop:"80px"}}>
+                        <div class="user-profile" style={{ marginTop: "80px" }}>
                           <div class="user-avatar" style={{ borderRadius: "10px" }}>
                             <img src={defaultUser} alt="User Profile Picture" />
                           </div>

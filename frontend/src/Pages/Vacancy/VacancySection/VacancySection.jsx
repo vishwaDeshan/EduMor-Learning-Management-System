@@ -13,12 +13,11 @@ function VacancySection() {
 
   useEffect(() => {
     const token = localStorage.getItem("AUTH_TOKEN");
-    
+
     if (!token) {
       alert("Authorization token missing");
       return;
     }
-    
     axios
       .get('http://localhost:8000/vacancies', {
         headers: {
@@ -46,7 +45,7 @@ function VacancySection() {
     }
     setFilteredVacancy(filtered);
   };
-  
+
 
 
   const lastPostIndex = currentPage * postsPerPage;
@@ -58,15 +57,22 @@ function VacancySection() {
     setCurrentPage(selected);
   };
 
+  //flter closing date greater than today date
+  const today = new Date();
+  const filteredJobCards = currentPosts.filter(({ closingDate }) => {
+    const closingDateObj = new Date(closingDate);
+    return closingDateObj > today;
+  });
+
   return (
     <>
       <Grid container justifyContent="center" style={{ width: '100%' }}>
         <Grid item xs={10}>
           <Search onSearch={applyFilters} />
-          {currentPosts.length === 0 ? (
-            <p style={{textAlign:"center", color:"grey",marginTop:"200px"}}>No records found</p>
+          {filteredJobCards.length === 0 ? (
+            <p style={{ textAlign: "center", color: "grey", marginTop: "200px" }}>No records found</p>
           ) : (
-            currentPosts.map(({ title, type, company, closingDate, district, url }, index) => {
+            filteredJobCards.map(({ title, type, company, closingDate, district, url }, index) => {
               return <JobCard key={index} title={title} company={company} closingDate={closingDate} type={type} district={district} link={url} />;
             })
           )}

@@ -51,6 +51,7 @@ function ExamModule({ isLoggedIn, user }) {
     axios
       .post(`http://localhost:8000/enrollment`, {
         examinationId: exam.examination._id,
+        examminationName: exam.examination._id,
         userId: user?._id,
       })
       .then((res) => {
