@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authMiddleware = require('../Middlewares/authMiddleware');
 const enrollmentController = require('../Controllers/enrollmentController');
 
 // Route for enrolling a user in an examination
