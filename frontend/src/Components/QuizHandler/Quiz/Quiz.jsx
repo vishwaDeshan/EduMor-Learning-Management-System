@@ -4,9 +4,14 @@ import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Results from '../Results/Results';
+import withAuth from '../../../hoc/withAuth';
 
-function Quiz({isLoggedIn,user}) {
+
+function Quiz() {
+
   const [quiz, setQuiz] = useState({});
+  const [level, setLevel] = useState(null);
+  const [examId, setExamId] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [answers, setAnswers] = useState(Array(quiz.length).fill(''));
@@ -19,6 +24,8 @@ function Quiz({isLoggedIn,user}) {
       .then((res) => {
         if (res.data) {
           setQuiz(res.data.questions);
+          setLevel(res.data.level);
+          setExamId(res.data.examinationId);
         } else {
           alert('Quiz data not found');
         }
@@ -84,7 +91,7 @@ function Quiz({isLoggedIn,user}) {
   const currentQuestionData = quiz[currentQuestion];
 
   if (currentQuestion === quiz.length) {
-    return <Results answers={answers} qid={id} user={user}/>;
+    return <Results answers={answers} qid={id} level={level} examId={examId}/>;
   }
 
   //quiz Answering section
@@ -147,4 +154,4 @@ function Quiz({isLoggedIn,user}) {
 }
 
 
-export default Quiz;
+export default withAuth(Quiz);

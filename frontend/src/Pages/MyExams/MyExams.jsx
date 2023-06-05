@@ -1,54 +1,55 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import SideBar from "../../Components/SideBar/SideBar";
-import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from "mdb-react-ui-kit";
-import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
-import myExams from "../../Data/MyExams";
-import './MyExams.css';
+import {
+  MDBTable,
+  MDBTableHead,
+  MDBTableBody,
+  MDBBadge,
+} from "mdb-react-ui-kit";
+import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
+import "./MyExams.css";
 import axios from "axios";
+import withAuth from "../../hoc/withAuth";
+import { useSelector } from "react-redux";
 
-
-function MyExams({ isLoggedIn, user }) {
+function MyExams() {
   const { t } = useTranslation();
+  const userId = useSelector((state) => state.auth.token._id);
+  const token = localStorage.getItem("AUTH_TOKEN");
+  const [myExams, setMyExams] = useState([]);
 
-  //   const token = localStorage.getItem("AUTH_TOKEN");
-  //   const userId = user._id;
-
-
-  // useEffect(() => {
-    
-  //   if (!token) {
-  //     alert("Authorization token missing");
-  //     return;
-  //   }
-    
-  //   axios
-  //     .get(`http://localhost:8000/enrollment/${userId}`, {
-  //       headers: {
-  //         'Authorization': `Bearer ${token}`
-  //       }
-  //     })
-  //     .then((res) => {
-  //      console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       alert(err.message);
-  //     });
-  // }, []);
+  useEffect(() => {
+    if (!token) {
+      alert("Authorization token missing");
+      return;
+    }
+    axios
+      .get(`http://localhost:8000/enrollment/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setMyExams(res.data.enrollments);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, [userId]);
 
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar isLoggedIn={isLoggedIn} user={user} />
+          <Navbar />
           <div className="read-crumb">
-            <MDBBreadcrumb >
+            <MDBBreadcrumb>
               <MDBBreadcrumbItem>
-                <a href='/'>{t("Overview")}</a>
+                <a href="/">{t("Overview")}</a>
               </MDBBreadcrumbItem>
               <MDBBreadcrumbItem active>{t("My Exams")}</MDBBreadcrumbItem>
             </MDBBreadcrumb>
@@ -59,48 +60,80 @@ function MyExams({ isLoggedIn, user }) {
               <MDBTableHead>
                 <tr style={{ color: "#646a85" }}>
                   <th scope="col">{t("Title")}</th>
-                  <th scope="col">{t("Level")}</th>
+                  <th scope="col">{t("Last Accessed")}</th>
                   <th scope="col">{t("Started")}</th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
-                {myExams.map(
-                  ({ examTitle, image, date, level }, index) => {
+                {myExams.length === 0 ? (
+                  <tr>
+                    <td colSpan="3" style={{ textAlign: "center" }}>
+                      You have not been enrolled yet
+                    </td>
+                  </tr>
+                ) : (
+                  myExams.map((myExams, index) => {
                     return (
                       <tr>
                         <td>
                           <div className="d-flex align-items-center">
                             <img
-                              src={image}
+                              src={myExams.photo}
                               alt=""
-                              style={{ width: "45px", height: "45px" }}
+                              style={{ width: "60px", height: "50px" }}
                               className="rounded-circle"
                             />
-                            <div className="ms-3">
+                            <div className="ms-">
                               <p
                                 className="fw-bold mb-1"
                                 style={{ color: "#041083", cursor: "pointer" }}
                               >
-                                {examTitle}
+                                {myExams.examinationName}
                               </p>
                             </div>
                           </div>
                         </td>
-                        <td>
-                          <MDBBadge color={level === 'Beginner' ? 'success' : level === 'Intermediate' ? 'primary' : 'warning'} pill>
-                            {level}
-                          </MDBBadge>
-                        </td>
-
+                        {/* <td>
+              <MDBBadge
+                color={
+                  level === "Beginner"
+                    ? "success"
+                    : level === "Intermediate"
+                    ? "primary"
+                    : "warning"
+                }
+                pill
+              >
+                level
+              </MDBBadge>
+            </td> */}
                         <td>
                           <p rounded size="sm">
-                            {date}
+                            {new Date(myExams.updatedAt).toLocaleString(
+                              "en-US",
+                              {
+                                month: "short",
+                                day: "2-digit",
+                              }
+                            )}
+                          </p>
+                        </td>
+                        <td>
+                          <p rounded size="sm">
+                            {new Date(myExams.createdAt).toLocaleString(
+                              "en-US",
+                              {
+                                month: "short",
+                                day: "2-digit",
+                              }
+                            )}
                           </p>
                         </td>
                       </tr>
                     );
-                  }
+                  })
                 )}
+                {myExams.map((myExams, index) => {})}
               </MDBTableBody>
             </MDBTable>
           </section>
@@ -113,4 +146,4 @@ function MyExams({ isLoggedIn, user }) {
   );
 }
 
-export default MyExams;
+export default withAuth(MyExams);

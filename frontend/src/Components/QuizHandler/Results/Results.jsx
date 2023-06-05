@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../Quiz/Quiz.css';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import axios from 'axios';
+import withAuth from '../../../hoc/withAuth';
+import { useSelector } from 'react-redux';
 
-function Results({ answers, qid,user}) {
+function Results({ answers, qid, level,examId}) {
+
+  const user = useSelector(state => state.auth.token);
   const [quizAnswer, setQuizAnswer] = useState({});
   const numCorrect = answers.filter((answer, index) => answer === quizAnswer[index]?.correctAnswer).length;
   const percentage = ((numCorrect / Object.keys(quizAnswer).length) * 100).toFixed(2);
@@ -23,6 +27,32 @@ function Results({ answers, qid,user}) {
       });
   }, [qid]);
 
+  const saveQuizResults = async () => {
+    const quizResults = {
+      userId: user._id,
+      level: level,
+      examinationId:examId,
+      percentage:percentage,
+      quizAnswers: Object.keys(quizAnswer).map((key, index) => ({
+        question: quizAnswer[key].question,
+        givenAnswer: answers[index],
+        correctAnswer: quizAnswer[key].correctAnswer,
+      })),
+    };
+
+    try {
+      await axios.post('http://localhost:8000/saveQuizResults', quizResults);
+      alert('Quiz results saved successfully!');
+    } catch (error) {
+      alert('Failed to save quiz results');
+    }
+  };
+
+  useEffect(() => {
+    if (Object.keys(quizAnswer).length > 0) {
+      saveQuizResults();
+    }
+  }, [quizAnswer]);
   return (
     <div>
       <div className="read-crumb-quiz">
@@ -53,4 +83,4 @@ function Results({ answers, qid,user}) {
   );
 }
 
-export default Results
+export default withAuth(Results)

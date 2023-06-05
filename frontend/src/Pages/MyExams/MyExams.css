@@ -9,6 +9,10 @@
     
 }
 
+.exam-table td{
+  color:#041083;
+}
+
 .exam-table::-webkit-scrollbar {
     width: 10px;
 }

@@ -6,8 +6,9 @@ import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit'
 import { useTranslation } from 'react-i18next'
 import './VideosPage.css'
 import VideoCard from '../../Components/VideoCard/VideoCard'
+import withAuth from '../../hoc/withAuth'
 
-function VideosPage({ isLoggedIn, user }) {
+function VideosPage() {
     const { t } = useTranslation();
     const videos = [
         {
@@ -92,7 +93,7 @@ function VideosPage({ isLoggedIn, user }) {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar user={user} isLoggedIn={isLoggedIn} />
+          <Navbar/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -123,4 +124,4 @@ function VideosPage({ isLoggedIn, user }) {
   )
 }
 
-export default VideosPage
+export default withAuth(VideosPage);

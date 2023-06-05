@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import jwt_decode from 'jwt-decode';
 
 import Overview from "./Pages/Overview/OverviewPage/Overview";
@@ -30,52 +31,60 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState();
 
-  const logoutUser = () => {
-    setUser(null);
-    setIsLoggedIn(false);
-    localStorage.removeItem("AUTH_TOKEN");
-    window.location.replace("/login");
-  }
+  const dispatch = useDispatch();
+  const token = JSON.parse(localStorage.getItem('AUTH_TOKEN'));
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("AUTH_TOKEN"));
     if (token) {
       const decodedToken = jwt_decode(token);
       if (decodedToken.exp * 1000 < Date.now()) {
         setUser(null);
         setIsLoggedIn(false);
+        dispatch({type:"SET_USER",payload:{
+          isLoggedIn:false,
+          users:null,
+          token:null
+        }})
       } else {
         setUser(decodedToken);
         setIsLoggedIn(true);
-
+        dispatch({type:"SET_USER",payload:{
+          isLoggedIn:true,
+          users:user,
+          token:decodedToken
+        }})
       }
-      console.log(decodedToken);
+    } else {
+      dispatch({type:"SET_USER",payload:{
+        isLoggedIn:false,
+        users:null,
+        token:null
+      }})
     }
-
-  }, [])
+  }, [dispatch, token]);
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/examinations" element={<Examinations isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/profile" element={<Profile isLoggedIn={isLoggedIn} user={user} logoutUser={logoutUser} />} />
-          <Route path="/myPayments" element={<Payment isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/myExams" element={<MyExams isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route exact path="/examinations/:_id" element={<ExamModule isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/examinations" element={<Examinations/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/myPayments" element={<Payment/>} />
+          <Route path="/myExams" element={<MyExams/>} />
+          <Route exact path="/examinations/:_id" element={<ExamModule/>} />
           <Route path="/adminOverview" element={<OverviewAdmin />} />
-          <Route path="/vacancies" element={<VacanciesPage isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/vacancies" element={<VacanciesPage/>} />
           <Route path="/login" element={<Login setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/superAdminDashboard" element={<SADashboard />} />
           <Route path="/adminRequests" element={<AdminRequests />} />
-          <Route path="/" element={<Overview isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/level/quiz/:id" element={<Quiz isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/" element={<Overview/>} />
+          <Route path="/level/quiz/:id" element={<Quiz/>} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
-          <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
+          <Route path="/examinations/lectureVideos" element={<VideosPage/>} />
           <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>

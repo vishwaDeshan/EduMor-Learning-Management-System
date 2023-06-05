@@ -9,6 +9,8 @@ import ProfilePic from "../../Assets/defaultUser.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../i18next";
+import { useSelector } from 'react-redux';
+
 import {
   MDBBtn,
   MDBModal,
@@ -18,35 +20,15 @@ import {
   MDBModalBody,
 } from "mdb-react-ui-kit";
 
-const Navbar = ({isLoggedIn,user}) => {
+const Navbar = () => {
+  const user = useSelector(state => state.auth.token);
+
   const [scrollableModal, setScrollableModal] = useState(false);
   const { t, i18n } = useTranslation();
   const handleChangeLng = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem("lng", lng);
   };
-
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  useEffect(() => {
-    let timeoutId;
-
-    if (!isLoggedIn) {
-      timeoutId = setTimeout(() => {
-        setShouldRedirect(true);
-      }, 100);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [isLoggedIn]);
-
-  useEffect(() => {
-    if (shouldRedirect) {
-      window.location.replace("/login");
-    }
-  }, [shouldRedirect]);
 
   return (
     <div className="Navbar">
@@ -111,6 +93,7 @@ const Navbar = ({isLoggedIn,user}) => {
                 sx={{ width: 45, height: 45 }}
               />
             </Link>
+            <p>{user && user.firstName}</p>
           </div>
         </div>
       </div>
