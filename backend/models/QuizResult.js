@@ -19,6 +19,10 @@ const quizResultSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  quizId:{
+    type: String,
+    required: true
+  },
   quizAnswers: [
     {
       question: {

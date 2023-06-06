@@ -5,7 +5,7 @@ import axios from "axios";
 import withAuth from "../../../hoc/withAuth";
 import { useSelector } from "react-redux";
 
-function Results({ answers, qid, level, examId, quizName }) {
+function Results({ answers, qid, level, examId, quizName,quizId }) {
   const user = useSelector((state) => state.auth.token);
   const [quizAnswer, setQuizAnswer] = useState({});
   const numCorrect = answers.filter(
@@ -38,6 +38,7 @@ function Results({ answers, qid, level, examId, quizName }) {
       examinationId: examId,
       percentage: percentage,
       quizName: quizName,
+      quizId:quizId,
       quizAnswers: Object.keys(quizAnswer).map((key, index) => ({
         question: quizAnswer[key].question,
         givenAnswer: answers[index],

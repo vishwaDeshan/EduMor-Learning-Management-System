@@ -3,7 +3,7 @@ const QuizResult = require('../models/QuizResult');
 
 //saving quiz results
 exports.saveQuizResults = async (req, res) => {
-  const { userId, quizAnswers,level,examinationId,percentage,quizName} = req.body;
+  const { userId, quizAnswers,level,examinationId,percentage,quizName,quizId} = req.body;
 
   try {
     const quizResult = new QuizResult({
@@ -12,7 +12,8 @@ exports.saveQuizResults = async (req, res) => {
       level,
       examinationId,
       percentage,
-      quizName
+      quizName,
+      quizId
     });
 
     await quizResult.save();

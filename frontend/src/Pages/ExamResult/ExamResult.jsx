@@ -6,10 +6,11 @@ import Footer from "../../Components/Footer/Footer";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import withAuth from "../../hoc/withAuth";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ExamResult = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [myResults, setMyResults] = useState([]);
   const [examAttempted, setExamAttempted] = useState([]);
@@ -54,6 +55,10 @@ const ExamResult = () => {
       });
   }, [userId, examId]);
 
+  const handleRetakeQuiz = (quizId) => {
+    window.location.href = `http://localhost:3000/level/quiz/${quizId}`;
+  };
+
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
@@ -73,44 +78,60 @@ const ExamResult = () => {
             <MDBTable align="middle">
               <MDBTableHead>
                 <tr style={{ color: "#646a85" }}>
-                  <th scope="col">{t("Topic")}</th>
-                  <th scope="col">{t("Level")}</th>
-                  <th scope="col">{t("Marks(%)")}</th>
-                  <th scope="col">{t("Attempted Date")}</th>
+                  <th scope="col" className=" align-items-center">
+                    {t("Topic")}
+                  </th>
+                  <th scope="col" className="align-items-center">
+                    {t("Marks(%)")}
+                  </th>
+                  <th scope="col" className="align-items-center">
+                    {t("Attempted Date")}
+                  </th>
+                  <th scope="col" className="text-center align-items-center">
+                    {t("Actions")}
+                  </th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
                 {myResults.length === 0 ? (
                   <tr>
                     <td colSpan="3" style={{ textAlign: "center" }}>
-                      You have not enrolled in any examination yet
+                      You have not attempted quizzes
                     </td>
                   </tr>
                 ) : (
                   myResults.map((myResults, index) => {
                     return (
                       <tr>
-                        <td className="col-3">
+                        <td className="col-4">
                           <div className="d-flex align-items-center">
                             <div className="ms-1">{myResults.quizName}</div>
                           </div>
                         </td>
-                        <td className="col-3">
-                          <div className="d-flex align-items-center">
-                            {/* Content for Column 2 */}
-                          </div>
-                        </td>
-                        <td className="col-2">
+                        <td className="col-4 text-center">
                           <div className="d-flex align-items-center">
                             {myResults.percentage}
                           </div>
                         </td>
-                        <td className="col-2">
+                        <td className="col-4 text-center">
                           <div className="d-flex align-items-center">
-                            {new Date(myResults.updatedAt).toLocaleString("en-US", {
-                              month: "short",
-                              day: "2-digit",
-                            })}
+                            {new Date(myResults.updatedAt).toLocaleString(
+                              "en-US",
+                              {
+                                month: "short",
+                                day: "2-digit",
+                              }
+                            )}
+                          </div>
+                        </td>
+                        <td className="col-4 text-center">
+                          <div className="d-flex align-items-center">
+                            <button
+                              className="btn btn-secondary btn-sm"
+                              onClick={() => handleRetakeQuiz(myResults.quizId)}
+                            >
+                              Retake
+                            </button>
                           </div>
                         </td>
                       </tr>
