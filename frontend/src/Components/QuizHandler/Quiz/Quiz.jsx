@@ -12,6 +12,7 @@ function Quiz() {
   const [quiz, setQuiz] = useState({});
   const [level, setLevel] = useState(null);
   const [examId, setExamId] = useState(null);
+  const [quizName, setQuizName] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [answers, setAnswers] = useState(Array(quiz.length).fill(''));
@@ -26,6 +27,7 @@ function Quiz() {
           setQuiz(res.data.questions);
           setLevel(res.data.level);
           setExamId(res.data.examinationId);
+          setQuizName(res.data.quizName);
         } else {
           alert('Quiz data not found');
         }
@@ -91,7 +93,7 @@ function Quiz() {
   const currentQuestionData = quiz[currentQuestion];
 
   if (currentQuestion === quiz.length) {
-    return <Results answers={answers} qid={id} level={level} examId={examId}/>;
+    return <Results answers={answers} qid={id} level={level} examId={examId} quizName={quizName}/>;
   }
 
   //quiz Answering section

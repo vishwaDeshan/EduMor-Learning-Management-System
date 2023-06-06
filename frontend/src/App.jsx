@@ -24,6 +24,7 @@ import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
+import ExamResult from "./Pages/ExamResult/ExamResult";
 
 
 
@@ -85,6 +86,7 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
           <Route path="/examinations/lectureVideos" element={<VideosPage/>} />
+          <Route path="/quizResults/:userId/:examId" element={<ExamResult/>} />
           <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>

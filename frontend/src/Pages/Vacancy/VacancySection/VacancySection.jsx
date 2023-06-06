@@ -1,9 +1,9 @@
-import { Grid } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import JobCard from '../JobCard/JobCard';
-import Search from '../Search/Search';
-import Pagination from '../Pagination/Pagination';
-import axios from 'axios';
+import { Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import JobCard from "../JobCard/JobCard";
+import Search from "../Search/Search";
+import Pagination from "../Pagination/Pagination";
+import axios from "axios";
 
 function VacancySection() {
   const [vacancy, setVacancy] = useState([]);
@@ -19,10 +19,10 @@ function VacancySection() {
       return;
     }
     axios
-      .get('http://localhost:8000/vacancies', {
+      .get("http://localhost:8000/vacancies", {
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         setVacancy(res.data.existingVacancies);
@@ -34,19 +34,16 @@ function VacancySection() {
       });
   }, []);
 
-
   const applyFilters = (filters) => {
     let filtered = vacancy;
-    if (filters.jobType !== 'All') {
+    if (filters.jobType !== "All") {
       filtered = filtered.filter((job) => job.type === filters.jobType);
     }
-    if (filters.district !== 'All') {
+    if (filters.district !== "All") {
       filtered = filtered.filter((job) => job.district === filters.district);
     }
     setFilteredVacancy(filtered);
   };
-
-
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
@@ -66,15 +63,34 @@ function VacancySection() {
 
   return (
     <>
-      <Grid container justifyContent="center" style={{ width: '100%' }}>
+      <Grid container justifyContent="center" style={{ width: "100%" }}>
         <Grid item xs={10}>
           <Search onSearch={applyFilters} />
           {filteredJobCards.length === 0 ? (
-            <p style={{ textAlign: "center", color: "grey", marginTop: "200px" }}>No records found</p>
+            <p
+              style={{ textAlign: "center", color: "grey", marginTop: "200px" }}
+            >
+              No records found
+            </p>
           ) : (
-            filteredJobCards.map(({ title, type, company, closingDate, district, url }, index) => {
-              return <JobCard key={index} title={title} company={company} closingDate={closingDate} type={type} district={district} link={url} />;
-            })
+            filteredJobCards.map(
+              ({ title, type, company, closingDate, district, url }, index) => {
+                return (
+                  <JobCard
+                    key={index}
+                    title={title}
+                    company={company}
+                    closingDate={new Date(closingDate).toLocaleString("en-US", {
+                      month: "short",
+                      day: "2-digit",
+                    })}
+                    type={type}
+                    district={district}
+                    link={url}
+                  />
+                );
+              }
+            )
           )}
         </Grid>
         <Pagination

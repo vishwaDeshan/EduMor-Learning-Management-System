@@ -1,7 +1,9 @@
 const QuizResult = require('../models/QuizResult');
 
-const saveQuizResults = async (req, res) => {
-  const { userId, quizAnswers,level,examinationId,percentage} = req.body;
+
+//saving quiz results
+exports.saveQuizResults = async (req, res) => {
+  const { userId, quizAnswers,level,examinationId,percentage,quizName} = req.body;
 
   try {
     const quizResult = new QuizResult({
@@ -9,7 +11,8 @@ const saveQuizResults = async (req, res) => {
       quizAnswers,
       level,
       examinationId,
-      percentage
+      percentage,
+      quizName
     });
 
     await quizResult.save();
@@ -19,6 +22,16 @@ const saveQuizResults = async (req, res) => {
   }
 };
 
-module.exports = {
-  saveQuizResults
+//Finding records which belong to both userId and examinationId
+exports.getQuizResults = (req, res) => {
+  const userId = req.params.userId;
+  const examinationId = req.params.examinationId;
+
+  QuizResult.find({ userId, examinationId })
+    .then(results => {
+      res.json({ success: true, results });
+    })
+    .catch(error => {
+      res.status(500).json({ success: false, error: error.message });
+    });
 };

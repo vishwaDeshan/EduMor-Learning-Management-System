@@ -7,13 +7,13 @@ import {
   MDBTable,
   MDBTableHead,
   MDBTableBody,
-  MDBBadge,
 } from "mdb-react-ui-kit";
 import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import "./MyExams.css";
 import axios from "axios";
 import withAuth from "../../hoc/withAuth";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function MyExams() {
   const { t } = useTranslation();
@@ -68,7 +68,7 @@ function MyExams() {
                 {myExams.length === 0 ? (
                   <tr>
                     <td colSpan="3" style={{ textAlign: "center" }}>
-                      You have not been enrolled yet
+                    You have not enrolled in any examination yet
                     </td>
                   </tr>
                 ) : (
@@ -77,6 +77,7 @@ function MyExams() {
                       <tr>
                         <td>
                           <div className="d-flex align-items-center">
+                            
                             <img
                               src={myExams.photo}
                               alt=""
@@ -84,12 +85,14 @@ function MyExams() {
                               className="rounded-circle"
                             />
                             <div className="ms-">
+                          <Link to={`/quizResults/${myExams.userId}/${myExams.examinationId}`}>
                               <p
                                 className="fw-bold mb-1"
                                 style={{ color: "#041083", cursor: "pointer" }}
                               >
                                 {myExams.examinationName}
                               </p>
+                              </Link>
                             </div>
                           </div>
                         </td>

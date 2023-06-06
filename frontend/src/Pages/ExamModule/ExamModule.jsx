@@ -19,12 +19,17 @@ function ExamModule() {
   const [quizzes, setQuizzes] = useState([]);
   const [enrollmentStatus, setEnrollmentStatus] = useState(false);
   const { _id } = useParams();
-
+  const token = localStorage.getItem("AUTH_TOKEN");
   
   useEffect(() => {
+    
     if (_id) {
       axios
-        .get(`http://localhost:8000/examinations/${_id}`)
+        .get(`http://localhost:8000/examinations/${_id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((res) => {
           setExam(res.data);
         })
@@ -33,12 +38,16 @@ function ExamModule() {
         });
     }
   }, [_id]);
-
+  
   useEffect(() => {
     if (exam.examination) {
       const levelIds = exam.examination.levels.map((level) => level._id);
       const promises = levelIds.map((levelId) =>
-        axios.get(`http://localhost:8000/level/${levelId}`)
+        axios.get(`http://localhost:8000/level/${levelId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
       );
       Promise.all(promises)
         .then((responses) => {

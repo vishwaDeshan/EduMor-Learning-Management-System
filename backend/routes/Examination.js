@@ -11,7 +11,7 @@ router.post('/save', examinationController.createExamination);
 router.get('/',authMiddleware, examinationController.getAllExaminations);
 
 // Get specific examination using ID
-router.get('/:id', examinationController.getExaminationById);
+router.get('/:id',authMiddleware, examinationController.getExaminationById);
 
 // Update an examination by ID
 router.put('/:id', examinationController.updateExaminationById);
