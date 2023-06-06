@@ -15,6 +15,10 @@ const quizResultSchema = new mongoose.Schema({
   percentage: {
     type: String,
   },
+  quizName: {
+    type: String,
+    required: true
+  },
   quizAnswers: [
     {
       question: {
@@ -31,7 +35,7 @@ const quizResultSchema = new mongoose.Schema({
       }
     }
   ]
-},{ timestamps: true });
+}, { timestamps: true });
 
 const QuizResult = mongoose.model('QuizResult', quizResultSchema);
 
