@@ -37,3 +37,19 @@ exports.getEnrollments = async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 };
+
+exports.getEnrollmentsByUserIdAndExaminationId = async (req, res) => {
+  try {
+    const { userId, examinationId } = req.params;
+
+    const enrollments = await Enrollment.find({
+      userId: userId,
+      examinationId: examinationId,
+    });
+
+    res.json(enrollments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};

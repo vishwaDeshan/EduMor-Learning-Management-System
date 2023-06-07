@@ -6,7 +6,9 @@ import Footer from "../../Components/Footer/Footer";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
 import { MDBBreadcrumb, MDBBreadcrumbItem } from "mdb-react-ui-kit";
 import withAuth from "../../hoc/withAuth";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Modal } from "react-bootstrap";
+import "./ExamResults.css";
 import axios from "axios";
 
 const ExamResult = () => {
@@ -15,6 +17,16 @@ const ExamResult = () => {
   const [myResults, setMyResults] = useState([]);
   const [examAttempted, setExamAttempted] = useState([]);
   const { userId, examId } = useParams();
+  const [showModal, setShowModal] = useState(false);
+  const selectedQuiz = [null];
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("AUTH_TOKEN");
@@ -59,6 +71,9 @@ const ExamResult = () => {
     window.location.href = `http://localhost:3000/level/quiz/${quizId}`;
   };
 
+  //get only latest updates
+  const uniqueResults = [...new Map(myResults.map(result => [result.userId + "-" + result.quizId, result])).values()];
+
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
@@ -93,18 +108,21 @@ const ExamResult = () => {
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
-                {myResults.length === 0 ? (
+                {uniqueResults.length === 0 ? (
                   <tr>
                     <td colSpan="3" style={{ textAlign: "center" }}>
                       You have not attempted quizzes
                     </td>
                   </tr>
                 ) : (
-                  myResults.map((myResults, index) => {
+                  uniqueResults.map((myResults, index) => {
                     return (
-                      <tr>
+                      <tr style={{ cursor: "pointer" }}>
                         <td className="col-4">
-                          <div className="d-flex align-items-center">
+                          <div
+                            className="d-flex align-items-center"
+                            onClick={handleShowModal}
+                          >
                             <div className="ms-1">{myResults.quizName}</div>
                           </div>
                         </td>
@@ -140,6 +158,20 @@ const ExamResult = () => {
                 )}
               </MDBTableBody>
             </MDBTable>
+
+            {/* pop up boz for displaying the quiz results */}
+            <Modal show={showModal} onHide={handleCloseModal}>
+              <Modal.Header closeButton>
+                <Modal.Title></Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {selectedQuiz && (
+                  <div>
+                    <h5>{selectedQuiz.quizName}</h5>
+                  </div>
+                )}
+              </Modal.Body>
+            </Modal>
           </section>
         </div>
       </div>

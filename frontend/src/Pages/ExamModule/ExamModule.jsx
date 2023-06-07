@@ -12,17 +12,15 @@ import withAuth from "../../hoc/withAuth";
 import { useSelector } from "react-redux";
 
 function ExamModule() {
-
-  const user = useSelector(state => state.auth.token);
+  const user = useSelector((state) => state.auth.token);
   const { t } = useTranslation();
   const [exam, setExam] = useState({});
   const [quizzes, setQuizzes] = useState([]);
   const [enrollmentStatus, setEnrollmentStatus] = useState(false);
   const { _id } = useParams();
   const token = localStorage.getItem("AUTH_TOKEN");
-  
+
   useEffect(() => {
-    
     if (_id) {
       axios
         .get(`http://localhost:8000/examinations/${_id}`, {
@@ -38,7 +36,7 @@ function ExamModule() {
         });
     }
   }, [_id]);
-  
+
   useEffect(() => {
     if (exam.examination) {
       const levelIds = exam.examination.levels.map((level) => level._id);
@@ -59,6 +57,30 @@ function ExamModule() {
         });
     }
   }, [exam.examination]);
+
+  //to check whether is user already enrolled or not
+  useEffect(() => {
+    const fetchEnrollmentRecords = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/enrollment/${user._id}/${_id}`
+        );
+
+        if (response.data.length > 0) {
+          setEnrollmentStatus(true);
+
+        } else {
+          setEnrollmentStatus(false);
+
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error occurred while checking enrollment status.");
+      }
+    };
+
+    fetchEnrollmentRecords();
+  }, [user._id, _id]);
 
   //checks the enrollment
   const handleEnroll = () => {
@@ -117,7 +139,7 @@ function ExamModule() {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar/>
+          <Navbar />
           <div className="read-crumb">
             <MDBBreadcrumb>
               <MDBBreadcrumbItem>

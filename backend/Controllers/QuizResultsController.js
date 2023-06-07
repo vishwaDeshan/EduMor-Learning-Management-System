@@ -36,3 +36,19 @@ exports.getQuizResults = (req, res) => {
       res.status(500).json({ success: false, error: error.message });
     });
 };
+
+//get the specific details
+exports.getQuizResultByAll = (req, res) => {
+  const userId = req.params.userId;
+  const examinationId = req.params.examinationId;
+  const quizId = req.params.quizId;
+
+  QuizResult.find({ userId, examinationId,quizId })
+    .then(results => {
+      res.json({ success: true, results });
+    })
+    .catch(error => {
+      res.status(500).json({ success: false, error: error.message });
+    });
+};
+

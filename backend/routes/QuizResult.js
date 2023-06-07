@@ -9,4 +9,7 @@ router.post('/', quizResultsController.saveQuizResults);
 //Get route for retrieve the data specific to userId and examinationId
 router.get('/:userId/:examinationId',authMiddleware, quizResultsController.getQuizResults);
 
+//Get route for retrieve the data specific to userId ,examinationId, quizid
+router.get('/:userId/:examinationId/:quizId',authMiddleware, quizResultsController.getQuizResultByAll);
+
 module.exports = router;

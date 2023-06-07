@@ -24,7 +24,7 @@ import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
-import ExamResult from "./Pages/ExamResult/ExamResult";
+import ExamResult from "./Pages/ExamResult/ExamResults";
 
 
 

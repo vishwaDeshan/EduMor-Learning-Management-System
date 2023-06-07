@@ -9,4 +9,6 @@ router.post('/', enrollmentController.createEnrollment);
 // Route for getting the enrolled examinations for a particular user
 router.get('/:userId', enrollmentController.getEnrollments);
 
+router.get('/:userId/:examinationId', enrollmentController.getEnrollmentsByUserIdAndExaminationId);
+
 module.exports = router;
