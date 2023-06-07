@@ -85,6 +85,9 @@ const ExamResult = () => {
               <MDBBreadcrumbItem>
                 <a href="/">{t("Overview")}</a>
               </MDBBreadcrumbItem>
+              <MDBBreadcrumbItem >
+                <a href="/myExams">{t("My Exams")}</a>
+              </MDBBreadcrumbItem>
               <MDBBreadcrumbItem active>{t("Quiz Results")}</MDBBreadcrumbItem>
             </MDBBreadcrumb>
           </div>
