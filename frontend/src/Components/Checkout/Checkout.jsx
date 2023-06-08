@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const stripePromise = loadStripe(
   "pk_test_51NGMruKGu6dF8xkrBUoaCa1RPmAqa4hDCftArKzusCu5kcphBNi9M14tOZN7UNkCxWfHfPoXfEvqV4DJriGJcpiX00KhTiHzt5"
 );
 
 const Checkout = () => {
+
+  const user = useSelector((state) => state.auth.token);
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const item = {
@@ -16,7 +20,7 @@ const Checkout = () => {
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
-    successUrl: `${window.location.origin}/success`,
+    successUrl: `${window.location.origin}/success?success=true`,
     cancelUrl: `${window.location.origin}/cancel`,
   };
 
@@ -33,11 +37,12 @@ const Checkout = () => {
       console.log("Error redirecting to Stripe checkout: " + error.message);
       setStripeError(error.message);
     }
-
+  
     setIsLoading(false);
   };
 
   if (stripeError) alert(stripeError);
+
   return (
     <div>
       <button

@@ -38,7 +38,6 @@ function News() {
         ))}
       </ul>
     </div>
-
   );
 }
 export default News;
