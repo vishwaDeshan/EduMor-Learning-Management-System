@@ -25,6 +25,8 @@ import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import ExamResult from "./Pages/ExamResult/ExamResults";
+import Success from "./Components/Checkout/Success";
+import Cancel from "./Components/Checkout/Cancel";
 
 
 
@@ -87,6 +89,8 @@ function App() {
           <Route path="/verifyEmail" element={<VerifyEmail />} />
           <Route path="/examinations/lectureVideos" element={<VideosPage/>} />
           <Route path="/quizResults/:userId/:examId" element={<ExamResult/>} />
+          <Route path="/success" element={<Success/>} />
+          <Route path="/cancel" element={<Cancel/>} />
           <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>

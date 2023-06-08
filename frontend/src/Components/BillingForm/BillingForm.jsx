@@ -11,6 +11,7 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { useTranslation } from "react-i18next";
+import Checkout from '../../Components/Checkout/Checkout';
 
 export default function CreditCard() {
   const { t } = useTranslation();
@@ -42,11 +43,11 @@ export default function CreditCard() {
                 </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   {t("Products")}
-                  <span>$8.98</span>
+                  <span>Rs. 350.00</span>
                 </MDBListGroupItem>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                   {t("Discount")}
-                  <span>$(3.98)</span>
+                  <span>Rs. (100.00)</span>
                 </MDBListGroupItem>
                 <hr className="my-2"></hr>
                 <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
@@ -57,19 +58,16 @@ export default function CreditCard() {
                     </strong>
                   </div>
                   <span>
-                    <strong>$5.00</strong>
+                    <strong>Rs. 250.00</strong>
                   </span>
                 </MDBListGroupItem>
               </MDBListGroup>
             </MDBCardBody>
-            <button
-              type="button"
-              class="btn btn-primary"
-              style={{ borderRadius: "10px" }}
-            >
-              {t("Continue to checkout")}
-            </button>
+            <div className="checkoutButton" style={{margin:"0 auto"}}>
+            <Checkout/>
+            </div>
           </MDBCard>
+          
           {/* notice section */}
         </MDBCol>
         <MDBCol md="4" className="mb-4">

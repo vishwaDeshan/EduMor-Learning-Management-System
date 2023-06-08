@@ -7,7 +7,6 @@ import {MDBBreadcrumb,MDBBreadcrumbItem} from 'mdb-react-ui-kit';
 import BillingForm from '../../Components/BillingForm/BillingForm';
 import withAuth from '../../hoc/withAuth';
 
-
 function Payment() {
 
   const {t}=useTranslation();
