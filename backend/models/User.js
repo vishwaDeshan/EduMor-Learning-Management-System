@@ -44,6 +44,10 @@ const UserSchema = new mongoose.Schema({
     province: {
         type: String,
         default:""
+    },
+    isPremiumMember:{
+        type:Boolean,
+        default:false,
     }
 
 }, { timestamps: true });
