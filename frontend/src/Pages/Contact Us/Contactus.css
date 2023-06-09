@@ -33,15 +33,12 @@
     height: 100px;
   }
 
-.Message {
+.contactform1 .Message {
     outline: 0;
     border-width: 1px 1px 1px;
-    /* border-color: #041083; */
     width:25rem;
     height:8rem;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 30px;
 }
 
 .contactbutton{
@@ -53,4 +50,22 @@
 .contactname{
     color: #041083;
     border-radius: 10px;
+}
+
+.contactform1 .nametext{
+    outline: 0;
+    border-width: 1px 1px 1px;
+    text-align:start;
+    width:25rem;
+    height:2rem;
+    border-radius: 5px;
+}
+
+.contactform1 .mailtext{
+    outline: 0;
+    border-width: 1px 1px 1px;
+    text-align:start;
+    width:25rem;
+    height:2rem;
+    border-radius: 5px;
 }

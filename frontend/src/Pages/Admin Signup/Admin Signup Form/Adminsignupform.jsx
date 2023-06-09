@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "../SignupForm/SignupForm.css";
+import "../Admin Signup Form/Adminsignupform.css";
 import InputBox from "../../../Components/Inputs/Input";
 import Button from "../../../Components/Buttons/Button";
 import { Link } from "react-router-dom";
-import SignupImg from "../../../Assets/sign-up-concept-illustration_114360-7875.png";
+import SignupImg from "../../../Assets/Adminsignup.jpg";
 import axios from "axios";
 
-function SignupForm() {
+function Adminsignupform() {
 
   const [firstName, setFirstname] = useState('');
   const [lastName, setLastname] = useState('');
@@ -45,7 +45,7 @@ function SignupForm() {
   return (
     <div className="signup-container" style={{ display: "flex" }}>
       <div className="login-form">
-        <h2>Sign-Up Now for EduMor</h2>
+        <h2>Admin Sign-Up</h2>
         <form onSubmit={handleSubmit}>
 
           <InputBox
@@ -171,7 +171,7 @@ function SignupForm() {
           </div>
         </form>
 
-        <div className="signup">
+        {/* <div className="signup">
           <div>
             <text>Already have an account?</text>
           </div>
@@ -183,7 +183,7 @@ function SignupForm() {
               </h6>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="signup-img">
@@ -193,4 +193,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default Adminsignupform;

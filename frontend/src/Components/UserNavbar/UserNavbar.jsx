@@ -3,7 +3,6 @@ import "./UserNavbar.css";
 import Logo from "../../Assets/Logobg.png";
 import { Link } from "react-router-dom";
 
-
 function UserNavbar() {
   return (
     <div className="login-page">
@@ -18,12 +17,15 @@ function UserNavbar() {
               <li>Features</li>
               <li>Examinations</li>
             </Link>
-              <li><Link to="/Contactus">Contact Us</Link></li>
+            <li>
+              <Link to="/Contactus">Contact Us</Link>
+            </li>
           </ul>
         </div>
-        <Link to="/signup"><button type="button" value="signup" className="button">
-          SignUp
-        </button>
+        <Link to="/signup">
+          <button type="button" value="signup" className="button">
+            SignUp
+          </button>
         </Link>
       </div>
     </div>

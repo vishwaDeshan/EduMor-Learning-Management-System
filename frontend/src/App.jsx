@@ -24,6 +24,7 @@ import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import Contactus from "./Pages/Contact Us/Contactus"
+import Adminsignup from "./Pages/Admin Signup/Adminsignup";
 
 
 
@@ -80,6 +81,7 @@ function App() {
           <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/test" element={<Test />} />
           <Route path="/contactus" element={<Contactus />} />
+          <Route path="/adminsignup" element={<Adminsignup />} />
         </Routes>
       </BrowserRouter>
     </div>

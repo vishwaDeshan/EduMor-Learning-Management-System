@@ -22,7 +22,8 @@ function Contactus() {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          alert("Your message has been sent successfully!");
+          window.location.reload();
         },
         (error) => {
           console.log(error.text);
@@ -40,20 +41,18 @@ function Contactus() {
       <form ref={form} onSubmit={sendEmail}>
         <div className="container">
           <div className="contactform1">
-            {/* <InputBoxContactus
-        title="Name"
-        type="text"
-        name="username"
-      /> */}
             <label>
               <h6 style={{ fontWeight: 600, color: "#041083" }}>Name: </h6>
-              <input className="Message" type="text" name="name"></input>
+              <input className="nametext" type="text" name="name"></input>
             </label>
-
-            <InputBoxContactus title="Email" type="email" name="user_email" />
+            <label>
+              <h6 style={{ fontWeight: 600, color: "#041083" }}>Email: </h6>
+              <input className="mailtext" type="email" name="email"></input>
+            </label>
+            {/* <InputBoxContactus title="Email" type="email" name="user_email" /> */}
             <label>
               <h6 style={{ fontWeight: 600, color: "#041083" }}>Message: </h6>
-              <input className="Message" type="text" name="message"></input>
+              <textarea className="Message" type="text" name="message"></textarea>
             </label>
 
             <div className="contactbutton">

@@ -11,6 +11,11 @@ const Navbar = () => {
         <div className="Navbar-sa">
             <div className="wrapper-sa">
                 <div className="items">
+                <Link to="/adminsignup">
+                            <button className="btn btn-outline-primary2">
+                                Create Admin
+                            </button>
+                    </Link>
                     <Link to="/">
                             <button className="btn btn-outline-primary">
                                 View Website

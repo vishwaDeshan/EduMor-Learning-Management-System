@@ -15,7 +15,7 @@ function SADashboard() {
         </div>
       </div>
     </div>
-    <div className="footer" style={{ diplay: "flex" }}>
+    <div className="footer">
       <Footer />
     </div>
   </div>

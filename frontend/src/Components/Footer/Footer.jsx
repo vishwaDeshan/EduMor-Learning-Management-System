@@ -11,6 +11,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useTranslation } from 'react-i18next';
 import Contact from '../../Pages/Contact Us/Contactus';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   const {t,i18n}=useTranslation();
@@ -36,7 +37,7 @@ function Footer() {
             <li><a href="#">{t("Get Started")}</a></li>
             <li><a href="#">{t("Features")}</a></li>
             <li><a href="#">{t("Examinations")}</a></li>
-            <li><a href="http://localhost:3000/contactus">{t("Contact")}</a></li>
+            <li><Link to={`/contactus`}>{t("Contact")}</Link></li>
           </ul>
         </div>
       </div>

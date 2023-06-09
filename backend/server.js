@@ -10,7 +10,7 @@ app.use(cors());
 
 //import routes
 app.use("/auth", require("./routes/Auth"));
-app.use("/email", require("./routes/Email"));
+app.use("/email", require("./routes/email"));
 app.use("/news", require("./routes/News"));
 app.use("/advertisements", require("./routes/Advertisement"));
 app.use("/vacancies", require("./routes/Vacancy"));
