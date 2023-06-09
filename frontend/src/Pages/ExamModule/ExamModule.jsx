@@ -159,7 +159,7 @@ function ExamModule() {
             <p className="exam-description">{exam.examination?.description}</p>
             <ul>
               <li>{exam.examination?.levels.length} Past Papers</li>
-              <Link to="/examinations/lectureVideos">
+              <Link to={`/examination/${exam.examination?._id}`}>
                 <li>
                   {exam.examination?.lectureVideos.length} Lectures Videos
                 </li>

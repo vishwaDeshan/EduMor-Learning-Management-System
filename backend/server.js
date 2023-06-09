@@ -16,6 +16,7 @@ app.use("/vacancies", require("./routes/Vacancy"));
 app.use("/examinations", require("./routes/Examination"));
 app.use("/enrollment", require("./routes/Enrollment"));
 app.use("/quizResults", require("./routes/QuizResult"));
+app.use("/lectureVideos", require("./routes/LectueVideos"));
 app.use("/", require("./routes/Quiz"));
 
 const port = 8000;

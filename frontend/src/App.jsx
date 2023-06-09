@@ -87,7 +87,7 @@ function App() {
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
-          <Route path="/examinations/lectureVideos" element={<VideosPage/>} />
+          <Route path="/examination/:examinationId" element={<VideosPage/>} />
           <Route path="/quizResults/:userId/:examId" element={<ExamResult/>} />
           <Route path="/success" element={<Success/>} />
           <Route path="/cancel" element={<Cancel/>} />
