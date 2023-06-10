@@ -14,8 +14,8 @@ function LoginForm(setUser, setIsLoggedIn) {
   const [passwordError, setPasswordError] = useState('');
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
-
     const data={
       email,
       password

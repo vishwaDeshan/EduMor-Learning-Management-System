@@ -22,6 +22,10 @@ const quizSchema = new mongoose.Schema({
   level: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Level'
+  },
+  examinationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Examination',
   }
 });
 

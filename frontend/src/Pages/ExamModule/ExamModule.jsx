@@ -8,18 +8,26 @@ import "./ExamModule.css";
 import AccordionExam from "../../Components/Accordion/Accordion";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import withAuth from "../../hoc/withAuth";
+import { useSelector } from "react-redux";
 
-function ExamModule({ isLoggedIn, user }) {
+function ExamModule() {
+  const user = useSelector((state) => state.auth.token);
   const { t } = useTranslation();
   const [exam, setExam] = useState({});
   const [quizzes, setQuizzes] = useState([]);
   const [enrollmentStatus, setEnrollmentStatus] = useState(false);
   const { _id } = useParams();
+  const token = localStorage.getItem("AUTH_TOKEN");
 
   useEffect(() => {
     if (_id) {
       axios
-        .get(`http://localhost:8000/examinations/${_id}`)
+        .get(`http://localhost:8000/examinations/${_id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((res) => {
           setExam(res.data);
         })
@@ -33,7 +41,11 @@ function ExamModule({ isLoggedIn, user }) {
     if (exam.examination) {
       const levelIds = exam.examination.levels.map((level) => level._id);
       const promises = levelIds.map((levelId) =>
-        axios.get(`http://localhost:8000/level/${levelId}`)
+        axios.get(`http://localhost:8000/level/${levelId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
       );
       Promise.all(promises)
         .then((responses) => {
@@ -46,12 +58,38 @@ function ExamModule({ isLoggedIn, user }) {
     }
   }, [exam.examination]);
 
+  //to check whether is user already enrolled or not
+  useEffect(() => {
+    const fetchEnrollmentRecords = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/enrollment/${user._id}/${_id}`
+        );
+
+        if (response.data.length > 0) {
+          setEnrollmentStatus(true);
+
+        } else {
+          setEnrollmentStatus(false);
+
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error occurred while checking enrollment status.");
+      }
+    };
+
+    fetchEnrollmentRecords();
+  }, [user._id, _id]);
+
   //checks the enrollment
   const handleEnroll = () => {
     axios
       .post(`http://localhost:8000/enrollment`, {
-        examinationId: exam.examination._id,
+        examinationId: exam.examination?._id,
+        examinationName: exam.examination?.examName,
         userId: user?._id,
+        photo: exam.examination?.photo,
       })
       .then((res) => {
         setEnrollmentStatus(true);
@@ -60,7 +98,6 @@ function ExamModule({ isLoggedIn, user }) {
         alert(err.message);
       });
   };
-
   const renderAccordionExams = () => {
     if (!enrollmentStatus) {
       // show enroll button
@@ -102,7 +139,7 @@ function ExamModule({ isLoggedIn, user }) {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar isLoggedIn={isLoggedIn} user={user} />
+          <Navbar />
           <div className="read-crumb">
             <MDBBreadcrumb>
               <MDBBreadcrumbItem>
@@ -122,7 +159,7 @@ function ExamModule({ isLoggedIn, user }) {
             <p className="exam-description">{exam.examination?.description}</p>
             <ul>
               <li>{exam.examination?.levels.length} Past Papers</li>
-              <Link to="/examinations/lectureVideos">
+              <Link to={`/examination/${exam.examination?._id}`}>
                 <li>
                   {exam.examination?.lectureVideos.length} Lectures Videos
                 </li>
@@ -139,4 +176,4 @@ function ExamModule({ isLoggedIn, user }) {
   );
 }
 
-export default ExamModule;
+export default withAuth(ExamModule);

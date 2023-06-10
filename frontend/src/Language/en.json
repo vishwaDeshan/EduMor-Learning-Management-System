@@ -37,7 +37,7 @@
     "Cancel": "Cancel",
     "Notifications":"Notifications",
     "Biling details":"Biling details",
-    "Summary":"Summary",
+    "Payment Summary":"Payment Summary",
     "Continue to checkout":"Continue to checkout",
     "including VAT":"including VAT",
     "Total amount": "Total amount",
@@ -45,5 +45,9 @@
     "Discount":"Discount",
     "Premium Membership":"Premium Membership",
     "Payment":"Payment",
-    "Lecture Videos":"Lecture Videos"
+    "Lecture Videos":"Lecture Videos",
+    "Status":"Status",
+    "Quiz Results":"Quiz Results",
+    "You need to be a premium member to access the lecture videos": "You need to be a premium member to access the lecture videos",
+    "Last Accessed": "Last Accessed"
 }

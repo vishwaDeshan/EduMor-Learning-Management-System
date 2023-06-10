@@ -27,7 +27,7 @@ function JobCard({ title, type, company, closingDate, district,link }) {
                 </Grid>
                 <Grid item xs alignItems='flex-end'>
                     <Typography variant='subtitle2'>
-                        Closing:
+                        Closing Date:
                     </Typography>
                     <Typography>
                         {closingDate}

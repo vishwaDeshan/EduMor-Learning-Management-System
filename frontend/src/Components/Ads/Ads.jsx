@@ -6,15 +6,25 @@ import axios from 'axios';
 const Ads = () => {
   const [ads, setAds] = useState([]);
   useEffect(() => {
-    function getAds() {
-      axios.get('http://localhost:8000/advertisements').then((res) => {
-        setAds(res.data.existingAds)
-      }).catch((err) => {
-        alert(err.message)
-      })
+    const token = localStorage.getItem('AUTH_TOKEN');
+    if (!token) {
+      alert("Authorization token missing");
+      return;
     }
-    getAds();
-  }, [])
+    axios.get('http://localhost:8000/advertisements', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      setAds(response.data.existingAds);
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+  }, []);
+  
+
   return (
     <div>
       <a href={ads.map(ad => ad.link)} target="_blank" rel="noopener noreferrer">
