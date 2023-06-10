@@ -5,16 +5,17 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import Footer from '../../../Components/Footer/Footer';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import VacancySection from '../VacancySection/VacancySection';
+import withAuth from '../../../hoc/withAuth';
 
 
-function VacanciesPage({isLoggedIn,user}) {
+function VacanciesPage() {
     const { t } = useTranslation();
   return (
     <div style={{ diplay: 'flex', flexDirection: 'column' }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar isLoggedIn={isLoggedIn} user={user}/>
+          <Navbar/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -37,4 +38,4 @@ function VacanciesPage({isLoggedIn,user}) {
   )
 }
 
-export default VacanciesPage
+export default withAuth(VacanciesPage);

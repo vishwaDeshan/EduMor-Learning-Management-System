@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require('../Middlewares/authMiddleware');
 const newsController = require('../controllers/newsController');
 
 //post news
 router.post('/save', newsController.saveNews);
 
 //get all news
-router.get('/', newsController.getNews);
+router.get('/',authMiddleware, newsController.getNews);
 
 //update a specific news
 router.put('/update/:id', newsController.updateNews);

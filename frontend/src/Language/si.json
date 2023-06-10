@@ -37,7 +37,7 @@
     "Cancel": "අවලංගු කරන්න",
     "Notifications":"දැනුම්දීම්",
     "Biling details":"බිල්ගත විස්තර",
-    "Summary":"සාරාංශය",
+    "Payment Summary":"සාරාංශය",
     "Continue to checkout":"ඉදිරියට යන්න",
     "including VAT": "වැට් බදු ඇතුළුව",
     "Total amount":"මුලු වටිනාකම",
@@ -45,5 +45,9 @@
     "Discount":"වට්ටම්",
     "Premium Membership":"විශේෂ සාමාජිකත්වය",
     "Payment":"ගෙවීම් ක්‍රමයක් තෝරන්න",
-    "Lecture Videos":"දේශන"
+    "Lecture Videos":"දේශන",
+    "Status":"තත්වය",
+    "Quiz Results":"ප්‍රතිඵල",
+    "You need to be a premium member to access the lecture videos":"දේශන වීඩියෝ වෙත ප්‍රවේශ වීමට ඔබ වාරික සාමාජිකයෙකු විය යුතුය",
+    "Last Accessed":"අවසන් වරට ප්‍රවේශ වූයේ"
 }

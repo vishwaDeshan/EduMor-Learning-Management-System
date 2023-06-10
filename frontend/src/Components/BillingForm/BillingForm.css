@@ -1,9 +1,3 @@
-.billing-Container {
-  height: 500px;
-  width: 90%;
-  overflow-y: scroll;
-}
-
 .billing-Container::-webkit-scrollbar {
   width: 5px;
   background-color: #fff;
