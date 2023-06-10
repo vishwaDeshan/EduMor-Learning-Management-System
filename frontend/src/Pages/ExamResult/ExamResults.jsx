@@ -18,10 +18,32 @@ const ExamResult = () => {
   const [examAttempted, setExamAttempted] = useState([]);
   const { userId, examId } = useParams();
   const [showModal, setShowModal] = useState(false);
-  const selectedQuiz = [null];
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const token = localStorage.getItem("AUTH_TOKEN");
 
-  const handleShowModal = () => {
-    setShowModal(true);
+  const handleShowModal = (quizId) => {
+    setSelectedQuiz(null);
+    // Make an API call to retrieve the quiz data
+    if (!token) {
+      alert("Authorization token missing");
+      return;
+    }
+
+    axios
+      .get(`/quizResults/${quizId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setSelectedQuiz(response.data);
+        console.log(response.data);
+        setShowModal(true);
+      })
+      .catch((error) => {
+        // Error handling code
+        console.log(error);
+      });
   };
 
   const handleCloseModal = () => {
@@ -29,7 +51,6 @@ const ExamResult = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("AUTH_TOKEN");
     if (!token) {
       alert("Authorization token missing");
       return;
@@ -72,7 +93,11 @@ const ExamResult = () => {
   };
 
   //get only latest updates
-  const uniqueResults = [...new Map(myResults.map(result => [result.userId + "-" + result.quizId, result])).values()];
+  const uniqueResults = [
+    ...new Map(
+      myResults.map((result) => [result.userId + "-" + result.quizId, result])
+    ).values(),
+  ];
 
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
@@ -85,7 +110,7 @@ const ExamResult = () => {
               <MDBBreadcrumbItem>
                 <a href="/">{t("Overview")}</a>
               </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem >
+              <MDBBreadcrumbItem>
                 <a href="/myExams">{t("My Exams")}</a>
               </MDBBreadcrumbItem>
               <MDBBreadcrumbItem active>{t("Quiz Results")}</MDBBreadcrumbItem>
@@ -124,7 +149,7 @@ const ExamResult = () => {
                         <td className="col-4">
                           <div
                             className="d-flex align-items-center"
-                            onClick={handleShowModal}
+                            onClick={() => handleShowModal(myResults._id)}
                           >
                             <div className="ms-1">{myResults.quizName}</div>
                           </div>
@@ -165,14 +190,34 @@ const ExamResult = () => {
             {/* pop up boz for displaying the quiz results */}
             <Modal show={showModal} onHide={handleCloseModal}>
               <Modal.Header closeButton>
-                <Modal.Title></Modal.Title>
+                <Modal.Title>
+                  {selectedQuiz && (
+                    <div>
+                      <h2>{selectedQuiz.quizName} Results</h2>
+                    </div>
+                  )}
+                </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                {selectedQuiz && (
-                  <div>
-                    <h5>{selectedQuiz.quizName}</h5>
-                  </div>
-                )}
+                {selectedQuiz &&
+                  selectedQuiz.quizAnswers.map((answer, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding:'5px 10px',
+                        margin:'5px 0',
+                        borderRadius:'10px',
+                        backgroundColor:
+                          answer.givenAnswer === answer.correctAnswer
+                            ? "#b6ffb9"
+                            : "#ffb6b6",
+                      }}
+                    >
+                      <p>Question: {answer.question}</p>
+                      <p>Given Answer: {answer.givenAnswer}</p>
+                      <p>Correct Answer: {answer.correctAnswer}</p>
+                    </div>
+                  ))}
               </Modal.Body>
             </Modal>
           </section>

@@ -52,3 +52,17 @@ exports.getQuizResultByAll = (req, res) => {
     });
 };
 
+//get specific record using id
+exports.getQuizResultById = async (req, res) => {
+  try {
+    const quizResult = await QuizResult.findById(req.params.id);
+    if (!quizResult) {
+      return res.status(404).json({ error: 'Quiz result not found.' });
+    }
+    res.json(quizResult);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while retrieving the quiz result.' });
+  }
+};
+
+

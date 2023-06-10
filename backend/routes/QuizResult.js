@@ -12,4 +12,7 @@ router.get('/:userId/:examinationId',authMiddleware, quizResultsController.getQu
 //Get route for retrieve the data specific to userId ,examinationId, quizid
 router.get('/:userId/:examinationId/:quizId',authMiddleware, quizResultsController.getQuizResultByAll);
 
+router.get('/:id',authMiddleware, quizResultsController.getQuizResultById);
+
+
 module.exports = router;
