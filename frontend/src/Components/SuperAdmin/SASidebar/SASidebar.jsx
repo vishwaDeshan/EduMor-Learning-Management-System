@@ -35,16 +35,9 @@ const SASidebar = () => {
             </NavLink>
           </li>
           <li >
-            <NavLink to="/superadminSettings" className={({ isActive }) => (isActive ? "active" : "")}><a>
+            <NavLink to="/superAdminEditProfile" className={({ isActive }) => (isActive ? "active" : "")}><a>
               <SettingsOutlinedIcon />
               <span className="link_name">Settings</span>
-            </a>
-            </NavLink>
-          </li>
-          <li >
-            <NavLink to="/logout" className={({ isActive }) => (isActive ? "active" : "")}><a>
-              <ExitToAppOutlinedIcon />
-              <span className="link_name">Logout</span>
             </a>
             </NavLink>
           </li>
