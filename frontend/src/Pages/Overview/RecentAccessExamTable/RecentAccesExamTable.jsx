@@ -11,7 +11,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function App() {
-  
+
   const { t } = useTranslation();
   const userId = useSelector((state) => state.auth.token._id);
   const token = localStorage.getItem("AUTH_TOKEN");
@@ -29,7 +29,9 @@ export default function App() {
         },
       })
       .then((res) => {
-        setMyExams(res.data.enrollments);
+        const sortedExams = res.data.enrollments.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        const latestExams = sortedExams.slice(0, 3);
+        setMyExams(latestExams);
       })
       .catch((err) => {
         alert(err.message);
