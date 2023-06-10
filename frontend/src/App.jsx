@@ -90,18 +90,6 @@ function App() {
           <Route path="/adminRequests" element={<AdminRequests />} />
           <Route path="/" element={<Overview/>} />
           <Route path="/level/quiz/:id" element={<Quiz/>} />
-          <Route path="/examinations" element={<Examinations isLoggedIn={isLoggedIn} user={user} />} />
-          <Route path="/profile" element={<Profile isLoggedIn={isLoggedIn} user={user} logoutUser={logoutUser} />} />
-          <Route path="/myPayments" element={<Payment isLoggedIn={isLoggedIn} user={user} />} />
-          <Route path="/myExams" element={<MyExams isLoggedIn={isLoggedIn} user={user} />} />
-          <Route exact path="/examinations/:_id" element={<ExamModule isLoggedIn={isLoggedIn} user={user} />} />
-          <Route path="/adminOverview" element={<OverviewAdmin />} />
-          <Route path="/vacancies" element={<VacanciesPage isLoggedIn={isLoggedIn} user={user} />} />
-          <Route path="/login" element={<Login setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/superAdminDashboard" element={<SADashboard />} />
-          <Route path="/" element={<Overview isLoggedIn={isLoggedIn} user={user} />} />
-          <Route path="/level/quiz/:id" element={<Quiz isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage />} />
           <Route path="/adminOverview" element={<OverviewAdmin />} />
