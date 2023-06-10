@@ -96,20 +96,6 @@ function MyExams() {
                             </div>
                           </div>
                         </td>
-                        {/* <td>
-              <MDBBadge
-                color={
-                  level === "Beginner"
-                    ? "success"
-                    : level === "Intermediate"
-                    ? "primary"
-                    : "warning"
-                }
-                pill
-              >
-                level
-              </MDBBadge>
-            </td> */}
                         <td>
                           <p rounded size="sm">
                             {new Date(myExams.updatedAt).toLocaleString(
