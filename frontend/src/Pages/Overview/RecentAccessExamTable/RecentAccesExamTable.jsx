@@ -102,7 +102,7 @@ export default function App() {
                   </td>
                   <td>
                     <MDBBadge
-                      color="success"
+                      color="warning"
                       pill
                       style={{ fontSize: "12px", padding: "6px 15px" }}
                     >
