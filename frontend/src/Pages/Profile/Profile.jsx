@@ -90,8 +90,9 @@ function Profile() {
                           </div>
                           <h5 class="user-name">
                             {user.firstName} {user.lastName}
-                          </h5>
+                          </h5>                          
                           <h6 class="user-email">{user.email}</h6>
+                          {user.isPremiumMember?<h6 className="membership">Premium Memeber</h6>:<></>}
                         </div>
                       </div>
                     </div>
