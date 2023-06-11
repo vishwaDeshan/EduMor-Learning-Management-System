@@ -8,31 +8,34 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 function LoginForm(setUser, setIsLoggedIn) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = async (event) => {
     
     event.preventDefault();
-    const data={
+    const data = {
       email,
-      password
+      password,
     };
 
-    axios.post('http://localhost:8000/auth/login', data).then((response) => {
-      const token = response.data.token;
-      window.location.replace("/");
+    axios
+      .post("http://localhost:8000/auth/login", data)
+      .then((response) => {
+        const token = response.data.token;
+        window.location.replace("/");
 
-      localStorage.setItem("AUTH_TOKEN", JSON.stringify(token));
+        localStorage.setItem("AUTH_TOKEN", JSON.stringify(token));
 
-      const decodedToken = jwt_decode(token);
-      setUser(decodedToken);
-      setIsLoggedIn(true);
-    }).catch((error) => {
-      window.alert(error.response.data.msg);
-    })
+        const decodedToken = jwt_decode(token);
+        setUser(decodedToken);
+        setIsLoggedIn(true);
+      })
+      .catch((error) => {
+        window.alert(error.response.data.msg);
+      });
   };
 
   return (
@@ -51,7 +54,9 @@ function LoginForm(setUser, setIsLoggedIn) {
               setEmail(e.target.value);
             }}
           />
-          {emailError !== 'none' && <div style={{ color: 'red' }}>{emailError}</div>}
+          {emailError !== "none" && (
+            <div style={{ color: "red" }}>{emailError}</div>
+          )}
           <InputBox
             title="Password"
             name="password"
@@ -61,23 +66,31 @@ function LoginForm(setUser, setIsLoggedIn) {
               setPassword(e.target.value);
             }}
           />
-          {passwordError !== 'none' && <div style={{ color: 'red' }}>{passwordError}</div>}
+          {passwordError !== "none" && (
+            <div style={{ color: "red" }}>{passwordError}</div>
+          )}
 
           <div className="loginfeature">
             {/* <div className="check" style={{color:"#041083", fontSize:"small"}}>
           <input type="checkbox" id="remember" name="remember" /><label for="remember"> Remember me</label>
           </div> */}
-            <Link to="/forgotPassword"><text>Forgot password?</text></Link>
+            <Link to="/forgotPassword">
+              <text>Forgot password?</text>
+            </Link>
           </div>
           <div className="loginbtn">
             <Button buttonName="Login" type="submit" />
           </div>
         </form>
         <div className="signup">
-          <div><text>Don't have an account?</text></div>
           <div>
-            <Link to='/Signup'>
-              <h6><u>Sign-Up</u></h6>
+            <text>Don't have an account?</text>
+          </div>
+          <div>
+            <Link to="/Signup">
+              <h6>
+                <u>Sign-Up</u>
+              </h6>
             </Link>
           </div>
         </div>

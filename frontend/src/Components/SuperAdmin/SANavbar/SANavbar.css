@@ -69,6 +69,7 @@ font{
     color: #fff;
     border: none;
     border-radius: 10px;
+    margin-left: 10px;
 }
 .Navbar-sa button:hover{
     background-color: transparent;
