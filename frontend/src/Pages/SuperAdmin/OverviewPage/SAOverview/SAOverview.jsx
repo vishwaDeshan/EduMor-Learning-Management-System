@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './SAOverview.css'
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import axios from 'axios';
+import withAuth from "../../../../hoc/withAuth";
 
 function SAOverview() {
     //to retreive the count of users
@@ -140,4 +141,4 @@ function SAOverview() {
     )
 }
 
-export default SAOverview
+export default withAuth(SAOverview);

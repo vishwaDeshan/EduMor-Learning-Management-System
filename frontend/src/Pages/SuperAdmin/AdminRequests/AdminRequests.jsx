@@ -2,6 +2,8 @@ import React from 'react'
 import Footer from '../../../Components/Footer/Footer'
 import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
 import SASidebar from '../../../Components/SuperAdmin/SASidebar/SASidebar'
+import withAuth from "../../../hoc/withAuth";
+
 
 function AdminRequests() {
   return (
@@ -22,4 +24,4 @@ function AdminRequests() {
   )
 }
 
-export default AdminRequests
+export default withAuth(AdminRequests);
