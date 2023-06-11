@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
-// import questions from '../../../Data/questions';
 import './Quiz.css';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Results from '../Results/Results';
+import withAuth from '../../../hoc/withAuth';
 
-function Quiz({isLoggedIn,user}) {
+
+function Quiz() {
+
   const [quiz, setQuiz] = useState({});
+  const [level, setLevel] = useState(null);
+  const [examId, setExamId] = useState(null);
+  const [quizName, setQuizName] = useState(null);
+  const [quizId, setQuizId] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [answers, setAnswers] = useState(Array(quiz.length).fill(''));
@@ -20,6 +26,10 @@ function Quiz({isLoggedIn,user}) {
       .then((res) => {
         if (res.data) {
           setQuiz(res.data.questions);
+          setLevel(res.data.level);
+          setExamId(res.data.examinationId);
+          setQuizName(res.data.quizName);
+          setQuizId(id);
         } else {
           alert('Quiz data not found');
         }
@@ -85,7 +95,7 @@ function Quiz({isLoggedIn,user}) {
   const currentQuestionData = quiz[currentQuestion];
 
   if (currentQuestion === quiz.length) {
-    return <Results answers={answers} qid={id} user={user}/>;
+    return <Results answers={answers} qid={id} level={level} examId={examId} quizName={quizName} quizId={quizId}/>;
   }
 
   //quiz Answering section
@@ -147,40 +157,5 @@ function Quiz({isLoggedIn,user}) {
   );
 }
 
-// //Quiz results
-// function Results({ answers }) {
-//   const numCorrect = answers.filter((answer, index) => answer === questions[index].correctAnswer).length;
-//   const percentage = ((numCorrect / questions.length) * 100).toFixed(2);
 
-//   return (
-//     <div>
-//       <div className="read-crumb-quiz">
-//         <MDBBreadcrumb >
-//           <MDBBreadcrumbItem>
-//             <a href='/'>Overview</a>
-//           </MDBBreadcrumbItem>
-//           <MDBBreadcrumbItem ><a href='/examinations'>Examination</a></MDBBreadcrumbItem>
-//           <MDBBreadcrumbItem active>Quiz</MDBBreadcrumbItem>
-//         </MDBBreadcrumb>
-//       </div>
-
-//     <div className='quiz-results'>
-//       <h1 className='results-heading'>Quiz Results</h1>
-//       <p className='results-summary'>You answered {numCorrect} out of {questions.length} questions correctly.</p>
-//       <p className='results-score'>Your score: <h2>{percentage}%</h2></p>
-//       <ol className='results-list'>
-//         {questions.map((question, index) => (
-//           <li key={index} className={answers[index] === question.correctAnswer ? 'correct' : 'incorrect'}>
-//             <p>Question {index + 1}: {question.question}</p>
-//             <p>Your answer: {answers[index]}</p>
-//             <p>Correct answer: {question.correctAnswer}</p>
-//           </li>
-//         ))}
-//       </ol>
-//     </div>
-//     </div>
-//   );
-// }
-
-
-export default Quiz;
+export default withAuth(Quiz);

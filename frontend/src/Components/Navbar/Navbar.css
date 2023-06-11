@@ -97,3 +97,8 @@ select::-ms-expand {
     font-size: 20px;
     color: #646a85;
 }
+
+.Navbar .item p{
+    color:#646a85;
+    margin:5px;
+}

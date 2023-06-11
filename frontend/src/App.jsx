@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import jwt_decode from 'jwt-decode';
 
 import Overview from "./Pages/Overview/OverviewPage/Overview";
@@ -15,9 +16,13 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup"
 import LandingPage from "./Pages/Landing Page/LandingPage"
 import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
-import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
+import SADashboard from "./Pages/SuperAdmin/OverviewPage/SADashboard";
 import Quiz from "./Components/QuizHandler/Quiz/Quiz";
-import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import UserdetailsPage from "./Pages/Admin/UserDetails/UserdetailsPage/UserdetailsPage";
+import Paymentpage from "./Pages/Admin/Payments/Paymentpage/Paymentpage";
+import VideoUploadPage from "./Pages/Admin/VideoUploadSection/VideoUploadPage";
+import QuizePage from "./Pages/Admin/QuizeSection/QuizePage";
+import AdvertisementPage from "./Pages/Admin/Advertisement/AdvertisementPage";
 import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
@@ -25,6 +30,13 @@ import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import Contactus from "./Pages/Contact Us/Contactus"
 import Adminsignup from "./Pages/Admin Signup/Adminsignup";
+import ExamResult from "./Pages/ExamResult/ExamResults";
+import Success from "./Components/Checkout/Success";
+import Cancel from "./Components/Checkout/Cancel";
+import NewsPage from "./Pages/Admin/News/NewsPage";
+import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
+
 
 
 
@@ -32,62 +44,94 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState();
 
-  const logoutUser = () => {
-    setUser(null);
-    setIsLoggedIn(false);
-    localStorage.removeItem("AUTH_TOKEN");
-    window.location.replace("/login");
-  }
+  const dispatch = useDispatch();
+  const token = JSON.parse(localStorage.getItem('AUTH_TOKEN'));
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("AUTH_TOKEN"));
     if (token) {
       const decodedToken = jwt_decode(token);
       if (decodedToken.exp * 1000 < Date.now()) {
         setUser(null);
         setIsLoggedIn(false);
-        // window.location.replace("/login");
+        dispatch({type:"SET_USER",payload:{
+          isLoggedIn:false,
+          users:null,
+          token:null
+        }})
       } else {
         setUser(decodedToken);
         setIsLoggedIn(true);
-
+        dispatch({type:"SET_USER",payload:{
+          isLoggedIn:true,
+          users:user,
+          token:decodedToken
+        }})
       }
-      console.log(decodedToken);
+    } else {
+      dispatch({type:"SET_USER",payload:{
+        isLoggedIn:false,
+        users:null,
+        token:null
+      }})
     }
-
-  }, [])
+  }, [dispatch, token]);
 
   return (
     <div className="App">
-      <BrowserRouter>
+      {<BrowserRouter>
         <Routes>
-          <Route path="/examinations" element={<Examinations isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/profile" element={<Profile isLoggedIn={isLoggedIn} user={user} logoutUser={logoutUser} />} />
-          <Route path="/myPayments" element={<Payment isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/myExams" element={<MyExams isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route exact path="/examinations/:_id" element={<ExamModule isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/examinations" element={<Examinations/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/myPayments" element={<Payment/>} />
+          <Route path="/myExams" element={<MyExams/>} />
+          <Route exact path="/examinations/:_id" element={<ExamModule/>} />
           <Route path="/adminOverview" element={<OverviewAdmin />} />
-          <Route path="/vacancies" element={<VacanciesPage isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/vacancies" element={<VacanciesPage/>} />
           <Route path="/login" element={<Login setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/superAdminDashboard" element={<SADashboard />} />
           <Route path="/adminRequests" element={<AdminRequests />} />
-          <Route path="/" element={<Overview isLoggedIn={isLoggedIn} user={user}/>} />
-          <Route path="/level/quiz/:id" element={<Quiz isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/" element={<Overview/>} />
+          <Route path="/level/quiz/:id" element={<Quiz/>} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/land" element={<LandingPage />} />
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
+          <Route path="/userDetails" element={<UserdetailsPage />} />
+          <Route path="/paymentsData" element={<Paymentpage />} />
+          <Route path="/videoUpload" element={<VideoUploadPage />} />
+          <Route path="/quizUpload" element={<QuizePage />} />
+          <Route path="/adsUpload" element={<AdvertisementPage />} />
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
-          <Route path="/examinations/lectureVideos" element={<VideosPage isLoggedIn={isLoggedIn} user={user} />} />
+          <Route path="/examination/:examinationId" element={<VideosPage/>} />
+          <Route path="/quizResults/:userId/:examId" element={<ExamResult/>} />
+          <Route path="/success" element={<Success/>} />
+          <Route path="/cancel" element={<Cancel/>} />
           <Route path="/test" element={<Test />} />
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/adminsignup" element={<Adminsignup />} />
+          <Route path="/newsUpload" element={<NewsPage />} />
+          <Route path="/examinations" element={<Examinations />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/myPayments" element={<Payment />} />
+          <Route path="/myExams" element={<MyExams />} />
+          <Route path="/Exam" element={<ExamModule />} />
+          <Route path="/adminOverview" element={<OverviewAdmin />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Overview />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/land" element={<LandingPage />} />
+          <Route path="/adminRequests" element={<AdminRequests />} />
+          <Route path="/superAdminEditProfile" element={<EditProfile />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>}
     </div>
   );
 }
-
 
 export default App;
 

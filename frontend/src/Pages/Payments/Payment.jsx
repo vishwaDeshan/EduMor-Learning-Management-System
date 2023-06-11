@@ -4,16 +4,19 @@ import Footer from '../../Components/Footer/Footer';
 import Navbar from '../../Components/Navbar/Navbar';
 import SideBar from '../../Components/SideBar/SideBar';
 import {MDBBreadcrumb,MDBBreadcrumbItem} from 'mdb-react-ui-kit';
-import BillingForm from '../../Components/BillingForm/BillingForm'
+import BillingForm from '../../Components/BillingForm/BillingForm';
+import withAuth from '../../hoc/withAuth';
 
-function Payment({isLoggedIn,user}) {
+function Payment() {
+
   const {t}=useTranslation();
+
   return (
     <div style={{ diplay: 'flex', flexDirection: 'column' }}>
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar isLoggedIn={isLoggedIn} user={user}/>
+          <Navbar />
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -35,4 +38,4 @@ function Payment({isLoggedIn,user}) {
   )
 }
 
-export default Payment
+export default withAuth(Payment);

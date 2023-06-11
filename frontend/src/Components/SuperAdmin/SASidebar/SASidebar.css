@@ -21,7 +21,7 @@
     font-weight: 1000;
     font-size: 36px;
     line-height: 48px;
-    color: #041083;
+    color: #071397;
     margin-right: 15px;
   }
   
@@ -72,14 +72,10 @@
   }
   
   .side-bar-sa .active{
-    background-color: #041083;
+    background-color: #050586;
     border-radius: 0px 15px 15px 0px;
   }
   
   .side-bar-sa .active a{
     color: #fff;
   }
-  
-  .side-bar-sa li:last-child{
-    margin-top: 175%;
-  } 

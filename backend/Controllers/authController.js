@@ -76,7 +76,7 @@ const loginController = async (req, res) => {
     }
 
     //generate token with user info
-    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber });
+    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber, isPremiumMember:oldUser.isPremiumMember });
 
     //sending response
     res.status(200).json({ sucess: true, token, msg: "You're logged in successfully" })
@@ -189,4 +189,34 @@ const getUserController = async (req, res) => {
     }
 };
 
-module.exports = { registerController, loginController, forgotpasswordController, resetPasswordController, updateUserController, getUserController }
+//update the user membership
+const updatePremiumMembership = async (req, res) => {
+    try {
+      const { userId } = req.params;
+  
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      user.isPremiumMember = true;
+      await user.save();
+  
+      return res.json({ message: 'Premium membership updated successfully' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+
+  // Controller function to get all user details
+const getAllUsers = async (req, res) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (error) {
+      res.status(500).json({ message: 'Error retrieving users', error: error.message });
+    }
+  };
+
+module.exports = { registerController, loginController, forgotpasswordController, resetPasswordController, updateUserController, getUserController,updatePremiumMembership, getAllUsers }

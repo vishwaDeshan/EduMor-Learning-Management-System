@@ -11,7 +11,7 @@ const examinationSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
-    required: true
+    // required: true
   },
   createdDate: {
     type: Date,

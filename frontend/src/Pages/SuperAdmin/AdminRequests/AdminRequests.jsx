@@ -1,8 +1,7 @@
 import React from 'react'
-import SASidebar from '../../../Components/SuperAdmin/SASidebar/SASidebar'
-import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
-import './AdminRequests.css'
 import Footer from '../../../Components/Footer/Footer'
+import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
+import SASidebar from '../../../Components/SuperAdmin/SASidebar/SASidebar'
 
 function AdminRequests() {
   return (
@@ -12,7 +11,7 @@ function AdminRequests() {
       <div className="mainContainer">
         <SANavbar />
         <div className="overview-container" style={{ display: "flex" }}>
-          
+         Admin requests
         </div>
       </div>
     </div>

@@ -109,6 +109,11 @@
     text-align: center;
 }
 
+.user-profile .membership{
+    margin-top:10px;
+    color:#041083;
+}
+
 @media screen and (max-width: 768px) {
     
     .profile-container {

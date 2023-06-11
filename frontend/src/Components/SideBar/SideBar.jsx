@@ -47,18 +47,18 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/myPayments" className="">
-              <a href="/myPayments">
-                <LocalAtmOutlinedIcon />
-                <span className="link_name">{t("Payments")}</span>
-              </a>
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/vacancies" className="">
               <a href="/vacancies">
                 <WorkHistoryOutlinedIcon />
                 <span className="link_name">{t("Vacancy")}</span>
+              </a>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/myPayments" className="">
+              <a href="/myPayments">
+                <LocalAtmOutlinedIcon />
+                <span className="link_name">{t("Payments")}</span>
               </a>
             </NavLink>
           </li>
@@ -70,14 +70,6 @@ const SideBar = () => {
               </a>
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink to="/logout" className="">
-              <a href="/logout" className="logout">
-                <ExitToAppOutlinedIcon />
-                <span className="link_name">{t("Logout")}</span>
-              </a>
-            </NavLink>
-          </li> */}
         </ul>
       </div>
     </div>

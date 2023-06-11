@@ -45,9 +45,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default:""
     },
-    zipCode: {
-        type: String,
-        default:""
+    isPremiumMember:{
+        type:Boolean,
+        default:false,
     }
 
 }, { timestamps: true });

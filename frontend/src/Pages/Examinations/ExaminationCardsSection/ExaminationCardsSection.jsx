@@ -19,15 +19,24 @@ function ExaminationSection() {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/examinations")
-      .then((res) => {
-        setExams(res.data);
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+    const token = localStorage.getItem('AUTH_TOKEN');
+    if (!token) {
+      alert("Authorization token missing");
+      return;
+    }
+    axios.get('http://localhost:8000/examinations', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      setExams(response.data);
+    })
+    .catch(error => {
+      alert(error.message);
+    });
   }, []);
+  
 
   return (
     <div className="examination-section">

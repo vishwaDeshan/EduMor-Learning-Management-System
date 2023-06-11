@@ -10,9 +10,10 @@ MDBBreadcrumb,
 MDBBreadcrumbItem
 } from 'mdb-react-ui-kit';
 import { useTranslation } from "react-i18next";
+import withAuth from "../../../hoc/withAuth";
 
 
-function Examinations({isLoggedIn}) {
+function Examinations() {
   const { t } = useTranslation();
 
   return (
@@ -20,7 +21,7 @@ function Examinations({isLoggedIn}) {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <Sidebar />
         <div className="mainContainer">
-          <Navbar isLoggedIn={isLoggedIn}/>
+          <Navbar/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -43,4 +44,4 @@ function Examinations({isLoggedIn}) {
   );
 }
 
-export default Examinations;
+export default withAuth(Examinations);
