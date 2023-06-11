@@ -4,7 +4,7 @@ const tokenGenerator = require("../Config/createToken");
 const { sendVerificationEmail, sendForgotPasswordEmail } = require("../Config/sentEmail")
 
 const registerController = async (req, res) => {
-    const { firstName, lastName, email, password, phonenumber } = req.body;
+    const { firstName, lastName, email, password, phonenumber, userRole} = req.body;
 
     //checks the email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -28,7 +28,8 @@ const registerController = async (req, res) => {
                 lastName,
                 email,
                 phonenumber,
-                password: hashedPassword
+                password: hashedPassword,
+                userRole,
             });
             await newUser.save();
 
@@ -76,7 +77,7 @@ const loginController = async (req, res) => {
     }
 
     //generate token with user info
-    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber, isPremiumMember:oldUser.isPremiumMember });
+    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber, isPremiumMember:oldUser.isPremiumMember, userRole:oldUser.userRole });
 
     //sending response
     res.status(200).json({ sucess: true, token, msg: "You're logged in successfully" })

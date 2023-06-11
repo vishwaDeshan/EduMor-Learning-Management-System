@@ -21,21 +21,47 @@ function LoginForm(setUser, setIsLoggedIn) {
       password,
     };
 
-    axios
-      .post("http://localhost:8000/auth/login", data)
-      .then((response) => {
-        const token = response.data.token;
-        window.location.replace("/");
+    // axios
+    //   .post("http://localhost:8000/auth/login", data)
+    //   .then((response) => {
+    //     const token = response.data.token;
+    //     window.location.replace("/");
 
-        localStorage.setItem("AUTH_TOKEN", JSON.stringify(token));
+    //     localStorage.setItem("AUTH_TOKEN", JSON.stringify(token));
 
-        const decodedToken = jwt_decode(token);
-        setUser(decodedToken);
-        setIsLoggedIn(true);
-      })
-      .catch((error) => {
-        window.alert(error.response.data.msg);
-      });
+    //     const decodedToken = jwt_decode(token);
+    //     setUser(decodedToken);
+    //     setIsLoggedIn(true);
+    //   })
+    //   .catch((error) => {
+    //     window.alert(error.response.data.msg);
+    //   });
+
+    axios.post("http://localhost:8000/auth/login", data)
+  .then((response) => {
+    const token = response.data.token;
+    localStorage.setItem("AUTH_TOKEN", JSON.stringify(token));
+
+    const decodedToken = jwt_decode(token);
+   
+
+    // Check user role and redirect accordingly
+    const userRole = decodedToken.userRole;
+    if (userRole === "Student") {
+      window.location.replace("/");
+    } else if (userRole === "Admin") {
+      window.location.replace("/adminOverview");
+    } else if (userRole === "SuperAdmin") {
+      window.location.replace("/superAdminDashboard");
+    }
+    setUser(decodedToken);
+    setIsLoggedIn(true);
+  })
+  .catch((error) => {
+    window.alert(error.response.data.msg);
+  });
+
+
   };
 
   return (

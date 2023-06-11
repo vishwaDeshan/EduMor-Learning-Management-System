@@ -21,13 +21,12 @@ function SignupForm() {
   const [confirmpasswordError, setConfirmPasswordError] = useState('');
   const [phonenumberError, setPhoneNumberError] = useState('');
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (fnameError == 'none' && lnameError == 'none' && fnameError == 'none' && passwordError == 'none' && confirmpasswordError == 'none' && phonenumberError == 'none') {
       const data = {
-        firstName, lastName, email, password, phonenumber
+        firstName, lastName, email, password, phonenumber, userRole: 'Student'
       };
       const { response, error } = await axios.post(`http://localhost:8000/auth/register`, data);
       if (error) {

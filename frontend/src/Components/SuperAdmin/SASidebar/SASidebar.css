@@ -79,3 +79,8 @@
   .side-bar-sa .active a{
     color: #fff;
   }
+
+  .LogoutButton{
+    margin-top: 460px;
+    margin-left: 28px;
+  }

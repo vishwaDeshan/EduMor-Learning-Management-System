@@ -48,6 +48,9 @@ const UserSchema = new mongoose.Schema({
     isPremiumMember:{
         type:Boolean,
         default:false,
+    },
+    userRole:{
+        type: String,
     }
 
 }, { timestamps: true });

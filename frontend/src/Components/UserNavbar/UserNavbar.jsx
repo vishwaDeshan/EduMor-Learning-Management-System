@@ -23,7 +23,7 @@ function UserNavbar() {
           </ul>
         </div>
         <Link to="/signup">
-          <button type="button" value="signup" className="button">
+          <button type="button" value="signup" className="button-user">
             SignUp
           </button>
         </Link>
