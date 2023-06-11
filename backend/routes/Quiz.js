@@ -17,4 +17,7 @@ router.patch('/level/quiz/:id', QuizController.updateQuizById);
 //delete a quiz
 router.delete('/:id', QuizController.deleteQuizById);
 
+//get total quizes
+router.get('/allQuizes', QuizController.getQuizzes);
+
 module.exports = router;

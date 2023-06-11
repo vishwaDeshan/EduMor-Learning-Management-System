@@ -18,4 +18,7 @@ router.put('/:id', lectureVideosController.updateLectureVideo);
 // Delete a lecture video
 router.delete('/:id', lectureVideosController.deleteLectureVideo);
 
+// Get all videos 
+router.get('/', lectureVideosController.getVideos);
+
 module.exports = router;
