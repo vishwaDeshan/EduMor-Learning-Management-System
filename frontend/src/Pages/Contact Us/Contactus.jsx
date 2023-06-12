@@ -34,7 +34,6 @@ function Contactus() {
   return (
     <div>
       <UserNavbar />
-
       <div className="header">
         <h2>Contact Us</h2>
       </div>

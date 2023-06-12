@@ -35,12 +35,6 @@ import Cancel from "./Components/Checkout/Cancel";
 import NewsPage from "./Pages/Admin/News/NewsPage";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
-import ExaminationQuizPage from "./Pages/Admin/Examination/ExaminationQuizPage";
-import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
-import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
-import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
-import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
-
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -100,7 +94,6 @@ function App() {
           <Route path="/userDetails" element={<UserdetailsPage />} />
           <Route path="/paymentsData" element={<Paymentpage />} />
           <Route path="/videoUpload" element={<VideoUploadPage />} />
-          <Route path="/quizUpload" element={<QuizePage />} />
           <Route path="/adsUpload" element={<AdvertisementPage />} />
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
