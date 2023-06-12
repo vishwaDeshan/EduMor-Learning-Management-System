@@ -24,7 +24,7 @@ function CreateQuiz() {
             .catch((err) => {
                 alert(err.message);
             });
-    }, []);
+    }, [selectedExam]);
 
     //get levels which belongs to selected exams
     const filteredLevels = exam.find((exam) => exam.examName === selectedExam)?.levels || [];
@@ -46,12 +46,12 @@ function CreateQuiz() {
         const { name, value } = event.target;
         const updatedQuestions = [...questions];
         if (name === 'answers') {
-            updatedQuestions[index][name] = value.split(',');
+          updatedQuestions[index][name] = value.split(',').map(answer => answer.trim());
         } else {
-            updatedQuestions[index][name] = value;
+          updatedQuestions[index][name] = value.trim();
         }
         setQuestions(updatedQuestions);
-    };
+      };
 
     const handleQuizNameChange = (event) => {
         setQuizName(event.target.value);

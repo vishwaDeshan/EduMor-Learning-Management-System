@@ -32,7 +32,7 @@ import ExaminationQuizPage from "./Pages/Admin/Examination/ExaminationQuizPage";
 import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
 import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
 import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
-import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
+import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview";
 
 
 function App() {

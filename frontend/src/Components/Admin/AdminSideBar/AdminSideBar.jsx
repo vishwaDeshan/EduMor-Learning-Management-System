@@ -81,15 +81,11 @@ const Sidebar = () => {
             <span>News</span>
           </div>
         </NavLink>
-
-        <NavLink to="/adminSettings" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
-          <div className="menuItem">
-            <div>
-              <SettingsOutlinedIcon />
-            </div>
-            <span>Settings</span>
-          </div>
-        </NavLink>
+        <div class="adminLogout" style={{marginTop:"145px",marginLeft:"28px"}}>
+                  <button type="button" name="submit" class="btn btn-primary logout-btn" onClick={() => {
+                    // logoutUser();
+                  }}>Logout</button>
+                </div>
       </div>
     </div>
   );
