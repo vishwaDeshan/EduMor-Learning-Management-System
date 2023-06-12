@@ -1,10 +1,9 @@
 import React from "react";
 import AdminNavbar from "../../../Components/Admin/AdminNavbar/AdminNavbar";
 import MiniCalander from "../../../Components/MiniCalander/MiniCalander";
-
 import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar"
 import Footer from "../../../Components/Footer/Footer";
-
+import  NewsTable from "./NewsTable"
 import News from "./News";
 
 
@@ -18,10 +17,12 @@ function NewsPage() {
           <h5 style={{color:'blue',fontWeight:'bold'}}>News  Upload </h5>
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 
-            <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
+            <div className="middle-section" style={{ display: "flex",flexDirection: "column", maxwidth:"75%"}}>
              <News/>
+             <br />
+             <NewsTable/>
             </div>
-
+            
             <div className="right-section" style={{ width:"15%" }}>
               <MiniCalander />
             </div>
