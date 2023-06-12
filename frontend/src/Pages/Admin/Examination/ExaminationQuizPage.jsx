@@ -5,7 +5,6 @@ import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar"
 import Footer from "../../../Components/Footer/Footer";
 import CreateExamination from "./CreateExamination/CreateExamination";
 import CreateQuiz from "./CreateQuiz/CreateQuiz";
-import CreateExam from  "../../../Assets/CreateExam.jpg"
 
 function ExaminationPage() {
     return (
@@ -20,19 +19,11 @@ function ExaminationPage() {
                         <div className="middle-section" style={{ display: "flex", flexDirection: "column", flex: 4 }}>
                             <div className="createButtons" style={{ marginTop: "15x", display: "flex", flexDirection: "row" }}>
                                 <CreateExamination />
-                                <CreateQuiz /> 
-                            </div>
-
-                            <div className="Exambackground" style={{ marginTop: "15x", display: "flex", flexDirection: "row" }}>
-                            <img src={CreateExam} alt="Examination" style={{ width: "100%", height: "600px" }} />
-
+                                <CreateQuiz />
                             </div>
                             <div className="createdExams" style={{marginTop:"25px"}}>
-                                  
+
                             </div>
-                            
-                            
-                           
                         </div>
                         <div className="right-section" style={{ display: "flex", flex: 1 }}>
                             <MiniCalander />

@@ -23,7 +23,12 @@ function QuizeSection() {
   const handleShowExamModal = () => setShowExamModal(true);
   const handleShowQuizModal = () => setShowQuizModal(true);
 
-  
+  // submitExams(examName, examDescription,fileUpload);
+
+  //   // Clear form inputs
+  // setExamName('');
+  // setExamDescription('');
+  // setFileUpload('');
 
   const submitExams = (examName, description) => {
     axios.post('examinations/save', { examName, description })

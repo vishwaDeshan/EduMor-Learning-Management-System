@@ -5,7 +5,7 @@ import MiniCalander from "../../../../Components/MiniCalander/MiniCalander";
 import AdminSideBar from "../../../../Components/Admin/AdminSideBar/AdminSideBar"
 import Footer from "../../../../Components/Footer/Footer";
 import PaymentsData from "../PaymentsData/PaymentsData";
-import adminpayments from "../../../../Assets/Adminpayments.jpg"
+
 
 function Paymentpage() {
   return (
@@ -21,7 +21,7 @@ function Paymentpage() {
             <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
               <PaymentsData/> 
             </div>
-            
+
             <div className="right-section" style={{ width:"15%" }}>
               <MiniCalander />
             </div>
