@@ -27,6 +27,7 @@ import VideosPage from "./Pages/VideosPage/VideosPage";
 import ExamResult from "./Pages/ExamResult/ExamResults";
 import Success from "./Components/Checkout/Success";
 import Cancel from "./Components/Checkout/Cancel";
+import PastPapers from "./Pages/PastPapers/PastPapers";
 
 
 
@@ -92,6 +93,7 @@ function App() {
           <Route path="/success" element={<Success/>} />
           <Route path="/cancel" element={<Cancel/>} />
           <Route path="/test" element={<Test />} />
+          <Route path="/pastPapers/examination/:examinationId" element={<PastPapers/>} />
         </Routes>
       </BrowserRouter>
     </div>

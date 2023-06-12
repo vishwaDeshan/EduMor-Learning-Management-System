@@ -18,6 +18,8 @@ app.use("/enrollment", require("./routes/Enrollment"));
 app.use("/quizResults", require("./routes/QuizResult"));
 app.use("/lectureVideos", require("./routes/LectueVideos"));
 app.use("/", require("./routes/Quiz"));
+app.use("/pastPapers", require("./routes/PastPapers"));
+
 
 const port = 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';

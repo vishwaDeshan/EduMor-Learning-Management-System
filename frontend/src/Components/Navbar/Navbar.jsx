@@ -58,7 +58,7 @@ const Navbar = () => {
             onClick={() => setScrollableModal(!scrollableModal)}
           >
             <NotificationsActiveOutlinedIcon className="nav-icon" />
-            <div className="counter">1</div>
+            {/* <div className="counter">1</div> */}
             {/* message */}
             <MDBModal
               show={scrollableModal}

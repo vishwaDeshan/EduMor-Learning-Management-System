@@ -158,7 +158,9 @@ function ExamModule() {
             <img src={exam.examination?.photo} alt={exam.examName} />
             <p className="exam-description">{exam.examination?.description}</p>
             <ul>
+              <Link to={`/pastPapers/examination/${exam.examination?._id}`}>
               <li>Past Papers</li>
+              </Link>
               <Link to={`/examination/${exam.examination?._id}`}>
                 <li>
                    Lectures Videos
