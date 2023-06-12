@@ -14,7 +14,7 @@ function VideoUploadPage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5>Upload Section</h5>
+          <h5 style={{color:'blue',fontWeight:'bold'}}>Upload Section</h5>
 
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 

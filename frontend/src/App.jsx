@@ -21,7 +21,6 @@ import Quiz from "./Components/QuizHandler/Quiz/Quiz";
 import UserdetailsPage from "./Pages/Admin/UserDetails/UserdetailsPage/UserdetailsPage";
 import Paymentpage from "./Pages/Admin/Payments/Paymentpage/Paymentpage";
 import VideoUploadPage from "./Pages/Admin/VideoUploadSection/VideoUploadPage";
-import QuizePage from "./Pages/Admin/QuizeSection/QuizePage";
 import AdvertisementPage from "./Pages/Admin/Advertisement/AdvertisementPage";
 import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
@@ -36,8 +35,11 @@ import Cancel from "./Components/Checkout/Cancel";
 import NewsPage from "./Pages/Admin/News/NewsPage";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
-
-
+import ExaminationQuizPage from "./Pages/Admin/Examination/ExaminationQuizPage";
+import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
+import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
+import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
+import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview";
 
 
 function App() {

@@ -14,7 +14,7 @@ function Overview() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5>Overview</h5>
+          <h5 style={{color:'blue',fontWeight:'bold'}}>Overview</h5>
 
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 

@@ -1,6 +1,10 @@
+
+
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import './InputField.css';
+
+
 
 const InputField = () => {
   const [dragging, setDragging] = useState(false);
@@ -39,7 +43,7 @@ const InputField = () => {
       onDrop={handleDrop}
     >
       <input type="file" onChange={handleInputChange} />
-      <p>Drag and drop files or click to select files</p>
+      <p style={{color:'red'}}>Drag and drop files or click to select files</p>
       {files.length > 0 && (
         <ul>
           {files.map((file) => (

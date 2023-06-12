@@ -6,6 +6,7 @@ import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar"
 import Footer from "../../../Components/Footer/Footer";
 
 import Advertisement from "./Advertisement";
+import AdvertisementTable from "./AdvertisementTable";
 
 
 function AdvertisementPage() {
@@ -15,12 +16,14 @@ function AdvertisementPage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5>Advertisement  Upload </h5>
+          <h5 style={{color:'blue',fontWeight:'bold',marginTop:'1px'}}>Advertisement  Upload </h5>
 
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 
             <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
               <Advertisement/>
+              <br /><br />
+              <AdvertisementTable/>
             </div>
 
             <div className="right-section" style={{ width:"15%" }}>
