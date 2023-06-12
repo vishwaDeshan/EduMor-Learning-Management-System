@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./CardOverview.css";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import LoginIcon from '@mui/icons-material/Login';
-import axios from 'axios';
-
-
 function CardOverview() {
-  const [allUsers, setAllUsers] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:8000/enrollment/:userId')
-      .then((response) => {
-        setAllUsers(response.data.existingUsers);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  }, []);
-  console.log(allUsers);
-
-  // {allUsers.map((allUsers, index) => {
+    
   return (
     <div className="featured">
 
@@ -56,8 +39,8 @@ function CardOverview() {
       </div>
     </div>
 );
-// })}
 }
+  
 
 
 export default CardOverview

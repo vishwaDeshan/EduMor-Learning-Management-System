@@ -28,8 +28,6 @@ exports.getNews = (req, res) => {
     });
 };
 
-  
-
 exports.updateNews = (req, res) => {
     News.findByIdAndUpdate(
         req.params.id, {

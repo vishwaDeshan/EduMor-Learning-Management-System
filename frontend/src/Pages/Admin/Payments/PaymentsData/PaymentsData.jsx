@@ -1,46 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from 'mdb-react-ui-kit';
 import Adminpaymentsdata from "../../../../Data/Adminpaymentsdata";
-import defaultUser from "../../../../Assets/defaultUser.png";
-
+import defaultUser from "../../../../Assets/defaultUser.png"
 
 export default function PaymentsData() {
-  const [list,setList ] = useState([
-
-    {
-      CardholderName :"Srhehan Perera",
-   },
-   {
-    CardholderName :"Thilak  Varma",
- },
- {
-  CardholderName :"Sadesh  Bandara", 
- },
-    
-  ]);
-
-  function removeList(index){
-
-    const newList = [...list];
-      newList.splice(index, 1);
-      setList(newList);
-  
-    
-   }
-  
   
   return (
-    <MDBTable align='middle' style={{marginLeft:'100px',marginTop:'20px'}}>
+    <MDBTable align='middle'>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
-          <th scope='col'style={{color:'red'}} >Card Holder Name</th>
-          
-         
+          <th scope='col'style={{color:'red',marginLeft:'190px'}} >Card Type</th>
+          <th scope='col'style={{color:'red'}}>Card Number</th>
+          <th scope='col'style={{color:'red'}}>Card Holder Name</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody >
 
-        {list.map(({CardholderName }, index) => {
+        {Adminpaymentsdata.map(({CardType,CardNumber,CardholderName }, index) => {
           return (
             <tr>
               <td>
@@ -52,38 +28,18 @@ export default function PaymentsData() {
                     className='rounded-circle'
                   />
                   <div className='ms-3'>
-                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{CardholderName}</p>
+                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{CardType}</p>
                   </div>
                 </div>
               </td>
-             
               <td>
-            
-                <button  onClick={()=>removeList(index)}
-                style={{
-                  alignSelf: 'center',
-                  color: 'white',
-                  backgroundColor: 'blue',
-                  padding:'5px',
-                  transition: 'background-color 0.3s, color 0.3s',
-                }}
-                onMouseEnter={(e) => { 
-                  e.target.style.backgroundColor = 'white';
-                  e.target.style.color = 'black';
-                }}
-                onMouseLeave={(e) => { 
-                  e.target.style.backgroundColor = 'blue';
-                  e.target.style.color = 'white';
-                }}
-                
-                
-                
-                >Delete
-                
-                
-                
-                
-                </button>
+              <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{CardNumber}</p>
+              </td>
+
+              <td>
+                <MDBBadge color='primary' pill>
+                {CardholderName}
+                </MDBBadge>
               </td>
              
             </tr>

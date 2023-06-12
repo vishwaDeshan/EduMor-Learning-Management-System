@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const authMiddleware = require('../Middlewares/authMiddleware');
 const newsController = require('../controllers/newsController');
 
+=======
+const newsController = require('../controllers/newsController');
+>>>>>>> parent of 8e3ce3e (MakesomeChanges on AdminDashbord)
 
 //post news
 router.post('/save', newsController.saveNews);
