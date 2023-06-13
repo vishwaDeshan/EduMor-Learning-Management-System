@@ -137,13 +137,15 @@ console.log(allNews);
         padding: '25px',
         borderRadius: '10px',
         marginLeft: '20px',
+        marginTop:'20px'
       }}
     >
-      <MDBTable align='middle' style={{ overflowY: 'auto', height: '40px', tableLayout: 'fixed' }}>
+      <MDBTable align='middle' style={{ overflowY: 'auto', height: '40px', tableLayout: 'fixed', width:"750px", marginRight:'10px'}}>
         <MDBTableHead>
           <tr style={{ color: '#646a85' }}>
-            <th scope='col' style={{ color: 'red', width: '40%', paddingLeft: '80px' }}>News</th>
-            <th scope='col' style={{ color: 'red', width: '60%', paddingLeft: '100px' }}>Link</th>
+            <th scope='col' style={{ color: 'red', width: '60%'}}>News</th>
+            <th scope='col' style={{ color: 'red', width: '30%' }}>Link</th>
+            <th scope='col' style={{ color: 'red', width: '10%'}}>Action</th>
           </tr>
         </MDBTableHead>
 
@@ -154,7 +156,7 @@ console.log(allNews);
                 <td>
                   <div className='d-flex align-items-center'>
                     <div className='ms-3'>
-                      <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{news.news}</p>
+                      <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer'  }}>{news.news}</p>
                     </div>
                   </div>
                 </td>
@@ -171,6 +173,7 @@ console.log(allNews);
                       backgroundColor: 'blue',
                       padding: '5px',
                       transition: 'background-color 0.3s, color 0.3s',
+                      borderRadius:'10px'
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = 'white';

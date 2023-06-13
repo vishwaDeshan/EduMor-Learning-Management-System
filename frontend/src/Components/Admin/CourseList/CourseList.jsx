@@ -1,14 +1,15 @@
-
-import React from 'react';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import React, { useEffect } from 'react';
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import './CourseList.css'
-import { color } from '@mui/system';
-
 import { useState } from 'react';
+import axios from 'axios';
+
 
 
 export default function CourseList() {
 
+
+  const [exams,setExams]=useState([]);
   const [list,setList ] = useState([
 
     {
@@ -29,14 +30,16 @@ export default function CourseList() {
  },
   ]);
 
- function removeList(index){
-
-  const newList = [...list];
-    newList.splice(index, 1);
-    setList(newList);
-
-  
- }
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/examinations")
+      .then((res) => {
+        setExams(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
 
 
   return (
@@ -44,50 +47,24 @@ export default function CourseList() {
 <MDBTable align='middle'>
       <MDBTableHead>
         <tr>
-          <th scope='col mt-5'>Course Name</th>
+          <th scope='col mt-6'>Course Name</th>
         </tr>
       </MDBTableHead>
-      <MDBTableBody>
-        {list.map((course, index) => (
+      <MDBTableBody >
+        {exams.map((course, index) => (
           <tr key={index}>
             <td>
               <div className='d-flex align-items-center ms-5'>
                 <img
-                  src={course.imglink}
+                  src={course.photo}
                   alt=''
                   style={{ width: '45px', height: '45px' }}
                   className='rounded-circle'
                 />
                 <div className='ms-3'>
-                  <p className='fw-bold mb-1 '>{course.CourseName}</p>
+                  <p className='fw-bold mb-1 '>{course.examName}</p>
                 </div>
               </div>
-            </td>
-            <td>
-              <button
-               
-                style={{
-                  textDecoration: 'none',
-                  backgroundColor: 'black',
-                  margin: '1px',
-                  padding:'5px',
-                  color: 'white',
-                  transition: 'background-color 0.5s, color 0.3s'
-                }}
-
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = 'white';
-                  e.target.style.color = 'black';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'black';
-                  e.target.style.color = 'white';
-                }}
-                
-                onClick={() => removeList(index)}
-              >
-                Delete
-              </button>
             </td>
           </tr>
         ))}

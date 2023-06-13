@@ -12,7 +12,7 @@ function AdminNavbar() {
                 alt="Profile Picture"
                 sx={{ width: 40, height: 40 }}
               />
-          <span>Frank L.</span>
+          <span>Dhanushka</span>
       </div>
     </div>
   )

@@ -1,48 +1,53 @@
-import React, { useState } from 'react';
-import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from 'mdb-react-ui-kit';
-import Adminpaymentsdata from "../../../../Data/Adminpaymentsdata";
-import defaultUser from "../../../../Assets/defaultUser.png";
 
+import React, { useEffect, useState } from 'react';
+import { MDBTable, MDBTableHead, MDBTableBody, MDBBadge } from 'mdb-react-ui-kit';
+import Adminpaymentsdata from '../../../../Data/Adminpaymentsdata';
+import defaultUser from '../../../../Assets/defaultUser.png';
+import axios from 'axios';
 
 export default function PaymentsData() {
-  const [list,setList ] = useState([
+  const [list, setList] = useState([]);
+  const [premiumUsers, setPremiumUsers] = useState([]);
 
-    {
-      CardholderName :"Srhehan Perera",
-   },
-   {
-    CardholderName :"Thilak  Varma",
- },
- {
-  CardholderName :"Sadesh  Bandara", 
- },
-    
-  ]);
-
-  function removeList(index){
-
+  function removeList(index) {
     const newList = [...list];
-      newList.splice(index, 1);
-      setList(newList);
-  
-    
-   }
-  
-  
+    newList.splice(index, 1);
+    setList(newList);
+  }
+
+  useEffect(() => {
+    const fetchPremiumUsers = async () => {
+      try {
+        const response = await axios.get('auth/premiumUsers'); // Replace '/api/premiumUsers' with your actual API endpoint
+        setPremiumUsers(response.data);
+      } catch (error) {
+        console.error('Error retrieving premium users:', error);
+      }
+    };
+
+    fetchPremiumUsers();
+  }, []);
+
+  useEffect(() => {
+    setList(Adminpaymentsdata);
+  }, []);
+
   return (
-    <MDBTable align='middle' style={{marginLeft:'100px',marginTop:'20px'}}>
+    <MDBTable align='middle' style={{ marginLeft: '100px', marginTop: '20px' }}>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
-          <th scope='col'style={{color:'red'}} >Card Holder Name</th>
-          
-         
+          <th scope='col' style={{ color: 'red' }}>
+            Card Holder Name
+          </th>
+          <th scope='col' style={{ color: 'red',paddingLeft:'60px' }}>
+            Email
+          </th>
         </tr>
       </MDBTableHead>
-      <MDBTableBody >
-
-        {list.map(({CardholderName }, index) => {
+      <MDBTableBody>
+        {list.map(({ CardholderName,Email }, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td>
                 <div className='d-flex align-items-center'>
                   <img
@@ -52,40 +57,25 @@ export default function PaymentsData() {
                     className='rounded-circle'
                   />
                   <div className='ms-3'>
-                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{CardholderName}</p>
+                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>
+                      {CardholderName}
+                    </p>
                   </div>
                 </div>
               </td>
-             
+
               <td>
-            
-                <button  onClick={()=>removeList(index)}
-                style={{
-                  alignSelf: 'center',
-                  color: 'white',
-                  backgroundColor: 'blue',
-                  padding:'5px',
-                  transition: 'background-color 0.3s, color 0.3s',
-                }}
-                onMouseEnter={(e) => { 
-                  e.target.style.backgroundColor = 'white';
-                  e.target.style.color = 'black';
-                }}
-                onMouseLeave={(e) => { 
-                  e.target.style.backgroundColor = 'blue';
-                  e.target.style.color = 'white';
-                }}
-                
-                
-                
-                >Delete
-                
-                
-                
-                
-                </button>
+                <div className='d-flex align-items-center'>
+                  <div className='ms-3'>
+                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>
+                      {Email}
+                    </p>
+                  </div>
+                </div>
               </td>
-             
+              <td>
+               
+              </td>
             </tr>
           );
         })}

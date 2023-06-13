@@ -24,7 +24,7 @@ function ExaminationPage() {
                             </div>
 
                             <div className="Exambackground" style={{ marginTop: "15x", display: "flex", flexDirection: "row" }}>
-                            <img src={CreateExam} alt="Examination" style={{ width: "100%", height: "600px" }} />
+                            <img src={CreateExam} alt="Examination" style={{ width: "100%", height: "600px", margin:"20px", borderRadius:'10px', opacity:"60%"}} />
 
                             </div>
                             <div className="createdExams" style={{marginTop:"25px"}}>

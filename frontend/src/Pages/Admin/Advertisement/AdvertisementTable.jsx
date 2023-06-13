@@ -35,12 +35,13 @@ export default function AdvertisementTable() {
   };
 
   return (
-    <div className="NewsForm" style={{width:'100%',background:"#fff", overflowY:'scroll', height:'400px', padding:'25px', borderRadius:'10px',marginLeft:'20px'}}>
+    <div className="NewsForm" style={{width:'100%',background:"#fff", overflowY:'scroll', height:'400px', padding:'25px', borderRadius:'10px',marginLeft:'20px',maxHeight:"380px"}}>
     <MDBTable align='middle'style={{ overflowY: 'auto', height: '40px', tableLayout: 'fixed' }}>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
           <th scope='col' style={{ color: 'red', paddingLeft: '50px' }}>Advertisement</th>
           <th scope='col' style={{ color: 'red', paddingLeft: '100px' }}>Link</th>
+          <th scope='col' style={{ color: 'red', paddingLeft: '260px' }}>Action</th>
         </tr>
       </MDBTableHead>
 
@@ -56,7 +57,7 @@ export default function AdvertisementTable() {
                 </div>
               </td>
               <td>
-                <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{allAdvertisement.link}</p>
+                <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer',overflowX:'hidden',maxHeight:"30px", overflowY:"hidden" }}>{allAdvertisement.link}</p>
               </td>
 
               <td>
@@ -69,6 +70,8 @@ export default function AdvertisementTable() {
                   padding:'5px',
                   marginLeft:'250px',
                   transition: 'background-color 0.3s, color 0.3s',
+                  borderRadius:"10px",
+                  padding:"2px 10px"
                 }}
                 onMouseEnter={(e) => { 
                   e.target.style.backgroundColor = 'white';

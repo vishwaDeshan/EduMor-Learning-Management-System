@@ -12,9 +12,9 @@ export default function UserData() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/news')
+      .get('http://localhost:8000/auth/')
       .then((response) => {
-        setUserData(response.data.existingUserData);
+        setUserData(response.data);
       })
       .catch((error) => {
         alert(error.message);
@@ -32,7 +32,7 @@ export default function UserData() {
    }
   return (
 
-<MDBTable align='middle'>
+<MDBTable align='middle' style={{margin: '-15px 10px', background:'#fff', padding:" 5px 20px", borderRadius:'10px'}}>
   <MDBTableHead>
     <tr style={{ color: '#646a85' }}>
       <th scope='col' style={{ color: 'red', paddingLeft: '50px' }}>User Name</th>
@@ -41,8 +41,6 @@ export default function UserData() {
     </tr>
   </MDBTableHead>
   <MDBTableBody>
-    <hr style={{ color: 'blue' }} />
-
     {userData.map((userData, index) => {
       return (
         <tr key={index}>
@@ -63,7 +61,7 @@ export default function UserData() {
             <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{userData.email}</p>
           </td>
           <td>
-            <button style={{ backgroundColor: 'blue', color: 'wheat', fontWeight: 'bolder', padding: '10px'}} onClick={() => removeList(index)}>Delete</button>
+            <button style={{ backgroundColor: 'blue', color: 'wheat', fontWeight: 'bolder', padding: '2px 10px', borderRadius:"10px"}} onClick={() => removeList(index)}>Delete</button>
           </td>
         </tr>
       );

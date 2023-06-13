@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import axios from 'axios';
-import Exameimg from  '../../../../Assets/Exameimg.avif';
+
 
 const CreateExamination = () => {
   const [showModal, setShowModal] = useState(false);

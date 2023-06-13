@@ -7,7 +7,12 @@ import axios from 'axios';
 
 
 function CardOverview() {
-  const [allUsers, setAllUsers] = useState([]);
+  
+//to retreive the count of users
+const [allUsers, setAllUsers] = useState([]);
+const [emailCount, setEmailCount] = useState(0);
+const [quizCount, setQuizCount] = useState(0);
+const [examinationCount, setExaminationCount] = useState(0);
 
   useEffect(() => {
     axios
@@ -21,6 +26,63 @@ function CardOverview() {
   }, []);
   console.log(allUsers);
 
+useEffect(() => {
+  const fetchEmailCount = async () => {
+    try {
+      const token = 'your_token_here';
+
+      const response = await axios.get('/auth/', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const users = response.data;
+      let userCount = 0;
+      
+
+      users.forEach(users => {
+        if (users.email) {
+          userCount++;
+        }
+      });
+
+      setEmailCount(userCount);
+    } catch (error) {
+      console.error('Error retrieving user count:', error.response.data.message);
+    }
+  };
+  
+  //get number of quizes
+  const fetchQuizzes = async () => {
+    try {
+      const response = await axios.get('/allQuizes'); // Replace '/api/quizzes' with your actual API endpoint
+      const quizzes = response.data;
+      setQuizCount(quizzes.length);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //get number of examinations
+  const fetchExaminationCount = async () => {
+    try {
+      const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
+      const headers = { Authorization: `Bearer ${token}` };
+      const response = await axios.get('/examinations', { headers });
+      const count = response.data.length;
+      setExaminationCount(count);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchExaminationCount();
+
+  fetchQuizzes();
+
+  fetchEmailCount();
+}, []);
   // {allUsers.map((allUsers, index) => {
   return (
     <div className="featured">
@@ -31,7 +93,7 @@ function CardOverview() {
       </div>
         <span className="featuredTitle">Users</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">100</span>
+          <span className="featuredMoney">{emailCount}</span>
         </div>
       </div>
 
@@ -39,9 +101,9 @@ function CardOverview() {
       <div className="icon">
         <AutoStoriesIcon/>
       </div>
-        <span className="featuredTitle">Courses</span>
+        <span className="featuredTitle">Examinations</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">6</span> 
+          <span className="featuredMoney">{examinationCount}</span> 
         </div>  
       </div>
 
@@ -49,9 +111,9 @@ function CardOverview() {
       <div className="icon">
         <LoginIcon/>
       </div>
-        <span className="featuredTitle">Logins</span>
+        <span className="featuredTitle">Quizes</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">60</span>
+          <span className="featuredMoney">{quizCount}</span>
         </div>  
       </div>
     </div>

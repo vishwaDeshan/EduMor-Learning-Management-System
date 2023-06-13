@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const lectureVideosController = require('../Controllers/lectureVideosController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // Create a new lecture video
 router.post('/', lectureVideosController.createLectureVideo);
 
 // Get all lecture videos for an examination
-router.get('/examination/:examinationId', lectureVideosController.getLectureVideosForExamination);
+router.get('/examination/:examinationId',authMiddleware, lectureVideosController.getLectureVideosForExamination);
 
 // Get a specific lecture video
 router.get('/:id', lectureVideosController.getLectureVideo);

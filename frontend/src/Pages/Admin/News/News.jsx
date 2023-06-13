@@ -4,7 +4,6 @@ import axios from 'axios';
 function News() {
   const [news, setNews] = useState('');
   const [link, setLink] = useState('');
-  const [list, setList] = useState('');
   
 
   const handleSubmit = async (event) => {
@@ -51,7 +50,7 @@ function News() {
           type="text"
           value={news}
           onChange={(event) => setNews(event.target.value)}
-          style={{ marginLeft: '10px', width: '300px', borderRadius: '10px', padding: '5px' }}
+          style={{ marginLeft: '10px', width: '300px', borderRadius: '10px', padding: '5px', marginLeft:'10px' }}
         />
       </label>
 
@@ -67,10 +66,11 @@ function News() {
             borderRadius: '10px',
             padding: '5px',
             marginTop: '5px',
+            marginLeft:'20px'
           }}
         />
       </label>
-      <button type="submit" className="btn btn-primary" style={{ alignSelf: 'center' }}>
+      <button type="submit" className="btn btn-primary" style={{ alignSelf: 'center', marginLeft:"-220px"}}>
         Submit
       </button>
     </form>

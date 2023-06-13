@@ -17,13 +17,12 @@ function NewsPage() {
           <h5 style={{color:'blue',fontWeight:'bold'}}>News  Upload </h5>
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 
-            <div className="middle-section" style={{ display: "flex",flexDirection: "column", maxwidth:"75%"}}>
+            <div className="middle-section" style={{ display: "flex",flexDirection: "column", maxwidth:"100%"}}>
              <News/>
-             <br />
              <NewsTable/>
             </div>
             
-            <div className="right-section" style={{ width:"15%" }}>
+            <div className="right-section" style={{ width:"15%", marginLeft:"100px" }}>
               <MiniCalander />
             </div>
 

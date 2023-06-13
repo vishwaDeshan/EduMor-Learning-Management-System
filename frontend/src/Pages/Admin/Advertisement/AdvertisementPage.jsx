@@ -22,7 +22,6 @@ function AdvertisementPage() {
 
             <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
               <Advertisement/>
-              <br /><br />
               <AdvertisementTable/>
             </div>
 

@@ -17,6 +17,7 @@ app.use("/vacancies", require("./routes/Vacancy"));
 app.use("/examinations", require("./routes/Examination"));
 app.use("/enrollment", require("./routes/Enrollment"));
 app.use("/", require("./routes/Quiz"));
+app.use("/lectureVideos", require("./routes/LectueVideos"));
 
 app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {

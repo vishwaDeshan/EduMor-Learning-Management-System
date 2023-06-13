@@ -19,7 +19,6 @@ function VideoUploadPage() {
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 
             <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
-               <InputField/>
               <VideoUploadSection/>
             </div>
 

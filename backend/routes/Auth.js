@@ -1,6 +1,7 @@
 const express = require('express');
-const { registerController, loginController, forgotpasswordController,resetPasswordController,updateUserController,getUserController } = require('../Controllers/authController');
+const { registerController, loginController, forgotpasswordController,resetPasswordController,updateUserController,getUserController,updatePremiumMembership,getAllUsers,getPremiumUsers} = require('../Controllers/authController');
 const verifyTokenController = require('../Controllers/verifyTokenController');
+const authMiddleware = require('../middlewares/authMiddleware');
 const router = express.Router();
 
 
@@ -20,9 +21,18 @@ router.get("/verifyToken", verifyTokenController);
 router.post("/resetPassword", resetPasswordController);
 
 // Update a user
-router.patch('/:id', updateUserController);
+router.patch('/:id',authMiddleware, updateUserController);
 
 // Get a user by id
 router.get('/:id', getUserController);
+
+router.put('/users/:userId/premium-membership', updatePremiumMembership);
+
+// Route to get all user details
+router.get('/', getAllUsers);
+
+//Route to get premium users
+router.get('/premiumUsers', getPremiumUsers);
+
 
 module.exports=router;
