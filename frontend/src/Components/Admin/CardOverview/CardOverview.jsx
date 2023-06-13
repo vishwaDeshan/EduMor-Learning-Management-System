@@ -13,6 +13,8 @@ const [allUsers, setAllUsers] = useState([]);
 const [emailCount, setEmailCount] = useState(0);
 const [quizCount, setQuizCount] = useState(0);
 const [examinationCount, setExaminationCount] = useState(0);
+const token = '$jwweiwielnwjw'; // Replace with your actual token
+
 
   useEffect(() => {
     axios
@@ -29,7 +31,6 @@ const [examinationCount, setExaminationCount] = useState(0);
 useEffect(() => {
   const fetchEmailCount = async () => {
     try {
-      const token = 'your_token_here';
 
       const response = await axios.get('/auth/', {
         headers: {
@@ -67,7 +68,6 @@ useEffect(() => {
   //get number of examinations
   const fetchExaminationCount = async () => {
     try {
-      const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
       const headers = { Authorization: `Bearer ${token}` };
       const response = await axios.get('/examinations', { headers });
       const count = response.data.length;
