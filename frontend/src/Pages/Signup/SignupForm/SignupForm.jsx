@@ -3,7 +3,7 @@ import "../SignupForm/SignupForm.css";
 import InputBox from "../../../Components/Inputs/Input";
 import Button from "../../../Components/Buttons/Button";
 import { Link } from "react-router-dom";
-import SignupImg from "../../../Assets/sign-up-concept-illustration_114360-7875.png";
+import SignupImg from "../../../Assets/sign-up.png";
 import axios from "axios";
 
 function SignupForm() {
