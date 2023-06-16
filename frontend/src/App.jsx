@@ -32,6 +32,7 @@ import Adminsignup from "./Pages/Admin Signup/Adminsignup";
 import ExamResult from "./Pages/ExamResult/ExamResults";
 import Success from "./Components/Checkout/Success";
 import Cancel from "./Components/Checkout/Cancel";
+import PastPapers from "./Pages/PastPapers/PastPapers";
 import NewsPage from "./Pages/Admin/News/NewsPage";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
@@ -104,6 +105,8 @@ function App() {
           <Route path="/success" element={<Success/>} />
           <Route path="/cancel" element={<Cancel/>} />
           <Route path="/test" element={<Test />} />
+          <Route path="/pastPapers/examination/:examinationId" element={<PastPapers/>} />
+          <Route path="/newsUpload" element={<NewsPage/>}/>
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/adminsignup" element={<Adminsignup />} />
           <Route path="/newsUpload" element={<NewsPage />} />
