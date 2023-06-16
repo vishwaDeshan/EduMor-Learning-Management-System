@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className="Navbar-sa">
       <div className="wrapper-sa">
         <div className="items">
-          <Link to="/">
+          <Link to="/overview">
             <button className="btn btn-outline-primary">View Website</button>
           </Link>
           <div className="item">
