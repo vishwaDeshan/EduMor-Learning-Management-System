@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const [scrollableModal, setScrollableModal] = useState(false);
+  
   const user = useSelector((state) => state.auth.token);
 
   return (
