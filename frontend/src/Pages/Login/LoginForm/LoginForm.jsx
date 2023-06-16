@@ -48,7 +48,7 @@ function LoginForm(setUser, setIsLoggedIn) {
     // Check user role and redirect accordingly
     const userRole = decodedToken.userRole;
     if (userRole === "Student") {
-      window.location.replace("/");
+      window.location.replace("/overview");
     } else if (userRole === "Admin") {
       window.location.replace("/adminOverview");
     } else if (userRole === "SuperAdmin") {

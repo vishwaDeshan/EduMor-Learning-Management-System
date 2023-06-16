@@ -25,7 +25,6 @@ import AdvertisementPage from "./Pages/Admin/Advertisement/AdvertisementPage";
 import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
-import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import Contactus from "./Pages/Contact Us/Contactus"
 import Adminsignup from "./Pages/Admin Signup/Adminsignup";
@@ -87,16 +86,14 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/superAdminDashboard" element={<SADashboard />} />
           <Route path="/adminRequests" element={<AdminRequests />} />
-          <Route path="/" element={<Overview/>} />
+          <Route path="/overview" element={<Overview/>} />
           <Route path="/level/quiz/:id" element={<Quiz/>} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/land" element={<LandingPage />} />
-          <Route path="/adminOverview" element={<OverviewAdmin />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/userDetails" element={<UserdetailsPage />} />
           <Route path="/paymentsData" element={<Paymentpage />} />
           <Route path="/videoUpload" element={<VideoUploadPage />} />
           <Route path="/adsUpload" element={<AdvertisementPage />} />
-          <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />
@@ -104,26 +101,10 @@ function App() {
           <Route path="/quizResults/:userId/:examId" element={<ExamResult/>} />
           <Route path="/success" element={<Success/>} />
           <Route path="/cancel" element={<Cancel/>} />
-          <Route path="/test" element={<Test />} />
           <Route path="/pastPapers/examination/:examinationId" element={<PastPapers/>} />
           <Route path="/newsUpload" element={<NewsPage/>}/>
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/adminsignup" element={<Adminsignup />} />
-          <Route path="/newsUpload" element={<NewsPage />} />
-          <Route path="/examinations" element={<Examinations />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/myPayments" element={<Payment />} />
-          <Route path="/myExams" element={<MyExams />} />
-          <Route path="/Exam" element={<ExamModule />} />
-          <Route path="/adminOverview" element={<OverviewAdmin />} />
-          <Route path="/vacancies" element={<VacanciesPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Overview />} />
-          <Route path="/quiz" element={<Quiz />} />
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="/land" element={<LandingPage />} />
-          <Route path="/adminRequests" element={<AdminRequests />} />
           <Route path="/superAdminEditProfile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>}

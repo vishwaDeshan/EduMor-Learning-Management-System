@@ -24,7 +24,7 @@ const SideBar = () => {
       <div className="center">
         <ul className="nav-links">
           <li >
-            <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}><a href="/" >
+            <NavLink to="/overview" className={({ isActive }) => (isActive ? "active" : "")}><a href="/overview" >
               <DashboardCustomizeOutlinedIcon />
               <span className="link_name">{t("Overview")}</span>
             </a>
