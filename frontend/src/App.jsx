@@ -35,6 +35,7 @@ import PastPapers from "./Pages/PastPapers/PastPapers";
 import NewsPage from "./Pages/Admin/News/NewsPage";
 import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
+import ExaminationPage from "./Pages/Admin/Examination/ExaminationQuizPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -94,6 +95,7 @@ function App() {
           <Route path="/paymentsData" element={<Paymentpage />} />
           <Route path="/videoUpload" element={<VideoUploadPage />} />
           <Route path="/adsUpload" element={<AdvertisementPage />} />
+          <Route path="/quizUpload" element={<ExaminationPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/verifyEmail" element={<VerifyEmail />} />

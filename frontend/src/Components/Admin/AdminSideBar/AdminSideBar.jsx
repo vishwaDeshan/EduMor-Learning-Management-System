@@ -4,7 +4,6 @@ import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
 import FeaturedVideoOutlinedIcon from "@mui/icons-material/FeaturedVideoOutlined";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
 import "./AdminSideBar.css";
 import LogoC from "../../../Assets/LogoC.png";
@@ -79,15 +78,6 @@ const Sidebar = () => {
               <NewspaperOutlinedIcon />
             </div>
             <span>News</span>
-          </div>
-        </NavLink>
-
-        <NavLink to="/adminSettings" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
-          <div className="menuItem">
-            <div>
-              <SettingsOutlinedIcon />
-            </div>
-            <span>Settings</span>
           </div>
         </NavLink>
       </div>
