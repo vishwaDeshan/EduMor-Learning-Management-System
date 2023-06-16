@@ -47,14 +47,6 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/myPayments" className="">
-              <a href="/myPayments">
-                <LocalAtmOutlinedIcon />
-                <span className="link_name">{t("Payments")}</span>
-              </a>
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/vacancies" className="">
               <a href="/vacancies">
                 <WorkHistoryOutlinedIcon />
@@ -63,18 +55,18 @@ const SideBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/profile" className="">
-              <a href="/profile">
-                <SettingsOutlinedIcon />
-                <span className="link_name">{t("Settings")}</span>
+            <NavLink to="/myPayments" className="">
+              <a href="/myPayments">
+                <LocalAtmOutlinedIcon />
+                <span className="link_name">{t("Payments")}</span>
               </a>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/logout" className="">
-              <a href="/logout" className="logout">
-                <ExitToAppOutlinedIcon />
-                <span className="link_name">{t("Logout")}</span>
+            <NavLink to="/profile" className="">
+              <a href="/profile">
+                <SettingsOutlinedIcon />
+                <span className="link_name">{t("Settings")}</span>
               </a>
             </NavLink>
           </li>

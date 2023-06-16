@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
@@ -9,6 +9,8 @@ import ProfilePic from "../../Assets/defaultUser.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../i18next";
+import { useSelector } from 'react-redux';
+
 import {
   MDBBtn,
   MDBModal,
@@ -19,6 +21,8 @@ import {
 } from "mdb-react-ui-kit";
 
 const Navbar = () => {
+  const user = useSelector(state => state.auth.token);
+
   const [scrollableModal, setScrollableModal] = useState(false);
   const { t, i18n } = useTranslation();
   const handleChangeLng = (lng) => {
@@ -54,7 +58,7 @@ const Navbar = () => {
             onClick={() => setScrollableModal(!scrollableModal)}
           >
             <NotificationsActiveOutlinedIcon className="nav-icon" />
-            <div className="counter">1</div>
+            {/* <div className="counter">1</div> */}
             {/* message */}
             <MDBModal
               show={scrollableModal}
@@ -86,10 +90,10 @@ const Navbar = () => {
               <Avatar
                 alt="Profile"
                 src={ProfilePic}
-                sx={{ width: 38, height: 38 }}
+                sx={{ width: 45, height: 45 }}
               />
             </Link>
-            <font>Anna Sophia</font>
+            <p>{user && user.firstName}</p>
           </div>
         </div>
       </div>

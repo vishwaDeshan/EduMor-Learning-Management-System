@@ -1,13 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import ImageSlideshow from './ImageSlideshow';
 import './Ads.css'
-import Ads1 from '../../Assets/Ads1.png'
+import axios from 'axios';
 
-function Ads() {
+const Ads = () => {
+  const [ads, setAds] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem('AUTH_TOKEN');
+    if (!token) {
+      alert("Authorization token missing");
+      return;
+    }
+    axios.get('http://localhost:8000/advertisements', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      setAds(response.data.existingAds);
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+  }, []);
+  
+
   return (
-    <div className="ads">
-      <img src={Ads1} alt="Ads" srcset=""/>
+    <div>
+      <a href={ads.map(ad => ad.link)} target="_blank" rel="noopener noreferrer">
+        <ImageSlideshow images={ads.map(ad => ad.image)} />
+      </a>
     </div>
-  )
-}
-
+  );
+};
 export default Ads

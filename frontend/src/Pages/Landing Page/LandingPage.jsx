@@ -1,12 +1,17 @@
-import React from 'react'
-import UserNavbar from '../../Components/UserNavbar/UserNavbar'
+import React from "react";
+import "./LandingPage.css";
+import Heading from "./Heading/Heading";
+import MidSec from "./MidSec/MidSec";
+import Footer from "../../Components/Footer/Footer";
 
 function LandingPage() {
   return (
     <div>
-      <UserNavbar />
+      <Heading />
+      <MidSec />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default LandingPage
+export default LandingPage;

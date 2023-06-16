@@ -8,24 +8,25 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //import routes
-const studentsRoutes = require("./routes/Student");
-const vacanciesRoutes = require("./routes/Vacancy");
-const advertisementsRoutes = require("./routes/Advertisement");
-const superadminRoutes = require("./routes/SuperAdmin");
-const NewsRoutes=require("./routes/News");
-app.use(studentsRoutes);
-app.use(vacanciesRoutes);
-app.use(advertisementsRoutes);
-app.use(superadminRoutes);
-app.use(NewsRoutes);
+app.use("/auth", require("./routes/Auth"));
+app.use("/email", require("./routes/email"));
+app.use("/news", require("./routes/News"));
+app.use("/advertisements", require("./routes/Advertisement"));
+app.use("/vacancies", require("./routes/Vacancy"));
+app.use("/examinations", require("./routes/Examination"));
+app.use("/enrollment", require("./routes/Enrollment"));
+app.use("/quizResults", require("./routes/QuizResult"));
+app.use("/lectureVideos", require("./routes/LectueVideos"));
+app.use("/", require("./routes/Quiz"));
+app.use("/pastPapers", require("./routes/PastPapers"));
 
-const PORT = 8000;
+
+const port = 8000;
 const DB_URL = 'mongodb+srv://EduMor:EduMor2k23@edumor-lms.1zyz2xw.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-
 });
 
 mongoose.connect(DB_URL)
@@ -34,6 +35,6 @@ mongoose.connect(DB_URL)
     })
     .catch((err) => console.log('DB connection eroor', err));
 
-app.listen(PORT, () => {
-    console.log(`Server started port on ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server started port on ${port}`);
 });

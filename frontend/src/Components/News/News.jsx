@@ -5,32 +5,39 @@ import axios from 'axios'
 
 function News() {
   const { t } = useTranslation();
-
   const [news, setNews] = useState([]);
+
   useEffect(() => {
-    function getNews() {
-      axios.get('http://localhost:8000/news').then((res) => {
-        // console.log(res.data.existingNews);
-        setNews(res.data.existingNews)
-      }).catch((err) => {
-        alert(err.message)
-      })
+    const token = localStorage.getItem('AUTH_TOKEN');
+    if (!token) {
+      alert("Authorization token missing");
+      return;
     }
-    getNews();
-  }, [])
+    axios.get('http://localhost:8000/news', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        setNews(response.data.existingNews);
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }, []);
+
 
   return (
     <div className="News">
       <div className="latestNews">{t('Latest News')}</div>
       <ul class="newsHeadline">
-        {news.map((news,index) => (
+        {news.map((news, index) => (
           <li>
-          <a href={news.link} target="_blank">{news.news}</a>
-        </li>
+            <a href={news.link} target="_blank">{news.news}</a>
+          </li>
         ))}
       </ul>
     </div>
-    
   );
 }
 export default News;

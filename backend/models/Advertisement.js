@@ -7,6 +7,10 @@ const AdvertisementSchema = new mongoose.Schema({
     },
     image: {
         type: String,
+        // required: true
+    },
+    link:{
+        type: String,
         required: true
     }
 

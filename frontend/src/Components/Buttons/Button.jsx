@@ -3,8 +3,8 @@ import React from 'react'
 function Button(props) {
   return (
     <div>
-      <div className="loginbtn">
-        <button type="button" className="button">
+      <div className="customButton">
+        <button type={props.type} className="btn btn-primary" >
           {props.buttonName}
         </button>
         </div>

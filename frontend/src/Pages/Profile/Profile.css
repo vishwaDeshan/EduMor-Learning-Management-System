@@ -70,7 +70,55 @@
 .profile-buttons button{
     margin: 0px 5px 0px;
 }
-/* 
-.profile-div{
+
+.user-avatar {
+    position: relative;
+  }
+  
+  .user-avatar img {
+    width: 150px;
+    height: 150px;
+  }
+
+.logout-btn{
+    margin-top: 10px;
+    background-color: transparent;
+    border: 2px solid #2e323c;
+    color: #2e323c;
+}
+
+.logout-btn:hover{
+    background-color: #2e323c;
+    color: #fff;
+}
+.userNotFound-img img{
+    height: 400px;
+    width: auto;
+    margin:10px 25%;
     border-radius: 10px;
-} */
+}
+.userNotFound-img{
+    background-color: #fff;
+    width: 60%;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 100px auto;
+}
+
+.userNotFound-img h1{
+    text-align: center;
+}
+
+.user-profile .membership{
+    margin-top:10px;
+    color:#041083;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .profile-container {
+      max-height: 520px;
+      overflow-y: scroll;
+      overflow-x:hidden;
+    }
+  }

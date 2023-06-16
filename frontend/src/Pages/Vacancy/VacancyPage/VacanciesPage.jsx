@@ -5,6 +5,7 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import Footer from '../../../Components/Footer/Footer';
 import { MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 import VacancySection from '../VacancySection/VacancySection';
+import withAuth from '../../../hoc/withAuth';
 
 
 function VacanciesPage() {
@@ -14,7 +15,7 @@ function VacanciesPage() {
       <div className="middle-contaier" style={{ display: "flex" }}>
         <SideBar />
         <div className="mainContainer">
-          <Navbar />
+          <Navbar/>
           <div className="read-crumb">
             <MDBBreadcrumb >
               <MDBBreadcrumbItem>
@@ -25,6 +26,7 @@ function VacanciesPage() {
           </div>
           <h5>{t("Vacancy")}</h5>
           <section >
+            
            <VacancySection/>
           </section>
         </div>
@@ -36,4 +38,4 @@ function VacanciesPage() {
   )
 }
 
-export default VacanciesPage
+export default withAuth(VacanciesPage);
