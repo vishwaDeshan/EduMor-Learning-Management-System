@@ -158,10 +158,12 @@ function ExamModule() {
             <img src={exam.examination?.photo} alt={exam.examName} />
             <p className="exam-description">{exam.examination?.description}</p>
             <ul>
-              <li>{exam.examination?.levels.length} Past Papers</li>
+              <Link to={`/pastPapers/examination/${exam.examination?._id}`}>
+              <li>Past Papers</li>
+              </Link>
               <Link to={`/examination/${exam.examination?._id}`}>
                 <li>
-                  {exam.examination?.lectureVideos.length} Lectures Videos
+                   Lectures Videos
                 </li>
               </Link>
             </ul>

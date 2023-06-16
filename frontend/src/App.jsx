@@ -32,6 +32,7 @@ import VideosPage from "./Pages/VideosPage/VideosPage";
 import ExamResult from "./Pages/ExamResult/ExamResults";
 import Success from "./Components/Checkout/Success";
 import Cancel from "./Components/Checkout/Cancel";
+import PastPapers from "./Pages/PastPapers/PastPapers";
 import NewsPage from "./Pages/Admin/News/NewsPage";
 import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
 import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
@@ -109,6 +110,7 @@ function App() {
           <Route path="/success" element={<Success/>} />
           <Route path="/cancel" element={<Cancel/>} />
           <Route path="/test" element={<Test />} />
+          <Route path="/pastPapers/examination/:examinationId" element={<PastPapers/>} />
           <Route path="/newsUpload" element={<NewsPage/>}/>
           <Route path="/examinations" element={<Examinations />} />
           <Route path="/profile" element={<Profile />} />
