@@ -4,7 +4,7 @@ const tokenGenerator = require("../Config/createToken");
 const { sendVerificationEmail, sendForgotPasswordEmail } = require("../Config/sentEmail")
 
 const registerController = async (req, res) => {
-    const { firstName, lastName, email, password, phonenumber } = req.body;
+    const { firstName, lastName, email, password, phonenumber, userRole} = req.body;
 
     //checks the email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -28,7 +28,8 @@ const registerController = async (req, res) => {
                 lastName,
                 email,
                 phonenumber,
-                password: hashedPassword
+                password: hashedPassword,
+                userRole,
             });
             await newUser.save();
 
@@ -42,7 +43,7 @@ const registerController = async (req, res) => {
             if (sendMail) {
                 res.status(201).json({ sucess: true, msg: "Registered in successfully error in sending verification" });
             } else {
-                res.status(201).json({ sucess: true, msg: "Registered in successfully" });
+                res.status(201).json({ sucess: true, msg: "Registered successfully" });
             }
         });
     });
@@ -76,7 +77,7 @@ const loginController = async (req, res) => {
     }
 
     //generate token with user info
-    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber, isPremiumMember:oldUser.isPremiumMember });
+    const token = tokenGenerator({ email: oldUser.email, _id: oldUser._id, firstName: oldUser.firstName, lastName: oldUser.lastName, verified: oldUser.verified, phonenumber: oldUser.phonenumber, isPremiumMember:oldUser.isPremiumMember, userRole:oldUser.userRole });
 
     //sending response
     res.status(200).json({ sucess: true, token, msg: "You're logged in successfully" })
@@ -209,4 +210,14 @@ const updatePremiumMembership = async (req, res) => {
     }
   };
 
-module.exports = { registerController, loginController, forgotpasswordController, resetPasswordController, updateUserController, getUserController,updatePremiumMembership }
+  // Controller function to get all user details
+const getAllUsers = async (req, res) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (error) {
+      res.status(500).json({ message: 'Error retrieving users', error: error.message });
+    }
+  };
+
+module.exports = { registerController, loginController, forgotpasswordController, resetPasswordController, updateUserController, getUserController,updatePremiumMembership, getAllUsers }

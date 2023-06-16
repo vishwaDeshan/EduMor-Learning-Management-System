@@ -15,7 +15,7 @@ function AdvertisementPage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5>Advertisement  Upload </h5>
+          <h5 style={{color:'blue',fontWeight:'bold'}}>Advertisement  Upload </h5>
 
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 

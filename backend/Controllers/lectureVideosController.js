@@ -29,7 +29,7 @@ const createLectureVideo = async (req, res) => {
   }
 };
 
-// Get all lecture videos for an examination
+// Get all lecture videos for an examination by id
 const getLectureVideosForExamination = async (req, res) => {
     try {
       const examinationId = req.params.examinationId;
@@ -92,6 +92,16 @@ const deleteLectureVideo = async (req, res) => {
   }
 };
 
+// Controller function to get all lecture videos
+const getVideos = async (req, res) => {
+  try {
+    const lectureVideos = await LectureVideo.find();
+    res.json(lectureVideos);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to get lecture videos' });
+  }
+};
+
 module.exports = {
   getAllLectureVideos,
   createLectureVideo,
@@ -99,4 +109,5 @@ module.exports = {
   getLectureVideo,
   updateLectureVideo,
   deleteLectureVideo,
+  getVideos,
 };

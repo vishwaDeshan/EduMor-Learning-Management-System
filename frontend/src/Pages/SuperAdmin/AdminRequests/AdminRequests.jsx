@@ -1,9 +1,9 @@
 import React from 'react'
-import SASidebar from '../../../Components/SuperAdmin/SASidebar/SASidebar'
-import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
-import './AdminRequests.css'
 import Footer from '../../../Components/Footer/Footer'
-import SAOverview from '../../../Components/SuperAdmin/SAOverview/SAOverview'
+import SANavbar from '../../../Components/SuperAdmin/SANavbar/SANavbar'
+import SASidebar from '../../../Components/SuperAdmin/SASidebar/SASidebar'
+import withAuth from "../../../hoc/withAuth";
+
 
 function AdminRequests() {
   return (
@@ -13,7 +13,7 @@ function AdminRequests() {
       <div className="mainContainer">
         <SANavbar />
         <div className="overview-container" style={{ display: "flex" }}>
-  
+         Admin requests
         </div>
       </div>
     </div>
@@ -24,4 +24,4 @@ function AdminRequests() {
   )
 }
 
-export default AdminRequests
+export default withAuth(AdminRequests);

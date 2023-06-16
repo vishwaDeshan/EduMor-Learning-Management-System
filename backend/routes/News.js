@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const authMiddleware = require('../Middlewares/authMiddleware');
-const newsController = require('../controllers/newsController');
+const newsController = require('../Controllers/newsController');
+
 
 //post news
 router.post('/save', newsController.saveNews);

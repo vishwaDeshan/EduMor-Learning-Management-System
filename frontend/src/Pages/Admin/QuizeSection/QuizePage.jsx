@@ -15,7 +15,7 @@ function QuizePage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar/>
-          <h5 style={{color:'black',fontSize:'30px'}}>Quize Upload</h5>
+          <h5 style={{color:'blue',fontWeight:'bold'}}>Quize Upload</h5>
 
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
 

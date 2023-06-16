@@ -69,6 +69,7 @@ font{
     color: #fff;
     border: none;
     border-radius: 10px;
+    margin-left: 10px;
 }
 .Navbar-sa button:hover{
     background-color: transparent;
@@ -76,4 +77,14 @@ font{
     color: #041083;
     border: 1px solid #041083;
     border-radius: 10px;
+}
+
+.avatarSuperAdmin{
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.superAdminName{
+    color: #041083;
+    font-weight: 500;
 }

@@ -58,12 +58,7 @@ export default function MidSec() {
         </div>
         </div>
 
-        {/* <div>
-          <h5 className="secondsectionhead">Contact Us_______</h5>
-          <form>
-            
-          </form>
-        </div> */}
+        
         
       </div>
     </div>

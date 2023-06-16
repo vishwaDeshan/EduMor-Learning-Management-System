@@ -16,30 +16,26 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup"
 import LandingPage from "./Pages/Landing Page/LandingPage"
 import VacanciesPage from "./Pages/Vacancy/VacancyPage/VacanciesPage";
-import SADashboard from "./Pages/SuperAdmin/SADashboard/SADashboard";
+import SADashboard from "./Pages/SuperAdmin/OverviewPage/SADashboard";
 import Quiz from "./Components/QuizHandler/Quiz/Quiz";
-import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
 import UserdetailsPage from "./Pages/Admin/UserDetails/UserdetailsPage/UserdetailsPage";
 import Paymentpage from "./Pages/Admin/Payments/Paymentpage/Paymentpage";
 import VideoUploadPage from "./Pages/Admin/VideoUploadSection/VideoUploadPage";
-import QuizePage from "./Pages/Admin/QuizeSection/QuizePage";
 import AdvertisementPage from "./Pages/Admin/Advertisement/AdvertisementPage";
 import ForgotPassword from "./Pages/Login/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import Test from "./Pages/Test/TestUploads";
 import VideosPage from "./Pages/VideosPage/VideosPage";
+import Contactus from "./Pages/Contact Us/Contactus"
+import Adminsignup from "./Pages/Admin Signup/Adminsignup";
 import ExamResult from "./Pages/ExamResult/ExamResults";
 import Success from "./Components/Checkout/Success";
 import Cancel from "./Components/Checkout/Cancel";
 import PastPapers from "./Pages/PastPapers/PastPapers";
 import NewsPage from "./Pages/Admin/News/NewsPage";
-import SuperAdminSettings from "./Pages/SuperAdmin/SuperAdminSettings/SuperAdminSettings";
-import AdminSAOverview from "./Pages/SuperAdmin/AdminSAOverview/AdminSAOverview";
-import StudentSAOverview from "./Pages/SuperAdmin/studentSAoverview/studentSAOverview";
-import superAdminExaminationOverview from "./Pages/SuperAdmin/superAdminExaminationOverview/superAdminExaminationOverview"
-
-
+import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
+import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -78,7 +74,7 @@ function App() {
 
   return (
     <div className="App">
-      { <BrowserRouter>
+      {<BrowserRouter>
         <Routes>
           <Route path="/examinations" element={<Examinations/>} />
           <Route path="/profile" element={<Profile/>} />
@@ -94,13 +90,12 @@ function App() {
           <Route path="/" element={<Overview/>} />
           <Route path="/level/quiz/:id" element={<Quiz/>} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/land" element={<LandingPage/>}/>
+          <Route path="/land" element={<LandingPage />} />
           <Route path="/adminOverview" element={<OverviewAdmin />} />
-          <Route path="/userDetails" element={<UserdetailsPage/>}/>
-          <Route path="/paymentsData" element={<Paymentpage/>}/>
-          <Route path="/videoUpload" element={<VideoUploadPage/>}/>
-          <Route path="/quizUpload" element={<QuizePage/>}/>
-          <Route path="/adsUpload" element={<AdvertisementPage/>}/>
+          <Route path="/userDetails" element={<UserdetailsPage />} />
+          <Route path="/paymentsData" element={<Paymentpage />} />
+          <Route path="/videoUpload" element={<VideoUploadPage />} />
+          <Route path="/adsUpload" element={<AdvertisementPage />} />
           <Route path="/land" element={<LandingPage />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
@@ -112,6 +107,9 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/pastPapers/examination/:examinationId" element={<PastPapers/>} />
           <Route path="/newsUpload" element={<NewsPage/>}/>
+          <Route path="/contactus" element={<Contactus />} />
+          <Route path="/adminsignup" element={<Adminsignup />} />
+          <Route path="/newsUpload" element={<NewsPage />} />
           <Route path="/examinations" element={<Examinations />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/myPayments" element={<Payment />} />
@@ -125,14 +123,10 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/land" element={<LandingPage />} />
-          <Route path="/superAdminOverview" element={<AdminSAOverview />} />
-          <Route path="/superAdminStudentoverview" element={<StudentSAOverview />}/>
-          <Route path="/superAdminExaminationOverview" element={<superAdminExaminationOverview />}/>
-          <Route path="/superAdminSettings" element={<SuperAdminSettings />} />
-          <Route path="/superAdminDashboard" element={<SADashboard />} />
           <Route path="/adminRequests" element={<AdminRequests />} />
+          <Route path="/superAdminEditProfile" element={<EditProfile />} />
         </Routes>
-      </BrowserRouter> }
+      </BrowserRouter>}
     </div>
   );
 }

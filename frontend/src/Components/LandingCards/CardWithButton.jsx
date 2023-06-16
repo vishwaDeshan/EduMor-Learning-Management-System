@@ -6,9 +6,7 @@ export default function CardWithButton(props) {
     <div className='buttoncard'>
       <img src={props.secondaryimg} />
       <h6>{props.secondarycardtitle}</h6>
-      <button type="button" value="trialexam" className="trialexambutton">
-          Take a Trial
-        </button>
+      
     </div>
   )
 }
