@@ -14,7 +14,7 @@ const Success = () => {
   }, []);
 
   const handleBackToDashboard = () => {
-    navigate("/");
+    navigate("/overview");
   };
 
   const updateIsPremium = async () => {
