@@ -13,7 +13,7 @@ function UserNavbar() {
         </div>
         <div className="menu">
           <ul>
-            <Link to="/land">
+            <Link to="/">
               <li>Features</li>
               <li>Examinations</li>
             </Link>
