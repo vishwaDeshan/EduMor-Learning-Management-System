@@ -1,34 +1,47 @@
 import React, { useState } from "react";
-import "../Admin Signup Form/Adminsignupform.css";
-import InputBox from "../../../Components/Inputs/Input";
-import Button from "../../../Components/Buttons/Button";
-import { Link } from "react-router-dom";
-import SignupImg from "../../../Assets/Adminsignup.jpg";
+import "./Adminsignupform.css";
+import InputBox from "../../../../Components/Inputs/Input";
+import Button from "../../../../Components/Buttons/Button";
+import SignupImg from "../../../../Assets/Adminsignup.jpg";
 import axios from "axios";
 
 function Adminsignupform() {
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [fnameError, setFnameError] = useState("");
+  const [lnameError, setLnameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmpasswordError, setConfirmPasswordError] = useState("");
+  const [phonenumberError, setPhoneNumberError] = useState("");
 
-  const [firstName, setFirstname] = useState('');
-  const [lastName, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [phonenumber, setPhoneNumber] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [fnameError, setFnameError] = useState('');
-  const [lnameError, setLnameError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [confirmpasswordError, setConfirmPasswordError] = useState('');
-  const [phonenumberError, setPhoneNumberError] = useState('');
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (fnameError == 'none' && lnameError == 'none' && fnameError == 'none' && passwordError == 'none' && confirmpasswordError == 'none' && phonenumberError == 'none') {
+    if (
+      fnameError == "none" &&
+      lnameError == "none" &&
+      fnameError == "none" &&
+      passwordError == "none" &&
+      confirmpasswordError == "none" &&
+      phonenumberError == "none"
+    ) {
       const data = {
-        firstName, lastName, email, password, phonenumber, userRole:'Admin'
+        firstName,
+        lastName,
+        email,
+        password,
+        phonenumber,
+        userRole: "Admin",
       };
-      const { response, error } = await axios.post(`http://localhost:8000/auth/register`, data);
+      const { response, error } = await axios.post(
+        `http://localhost:8000/auth/register`,
+        data
+      );
       if (error) {
         if (error.response.data.success === false) {
           window.alert(error.response.data.msg);
@@ -46,7 +59,6 @@ function Adminsignupform() {
       <div className="login-form">
         <h2>Admin Sign-Up</h2>
         <form onSubmit={handleSubmit}>
-
           <InputBox
             title="First Name"
             name="fname"
@@ -56,16 +68,16 @@ function Adminsignupform() {
               if (!e.target.value) {
                 setFnameError("The First Name cannot be empty");
               } else if (/\d/.test(e.target.value)) {
-                setFnameError('Name should not contain numbers');
+                setFnameError("Name should not contain numbers");
               } else {
-                setFnameError('none');
+                setFnameError("none");
                 setFirstname(e.target.value);
               }
             }}
-
-
           />
-          {fnameError !== 'none' && <div style={{ color: 'red' }}>{fnameError}</div>}
+          {fnameError !== "none" && (
+            <div style={{ color: "red" }}>{fnameError}</div>
+          )}
           <InputBox
             title="Last Name"
             name="lname"
@@ -75,15 +87,16 @@ function Adminsignupform() {
               if (!e.target.value) {
                 setLnameError("The First Name cannot be empty");
               } else if (/\d/.test(e.target.value)) {
-                setLnameError('Name should not contain numbers');
+                setLnameError("Name should not contain numbers");
               } else {
-                setLnameError('none');
+                setLnameError("none");
                 setLastname(e.target.value);
               }
             }}
-
           />
-          {lnameError !== 'none' && <div style={{ color: 'red' }}>{lnameError}</div>}
+          {lnameError !== "none" && (
+            <div style={{ color: "red" }}>{lnameError}</div>
+          )}
 
           <InputBox
             title="Phone Number"
@@ -94,14 +107,18 @@ function Adminsignupform() {
               if (!/^[0-9\b]+$/.test(e.target.value)) {
                 setPhoneNumberError("Phone number must contain only digits");
               } else if (e.target.value.length !== 10) {
-                setPhoneNumberError('Phone number must be exactly 10 digits long');
+                setPhoneNumberError(
+                  "Phone number must be exactly 10 digits long"
+                );
               } else {
-                setPhoneNumberError('none');
+                setPhoneNumberError("none");
                 setPhoneNumber(e.target.value);
               }
             }}
           />
-          {phonenumberError !== 'none' && <div style={{ color: 'red' }}>{phonenumberError}</div>}
+          {phonenumberError !== "none" && (
+            <div style={{ color: "red" }}>{phonenumberError}</div>
+          )}
 
           <InputBox
             title="Email"
@@ -113,15 +130,16 @@ function Adminsignupform() {
               if (!inputEmail) {
                 setEmailError("The email cannot be empty");
               } else if (!inputEmail.includes("@")) {
-                setEmailError('Email is not valid');
+                setEmailError("Email is not valid");
               } else {
-                setEmailError('none');
+                setEmailError("none");
                 setEmail(inputEmail);
               }
             }}
-
           />
-          {emailError !== 'none' && <div style={{ color: 'red' }}>{emailError}</div>}
+          {emailError !== "none" && (
+            <div style={{ color: "red" }}>{emailError}</div>
+          )}
 
           <InputBox
             title="Password"
@@ -131,20 +149,26 @@ function Adminsignupform() {
             onChange={(e) => {
               setPassword(e.target.value);
               if (e.target.value.length < 8) {
-                setPasswordError('Password must be at least 8 characters long');
+                setPasswordError("Password must be at least 8 characters long");
               } else if (!e.target.value.match(/[a-z]/g)) {
-                setPasswordError('Password must contain at least one lowercase letter');
+                setPasswordError(
+                  "Password must contain at least one lowercase letter"
+                );
               } else if (!e.target.value.match(/[A-Z]/g)) {
-                setPasswordError('Password must contain at least one uppercase letter');
+                setPasswordError(
+                  "Password must contain at least one uppercase letter"
+                );
               } else if (!e.target.value.match(/[0-9]/g)) {
-                setPasswordError('Password must contain at least one number');
+                setPasswordError("Password must contain at least one number");
               } else {
-                setPasswordError('none');
+                setPasswordError("none");
                 setPassword(e.target.value);
               }
             }}
           />
-          {passwordError !== 'none' && <div style={{ color: 'red' }}>{passwordError}</div>}
+          {passwordError !== "none" && (
+            <div style={{ color: "red" }}>{passwordError}</div>
+          )}
 
           <InputBox
             title="Confirm Password"
@@ -156,17 +180,18 @@ function Adminsignupform() {
               if (!e.target.value) {
                 setConfirmPasswordError("This field cannot be empty");
               } else if (password !== e.target.value) {
-                setConfirmPasswordError('Password does not match');
+                setConfirmPasswordError("Password does not match");
               } else {
-                setConfirmPasswordError('none');
+                setConfirmPasswordError("none");
                 setConfirmPassword(e.target.value);
               }
             }}
           />
-          {confirmpasswordError !== 'none' && <div style={{ color: 'red' }}>{confirmpasswordError}</div>}
+          {confirmpasswordError !== "none" && (
+            <div style={{ color: "red" }}>{confirmpasswordError}</div>
+          )}
           <div className="loginbtn">
             <Button buttonName="Sign Up" type="submit" />
-
           </div>
         </form>
 

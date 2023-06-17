@@ -27,14 +27,12 @@ import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/Login/VerifyEmail/VerifyEmail";
 import VideosPage from "./Pages/VideosPage/VideosPage";
 import Contactus from "./Pages/Contact Us/Contactus"
-import Adminsignup from "./Pages/Admin Signup/Adminsignup";
+import Adminsignup from "./Pages/SuperAdmin/Admin Signup/Adminsignup";
 import ExamResult from "./Pages/ExamResult/ExamResults";
 import Success from "./Components/Checkout/Success";
 import Cancel from "./Components/Checkout/Cancel";
 import PastPapers from "./Pages/PastPapers/PastPapers";
 import NewsPage from "./Pages/Admin/News/NewsPage";
-import AdminRequests from "./Pages/SuperAdmin/AdminRequests/AdminRequests";
-import EditProfile from "./Pages/SuperAdmin/EditProfile/EditProfile";
 import ExaminationPage from "./Pages/Admin/Examination/ExaminationQuizPage";
 
 function App() {
@@ -86,7 +84,6 @@ function App() {
           <Route path="/login" element={<Login setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/superAdminDashboard" element={<SADashboard />} />
-          <Route path="/adminRequests" element={<AdminRequests />} />
           <Route path="/overview" element={<Overview/>} />
           <Route path="/level/quiz/:id" element={<Quiz/>} />
           <Route path="*" element={<PageNotFound />} />
@@ -107,7 +104,6 @@ function App() {
           <Route path="/newsUpload" element={<NewsPage/>}/>
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/adminsignup" element={<Adminsignup />} />
-          <Route path="/superAdminEditProfile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>}
     </div>
