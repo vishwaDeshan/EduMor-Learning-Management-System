@@ -1,149 +1,59 @@
-
-import React from 'react';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import './CourseList.css'
-import { color } from '@mui/system';
+import React, { useEffect } from "react";
+import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
+import "./CourseList.css";
+import { useState } from "react";
+import axios from "axios";
 
 export default function CourseList() {
+  const [exams, setExams] = useState([]);
+  const token = localStorage.getItem("AUTH_TOKEN");
+
+  useEffect(() => {
+    if (!token) {
+      alert("Authorization token missing");
+      return;
+    }
+    axios
+      .get("http://localhost:8000/examinations", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setExams(response.data);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }, []);
+
   return (
-    <MDBTable align='middle'>
+    <MDBTable align="middle" className="courseTable">
       <MDBTableHead>
         <tr>
-          <th scope='col'>Course Name</th>
-          <th scope='col'>Action</th>
+          <th scope="col mt-6" className="course-titles">
+            Course Name
+          </th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        <tr>
-          <td>
-            <div className='d-flex align-items-center'>
-              <img
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7bcT8D-O3gn8DizvLc1oGpLWUIuvKvMdBpg&usqp=CAU'
-                alt=''
-                style={{ width: '45px', height: '45px' }}
-                className='rounded-circle'
-              />
-              <div className='ms-3'>
-                <p className='fw-bold mb-1'>Sri Lanka Bank Examination</p>
-                
+        {exams.map((course, index) => (
+          <tr key={index}>
+            <td>
+              <div className="d-flex align-items-center ms-5">
+                <img
+                  src={course.photo}
+                  alt=""
+                  style={{ width: "45px", height: "45px" }}
+                  className="rounded-circle"
+                />
+                <div className="ms-3">
+                  <p className="fw-bold mb-1 course-name">{course.examName}</p>
+                </div>
               </div>
-            </div>
-          </td>
-         
-         
-          <td>
-          <MDBBtn 
-  color='link' 
-  rounded 
-  size='sm' 
-  style={{ 
-    textDecoration: 'none', 
-    backgroundColor: 'black', 
-    margin: '10px' ,
-    color:'white'
-  }} 
->
-  Edit
-</MDBBtn>
-
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className='d-flex align-items-center'>
-              <img
-                src='https://img.freepik.com/premium-vector/man-with-laptop-studying-working-concept_113065-167.jpg?w=360'
-                alt=''
-                style={{ width: '45px', height: '45px' }}
-                className='rounded-circle'
-              />
-              <div className='ms-3'>
-                <p className='fw-bold mb-1'>Sri Lanka Law College Examination</p>
-                
-              </div>
-            </div>
-          </td>
-         
-          <td>
-         
-
-
-
-<MDBBtn  color='link' 
-  rounded 
-  size='sm' 
-  style={{ 
-    textDecoration: 'none', 
-    backgroundColor: 'black', 
-    margin: '10px' ,
-    color:'white'
-  }} >
-              Edit
-            </MDBBtn>
-
-
-
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className='d-flex align-items-center'>
-              <img
-                src='https://img.freepik.com/premium-vector/man-with-laptop-studying-working-concept_113065-167.jpg?w=360'
-                alt=''
-                style={{ width: '45px', height: '45px' }}
-                className='rounded-circle'
-              />
-              <div className='ms-3'>
-                <p className='fw-bold mb-1'>Audit's Examiner Service Examination</p>
-                
-              </div>
-            </div>
-          </td>
-          
-          <td>
-            <MDBBtn  color='link' 
-  rounded 
-  size='sm' 
-  style={{ 
-    textDecoration: 'none', 
-    backgroundColor: 'black', 
-    margin: '10px' ,
-    color:'white'
-  }} >
-              Edit
-            </MDBBtn>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className='d-flex align-items-center'>
-              <img
-                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7bcT8D-O3gn8DizvLc1oGpLWUIuvKvMdBpg&usqp=CAU'
-                alt=''
-                style={{ width: '45px', height: '45px' }}
-                className='rounded-circle'
-              />
-              <div className='ms-3'>
-                <p className='fw-bold mb-1'>Sri Lanka Foreign Service Examination</p>
-                
-              </div>
-            </div>
-          </td>
-          <td>
-            <MDBBtn  color='link' 
-  rounded 
-  size='sm' 
-  style={{ 
-    textDecoration: 'none', 
-    backgroundColor: 'black', 
-    margin: '10px' ,
-    color:'white'
-  }} >
-              Edit
-            </MDBBtn>
-          </td>
-        </tr>
+            </td>
+          </tr>
+        ))}
       </MDBTableBody>
     </MDBTable>
   );

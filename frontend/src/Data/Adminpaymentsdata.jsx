@@ -1,34 +1,25 @@
 const Adminpaymentsdata = [
     {
-        CardType : "Visa",
-        CardNumber: "334567890",
-        CardholderName :"Srhehan Perera",
-       
-    },
-    {
-        CardType : "Credit",
-        CardNumber: "564567890",
-        CardholderName :"Dilshan Perera",
-       
-    },
-    {
-        CardType : "Debit",
-        CardNumber: "56567890",
-        CardholderName :"Dinushi Siriwardene",
-       
-    },
-    {
-        CardType : "Visaa",
-        CardNumber: "334567890",
-        CardholderName :"Srhehan Perera",
-       
-    },
-    {
-        CardType : "Visa",
-        CardNumber: "456789090",
-        CardholderName :"Shakya Siriwardene",
-       
-    },
+        CardholderName :"Rashmika Chathura",
+        Email:"edumor.hackstone@gmail.com"
+     },
+     {
+      CardholderName :"Chaviru Attanayake",
+          Email: "chaviruattnayaka@gmail.com",
+   },                   
+   {
+    CardholderName :"Vishwa Deshan",
+    Email:"waweliyadda.1998@gmail.com", 
+   },
+   {
+    CardholderName :"Pasinda Piyumal", 
+    Email:'piyumalpasinda99@gmail.com',
+   },
+   {
+    CardholderName :"Manupa Wickramasinghe", 
+    Email: "manupawick18@gmailcom",
+   },
+   
   ];
   
   export default Adminpaymentsdata;

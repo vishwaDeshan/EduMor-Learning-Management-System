@@ -1,59 +1,24 @@
-.widgetSm{
-    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-    padding: 20px;
-    margin-right: 20px;
+.courseTable{
+    background:#fff;
+    margin:15px 10px;
+    height:20px;
+    border-radius:15px;
 }
 
-.widgetSmTitle{
-    font-size: 22px;
-    font-weight: 600;
+.course-titles {
+  padding-left:15px;
+  padding-top: 20px;
 }
 
-.widgetSmImg{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+.course-name {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-.widgetSmList{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.ms-5 {
+  margin-left: 1.25rem;
 }
 
-.widgetSmListItem{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 15px 0px;
-}
-
-.widgetSmUsername{
-    display: flex;
-    flex-direction: column;
-    padding-left: 2px;
-}
-
-
-
-.widgetSmButton{
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 10px;
-    padding: 2px 5px;
-    background-color: #eeeef7;
-    color: #555;
-    cursor: pointer;
-}
-
-.widgetSmIcon{
-    font-size: 16px !important;
-    margin-right: 5px;
-}
-.course-table{
-    margin-top: 10px;
-    background-color: aqua;
+.rounded-circle {
+  border-radius: 50%;
 }

@@ -1,10 +1,6 @@
-
-
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import './InputField.css';
-
-
 
 const InputField = () => {
   const [dragging, setDragging] = useState(false);

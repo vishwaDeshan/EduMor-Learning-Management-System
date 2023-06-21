@@ -13,7 +13,7 @@ function UserdetailsPage() {
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5 style={{color:'blue',marginBottom:'30px'}}>User Details</h5>
+          <h5 style={{color:'#041083',marginBottom:'30px', marginTop:"-50px", fontSize:'20px'}}>User Details</h5>
 
           <div className="overviewSections" style={{ display: "flex",color:'black', minWidth:"100%" }}>
 

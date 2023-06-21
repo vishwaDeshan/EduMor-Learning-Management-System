@@ -2,7 +2,12 @@ import React from 'react'
 import './AdminNavbar.css'
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import { Avatar } from "@mui/material";
+import { useSelector } from 'react-redux';
+
 function AdminNavbar() {
+
+  const user = useSelector(state => state.auth.token);
+
   return (
     <div className="adminNavbar">
       <div className="navbaritem">
@@ -12,7 +17,7 @@ function AdminNavbar() {
                 alt="Profile Picture"
                 sx={{ width: 40, height: 40 }}
               />
-          <span>Frank L.</span>
+            <span>{user && user.firstName}</span>
       </div>
     </div>
   )

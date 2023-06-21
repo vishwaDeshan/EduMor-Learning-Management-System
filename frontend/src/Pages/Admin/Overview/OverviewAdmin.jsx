@@ -8,27 +8,23 @@ import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar"
 import './OverviewAdmin.css'
 
 function Overview() {
+
   return (
     <div style={{ diplay: "flex", flexDirection: "column" }}>
       <div className="overview" style={{ display: "flex", width:"100%"}}>
         < AdminSideBar/>
         <div className="mainContainer">
           <AdminNavbar />
-          <h5 style={{color:'blue',fontWeight:'bold'}}>Overview</h5>
-
+          <h5 style={{color:'#041083', marginTop:'-50px'}}>Overview</h5>
           <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
-
             <div className="middle-section" style={{ display: "flex",flexDirection: "column", width:"75%"}}>
               <CardOverview />
               <CourseList />
             </div>
-
-            <div className="right-section" style={{ width:"15%" }}>
+            <div className="right-section" style={{ width:"15%", marginTop:'150px'}}>
               <Calender />
             </div>
-
           </div>
-
         </div>
 
       </div>

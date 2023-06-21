@@ -1,67 +1,106 @@
-import React ,{ useState }from 'react';
-import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from 'mdb-react-ui-kit';
-import AdminUserdetails from '../../../../Data/AdminUserdetails';
-import DeleteIcon from '@mui/icons-material/Delete';
-import defaultUser from "../../../../Assets/defaultUser.png"
-
-
+import React, { useEffect, useState } from "react";
+import { MDBTable, MDBTableHead, MDBTableBody } from "mdb-react-ui-kit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import defaultUser from "../../../../Assets/defaultUser.png";
+import axios from "axios";
 
 export default function UserData() {
+  const [userData, setUserData] = useState([]);
+  const token = localStorage.getItem("AUTH_TOKEN");
 
-  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (!token) {
+      alert("Authorization token missing");
+      return;
+    }
+    axios
+      .get("http://localhost:8000/auth", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }, []);
 
-  const handleDelete = (index) => {
-    const newData = [...data];
-    newData.splice(index, 1);
-    setData(newData);
-  };
+  function removeList(index) {
+    const newList = [...userData];
+    newList.splice(index, 1);
+    setUserData(newList);
+  }
 
   return (
-    <MDBTable align='middle'>
+    <MDBTable
+      align="middle"
+      style={{
+        margin: "-15px 10px",
+        background: "#fff",
+        padding: " 5px 20px",
+        borderRadius: "10px",
+        maxHeight:"250px",
+        overflowY:"scroll"
+      }}
+    >
       <MDBTableHead>
-        <tr style={{ color: '#646a85' }}>
-          <th scope='col' style={{color:'red',paddingLeft:'50px'}}>User Name</th>
-          <th scope='col'style={{color:'red',paddingLeft:'50px'}}>Email</th>
-          <th scope='col'style={{color:'red'}}>Status</th>
-          <th scope='col'style={{color:'red'}}>Action</th>
+        <tr style={{ color: "#646a85"}}>
+          <th scope="col" style={{ color: "red", paddingLeft: "50px" }}>
+            User Name
+          </th>
+          <th scope="col" style={{ color: "red", paddingLeft: "50px" }}>
+            Email
+          </th>
+          <th scope="col" style={{ color: "red" }}>
+            Action
+          </th>
         </tr>
       </MDBTableHead>
-      <MDBTableBody >
-<hr style={{color:'blue'}}/>
-        {AdminUserdetails.map(({ UserName, Useremail, UserStatus }, index) => {
+      <MDBTableBody>
+        {userData.map((userData, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td>
-                <div className='d-flex align-items-center'>
+                <div className="d-flex align-items-center">
                   <img
                     src={defaultUser}
-                    alt=''
-                    style={{ width: '45px', height: '45px' }}
-                    className='rounded-circle'
+                    alt=""
+                    style={{ width: "45px", height: "45px" }}
+                    className="rounded-circle"
                   />
-                  <div className='ms-3'>
-                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{UserName}</p>
+                  <div className="ms-3">
+                    <p
+                      className="fw-bold mb-1"
+                      style={{ color: "#041083", cursor: "pointer" }}
+                    >
+                      {userData.firstName}
+                    </p>
                   </div>
                 </div>
               </td>
               <td>
-              <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{Useremail}</p>
+                <p
+                  className="fw-bold mb-1"
+                  style={{ color: "#041083", cursor: "pointer" }}
+                >
+                  {userData.email}
+                </p>
               </td>
-
               <td>
-                <MDBBadge color='primary' pill>
-                {UserStatus}
-                </MDBBadge>
-              </td>
-              <td>
-                
-              {data.map((item, index) => (
-  <div key={index}>
-    <span>{item.name}</span>
-    <DeleteIcon onClick={() => handleDelete(index)} />
-  </div>
-))}
-              
+                <button
+                  style={{
+                    fontWeight: "bolder",
+                    padding: "2px 10px",
+                    border:"none",
+                    background:"transparent",
+                    color:"#041083"
+                  }}
+                  onClick={() => removeList(userData._id)}
+                >
+                  <DeleteIcon />
+                </button>
               </td>
             </tr>
           );

@@ -5,6 +5,10 @@
     flex:3;
     flex-direction: row;
     justify-content: space-between;
+    background:#fff;
+    padding:15px 10px;
+    margin-left:10px;
+    border-radius:15px;
   }
   
   .featuredItem {
@@ -17,16 +21,18 @@
     width: 5px;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-    
+    background: #041083;
+    color:#fff;
+    transition:0.4s  ease-in;
   }
   .featuredItem:hover {
-    color:#fff;
-    transform: scale(1.001);
-    background: #041083;
+    transform: scale(1.05);
+    transition:0.4s  ease-in;
   }
   
   .featuredTitle{
       font-size: 20px;
+      color:#fff;
   }
   
   .featuredMoneyContainer{

@@ -4,12 +4,27 @@ import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
 import FeaturedVideoOutlinedIcon from "@mui/icons-material/FeaturedVideoOutlined";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
+import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import "./AdminSideBar.css";
 import LogoC from "../../../Assets/LogoC.png";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const logoutUser = () => {
+    dispatch({
+      type: "RESET_USER",
+      payload: {
+        isLoggedIn: false,
+        users: null,
+        token: null,
+      },
+    });
+    localStorage.removeItem("AUTH_TOKEN");
+    window.location.replace("/login");
+  };
+
   return (
     <div className="SidebarAdmin">
       <div className="Logo">
@@ -18,7 +33,10 @@ const Sidebar = () => {
       </div>
 
       <div className="menu">
-        <NavLink to="/adminOverview" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/adminOverview"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <DashboardCustomizeOutlinedIcon />
@@ -27,7 +45,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/userDetails" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/userDetails"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <GroupOutlinedIcon />
@@ -36,7 +57,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/quizUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/quizUpload"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <CollectionsBookmarkOutlinedIcon />
@@ -45,7 +69,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/adsUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/adsUpload"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <FeaturedVideoOutlinedIcon />
@@ -54,7 +81,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/paymentsData" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/paymentsData"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <PaidOutlinedIcon />
@@ -63,7 +93,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/videoUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/videoUpload"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <DashboardCustomizeOutlinedIcon />
@@ -72,7 +105,10 @@ const Sidebar = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/newsUpload" className={({ isActive }) => (isActive ? "actived" : "inactived")}>
+        <NavLink
+          to="/newsUpload"
+          className={({ isActive }) => (isActive ? "actived" : "inactived")}
+        >
           <div className="menuItem">
             <div>
               <NewspaperOutlinedIcon />
@@ -80,6 +116,18 @@ const Sidebar = () => {
             <span>News</span>
           </div>
         </NavLink>
+        <div class="Logout">
+          <button
+            type="button"
+            name="submit"
+            class="btn btn-primary logout-btn"
+            onClick={() => {
+              logoutUser();
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

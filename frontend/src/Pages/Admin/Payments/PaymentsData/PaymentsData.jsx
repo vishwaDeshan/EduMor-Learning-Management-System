@@ -1,24 +1,53 @@
-import React from 'react';
-import { MDBTable, MDBTableHead, MDBTableBody,MDBBadge } from 'mdb-react-ui-kit';
-import Adminpaymentsdata from "../../../../Data/Adminpaymentsdata";
-import defaultUser from "../../../../Assets/defaultUser.png"
+
+import React, { useEffect, useState } from 'react';
+import { MDBTable, MDBTableHead, MDBTableBody, MDBBadge } from 'mdb-react-ui-kit';
+import Adminpaymentsdata from '../../../../Data/Adminpaymentsdata';
+import defaultUser from '../../../../Assets/defaultUser.png';
+import axios from 'axios';
 
 export default function PaymentsData() {
-  
+  const [list, setList] = useState([]);
+  const [premiumUsers, setPremiumUsers] = useState([]);
+
+  function removeList(index) {
+    const newList = [...list];
+    newList.splice(index, 1);
+    setList(newList);
+  }
+
+  useEffect(() => {
+    const fetchPremiumUsers = async () => {
+      try {
+        const response = await axios.get('auth/premiumUsers'); // Replace '/api/premiumUsers' with your actual API endpoint
+        setPremiumUsers(response.data);
+      } catch (error) {
+        console.error('Error retrieving premium users:', error);
+      }
+    };
+
+    fetchPremiumUsers();
+  }, []);
+
+  useEffect(() => {
+    setList(Adminpaymentsdata);
+  }, []);
+
   return (
-    <MDBTable align='middle'>
+    <MDBTable align='middle' style={{ marginLeft: '100px', marginTop: '20px' }}>
       <MDBTableHead>
         <tr style={{ color: '#646a85' }}>
-          <th scope='col'style={{color:'red',marginLeft:'190px'}} >Card Type</th>
-          <th scope='col'style={{color:'red'}}>Card Number</th>
-          <th scope='col'style={{color:'red'}}>Card Holder Name</th>
+          <th scope='col' style={{ color: 'red' }}>
+            Card Holder Name
+          </th>
+          <th scope='col' style={{ color: 'red',paddingLeft:'60px' }}>
+            Email
+          </th>
         </tr>
       </MDBTableHead>
-      <MDBTableBody >
-
-        {Adminpaymentsdata.map(({CardType,CardNumber,CardholderName }, index) => {
+      <MDBTableBody>
+        {list.map(({ CardholderName,Email }, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td>
                 <div className='d-flex align-items-center'>
                   <img
@@ -28,20 +57,25 @@ export default function PaymentsData() {
                     className='rounded-circle'
                   />
                   <div className='ms-3'>
-                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{CardType}</p>
+                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>
+                      {CardholderName}
+                    </p>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div className='d-flex align-items-center'>
+                  <div className='ms-3'>
+                    <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>
+                      {Email}
+                    </p>
                   </div>
                 </div>
               </td>
               <td>
-              <p className='fw-bold mb-1' style={{ color: '#041083', cursor: 'pointer' }}>{CardNumber}</p>
+               
               </td>
-
-              <td>
-                <MDBBadge color='primary' pill>
-                {CardholderName}
-                </MDBBadge>
-              </td>
-             
             </tr>
           );
         })}
