@@ -15,12 +15,12 @@ function NewsPage() {
         <div className="mainContainer">
           <AdminNavbar />
           <h5 style={{color:'#041083',fontWeight:'bold', marginTop:'-50px'}}>News  Upload </h5>
-          <div className="overviewSections" style={{ display: "flex", minWidth:"100%" }}>
-            <div className="middle-section" style={{ display: "flex",flexDirection: "column", maxwidth:"100%"}}>
+          <div className="overviewSections" style={{ display: "flex" }}>
+            <div className="middle-section" style={{ display: "flex",flexDirection: "column",width:"75%"}}>
              <News/>
              <NewsTable/>
             </div>
-            <div className="right-section" style={{ width:"15%", marginLeft:"100px" }}>
+            <div className="right-section" style={{ width:"15%", marginTop:'150px'}}>
               <MiniCalander />
             </div>
 

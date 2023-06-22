@@ -47,8 +47,7 @@ export default function NewsTable() {
         height: "400px",
         padding: "25px",
         borderRadius: "10px",
-        marginLeft: "20px",
-        marginTop: "20px",
+        margin:"-15px 10px"
       }}
     >
       <MDBTable
@@ -57,7 +56,6 @@ export default function NewsTable() {
           overflowY: "auto",
           height: "40px",
           tableLayout: "fixed",
-          width: "750px",
           marginRight: "10px",
         }}
       >

@@ -21,7 +21,7 @@ function UserdetailsPage() {
               <UserData/>
             </div>
 
-            <div className="right-section" style={{ width:"15%" }}>
+            <div className="right-section" style={{ width:"15%", marginTop:'150px'}}>
               <MiniCalander />
             </div>
 

@@ -25,7 +25,7 @@ function ExaminationPage() {
                                 <CourseList/>
                             </div>
                         </div>
-                        <div className="right-section" style={{ display: "flex", flex: 1 }}>
+                        <div className="right-section" style={{ display: "flex", flex: 1 ,marginTop:'150px'}}>
                             <MiniCalander />
                         </div>
 

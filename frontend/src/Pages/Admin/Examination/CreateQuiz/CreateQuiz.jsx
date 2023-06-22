@@ -61,7 +61,7 @@ function CreateQuiz() {
     const updatedQuestions = [...questions];
     if (name === "answers") {
       updatedQuestions[index][name] = value
-        .split(",")
+        .split("/")
         .map((answer) => answer.trim());
     } else {
       updatedQuestions[index][name] = value.trim();
@@ -182,8 +182,8 @@ function CreateQuiz() {
                   <Form.Control
                     type="text"
                     name="answers"
-                    placeholder="Enter the answers (Separate answers with commas)"
-                    value={question.answers.join(", ")}
+                    placeholder="Enter the answers (Separate answers with slash)"
+                    value={question.answers.join("/ ")}
                     onChange={(event) => handleQuestionChange(event, index)}
                     required
                   />
