@@ -14,6 +14,16 @@ function Advertisement() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!addTitle || !image || !link) {
+      alert("Please fill in all the fields");
+      return;
+    }
+
+    if (addTitle.length < 5 || addTitle.length > 50) {
+      alert("Title should be between 5 and 50 characters");
+      return;
+    }
     submitAdd(addTitle, link);
 
     // Clear form inputs

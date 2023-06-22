@@ -42,16 +42,36 @@ function CreateQuiz() {
         setQuestions([...questions, { question: '', answers: [], correctAnswer: '' }]);
     };
 
+    // const handleQuestionChange = (event, index) => {
+    //     const { name, value } = event.target;
+    //     const updatedQuestions = [...questions];
+    //     if (name === 'answers') {
+    //       updatedQuestions[index][name] = value.split(',').map(answer => answer.trim());
+    //     } else {
+    //       updatedQuestions[index][name] = value.trim();
+    //     }
+    //     setQuestions(updatedQuestions);
+    //   };
+
+
     const handleQuestionChange = (event, index) => {
         const { name, value } = event.target;
         const updatedQuestions = [...questions];
         if (name === 'answers') {
-          updatedQuestions[index][name] = value.split(',').map(answer => answer.trim());
+            const answers = value.split('/').map(answer => {
+                if (answer.includes(',')) {
+                    return answer.trim();
+                } else {
+                    return answer.trim().split(',').map(item => item.trim());
+                }
+            });
+            updatedQuestions[index][name] = answers;
         } else {
-          updatedQuestions[index][name] = value.trim();
+            updatedQuestions[index][name] = value.trim();
         }
         setQuestions(updatedQuestions);
-      };
+    };
+    
 
     const handleQuizNameChange = (event) => {
         setQuizName(event.target.value);
@@ -95,6 +115,7 @@ function CreateQuiz() {
                             <Form.Label>Quiz Name</Form.Label>
                             <Form.Control type="text" placeholder="Enter Quiz Name" value={quizName} onChange={handleQuizNameChange} required />
                         </Form.Group>
+
                         <Form.Group controlId="formExam" style={{ marginBottom: '1rem' }}>
                             <Form.Label>Examination</Form.Label>
                             <DropdownButton title={selectedExam || 'Select Examination'}
@@ -133,8 +154,8 @@ function CreateQuiz() {
                                     <Form.Control
                                         type="text"
                                         name="answers"
-                                        placeholder="Enter the answers (Separate answers with commas)"
-                                        value={question.answers.join(', ')}
+                                        placeholder="Enter the answers (Separate answers with slash)"
+                                        value={question.answers.join('/')}
                                         onChange={(event) => handleQuestionChange(event, index)}
                                         required
                                     />

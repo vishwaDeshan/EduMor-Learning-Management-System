@@ -9,6 +9,16 @@ function News() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
+    if (!news|| !link) {
+      alert("Please fill in all the fields");
+      return;
+    }
+
+    if (news.length < 5 || link.length > 50) {
+      alert("Title should be between 5 and 50 characters");
+      return;
+    }
     try {
       // Call submitNews function to post data to MongoDB
       await submitNews(news, link);
