@@ -13,10 +13,13 @@ export default function Heading() {
         <div className='headertext'>
           <h1>Ready for a<br />New Exam...</h1>
           <h3>But not sure how to start?</h3>
-          <p>Find out is there any exam right for you.</p>
+          <p>Find out whether there is any exam right for you.</p>
           <div className='headerbtn'>
             <Link to="/signup">
-              <Button buttonName="Get Started"/>
+              <Button buttonName="Signup"/>
+            </Link>
+            <Link to="/login">
+              <Button className='btnlog' buttonName="Login"/>
             </Link>
           </div>
         </div>

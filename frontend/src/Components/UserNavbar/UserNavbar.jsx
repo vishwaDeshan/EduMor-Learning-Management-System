@@ -22,11 +22,13 @@ function UserNavbar() {
             </li>
           </ul>
         </div>
-        <Link to="/signup">
-          <button type="button" value="signup" className="button-user">
-            SignUp
-          </button>
-        </Link>
+        <div>
+          <Link to="/signup">
+            <button type="button" value="signup" className="button-user">
+              SignUp
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

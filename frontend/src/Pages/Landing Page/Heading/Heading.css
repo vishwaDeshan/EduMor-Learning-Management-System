@@ -33,3 +33,8 @@
 .headertext p{
     color: gray;
 }
+
+.headerbtn{
+    display: flex;
+    gap: 5px;
+}
