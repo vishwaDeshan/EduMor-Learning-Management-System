@@ -19,6 +19,7 @@ import {
   MDBModalHeader,
   MDBModalBody,
 } from "mdb-react-ui-kit";
+import withAuth from "../../hoc/withAuth";
 
 const Navbar = () => {
   const user = useSelector(state => state.auth.token);
@@ -101,4 +102,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default withAuth(Navbar);

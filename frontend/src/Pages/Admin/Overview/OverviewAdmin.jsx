@@ -6,6 +6,7 @@ import Footer from "../../../Components/Footer/Footer";
 import AdminNavbar from "../../../Components/Admin/AdminNavbar/AdminNavbar";
 import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar"
 import './OverviewAdmin.css'
+import withAuth from "../../../hoc/withAuth";
 
 function Overview() {
 
@@ -35,4 +36,4 @@ function Overview() {
   );
 }
 
-export default Overview;
+export default withAuth(Overview);

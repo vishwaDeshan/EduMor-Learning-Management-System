@@ -6,6 +6,7 @@ import Footer from "../../../Components/Footer/Footer";
 import CreateExamination from "./CreateExamination/CreateExamination";
 import CreateQuiz from "./CreateQuiz/CreateQuiz";
 import CourseList from "../../../Components/Admin/CourseList/CourseList";
+import withAuth from "../../../hoc/withAuth";
 
 function ExaminationPage() {
     return (
@@ -41,4 +42,4 @@ function ExaminationPage() {
     );
 }
 
-export default ExaminationPage;
+export default withAuth(ExaminationPage);

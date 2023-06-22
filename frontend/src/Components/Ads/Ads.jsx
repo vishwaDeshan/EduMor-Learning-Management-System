@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ImageSlideshow from './ImageSlideshow';
 import './Ads.css'
 import axios from 'axios';
+import withAuth from '../../hoc/withAuth';
 
 const Ads = () => {
   const [ads, setAds] = useState([]);
@@ -33,4 +34,4 @@ const Ads = () => {
     </div>
   );
 };
-export default Ads
+export default withAuth(Ads)

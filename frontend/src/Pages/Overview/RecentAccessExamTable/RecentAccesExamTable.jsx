@@ -9,9 +9,9 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import withAuth from "../../../hoc/withAuth";
 
-export default function App() {
-
+function RecentAccesExamTable() {
   const { t } = useTranslation();
   const userId = useSelector((state) => state.auth.token._id);
   const token = localStorage.getItem("AUTH_TOKEN");
@@ -121,3 +121,5 @@ export default function App() {
     </>
   );
 }
+
+export default  withAuth(RecentAccesExamTable);

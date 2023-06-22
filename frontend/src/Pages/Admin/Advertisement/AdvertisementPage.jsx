@@ -5,6 +5,7 @@ import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar";
 import Footer from "../../../Components/Footer/Footer";
 import Advertisement from "./Advertisement";
 import AdvertisementTable from "./AdvertisementTable";
+import withAuth from "../../../hoc/withAuth";
 
 function AdvertisementPage() {
   return (
@@ -42,4 +43,4 @@ function AdvertisementPage() {
   );
 }
 
-export default AdvertisementPage;
+export default withAuth(AdvertisementPage);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./News.css";
 import axios from 'axios'
+import withAuth from "../../hoc/withAuth";
 
 function News() {
   const { t } = useTranslation();
@@ -40,4 +41,4 @@ function News() {
     </div>
   );
 }
-export default News;
+export default withAuth(News);

@@ -3,6 +3,7 @@ import './AdminNavbar.css'
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import { Avatar } from "@mui/material";
 import { useSelector } from 'react-redux';
+import withAuth from '../../../hoc/withAuth';
 
 function AdminNavbar() {
 
@@ -23,4 +24,4 @@ function AdminNavbar() {
   )
 }
 
-export default AdminNavbar
+export default withAuth(AdminNavbar)

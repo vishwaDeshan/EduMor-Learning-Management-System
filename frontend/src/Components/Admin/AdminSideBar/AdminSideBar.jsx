@@ -9,6 +9,7 @@ import "./AdminSideBar.css";
 import LogoC from "../../../Assets/LogoC.png";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import withAuth from "../../../hoc/withAuth";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -133,4 +134,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withAuth(Sidebar);

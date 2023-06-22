@@ -4,6 +4,7 @@ import MiniCalander from "../../../../Components/MiniCalander/MiniCalander";
 import UserData from "../UserData/UserData";
 import AdminSideBar from "../../../../Components/Admin/AdminSideBar/AdminSideBar"
 import Footer from "../../../../Components/Footer/Footer";
+import withAuth from "../../../../hoc/withAuth";
 
 
 function UserdetailsPage() {
@@ -37,4 +38,4 @@ function UserdetailsPage() {
   );
 }
 
-export default UserdetailsPage;
+export default withAuth(UserdetailsPage);

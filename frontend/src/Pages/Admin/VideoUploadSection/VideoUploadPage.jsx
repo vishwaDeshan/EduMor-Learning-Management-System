@@ -4,6 +4,7 @@ import MiniCalander from "../../../Components/MiniCalander/MiniCalander";
 import AdminSideBar from "../../../Components/Admin/AdminSideBar/AdminSideBar";
 import Footer from "../../../Components/Footer/Footer";
 import VideoUploadSection from "./VideoUploadSection";
+import withAuth from "../../../hoc/withAuth";
 
 function VideoUploadPage() {
   return (
@@ -38,4 +39,4 @@ function VideoUploadPage() {
   );
 }
 
-export default VideoUploadPage;
+export default withAuth(VideoUploadPage);

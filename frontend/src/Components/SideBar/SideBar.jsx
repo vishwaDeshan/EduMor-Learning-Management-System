@@ -10,6 +10,7 @@ import Logo from "../../Assets/LogoC.png";
 import "./SideBar.css";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import withAuth from "../../hoc/withAuth";
 
 const SideBar = () => {
   const { t } = useTranslation();
@@ -76,4 +77,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default withAuth(SideBar);
